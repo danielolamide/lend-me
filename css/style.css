@@ -13,6 +13,16 @@
 }
 #dropdown1 li a:hover{
     color: #25BB9B;
-
-
+}
+#mobile-demo{
+    background-color: #2E3E4F;   
+}
+#mobile-demo li a{
+    color: #25BB9B;
+}
+#mobile-demo li a:hover{
+    color: white;
+}
+#mobile-demo li a:hover > i{
+    color: white;
 }
