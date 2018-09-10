@@ -1,0 +1,18 @@
+.top-nav{
+    background-color: #2E3E4F;
+}
+.img-hold{
+    width: 200px;
+    float: left;
+    justify-content: center;
+    margin-left: 50px;
+    margin-top: 15px;
+}
+#dropdown1 li a{
+    color:#8c8c8c;
+}
+#dropdown1 li a:hover{
+    color: #25BB9B;
+
+
+}
