@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin Dashboard</title>
     <link rel="icon" type="image/png" href="./images/blue-coin.png">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection"/>
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -12,33 +13,186 @@
 
 </head>
 <body>
-    <nav>
-        <div class="nav-wrapper top-nav">
-            <div class="img-hold">
-                <a href="#" class="brand-logo"><img src="./images/p2p-logo-white-resize.png"></a>
+    <!-- <div class="page-wrap"> -->
+        <nav>
+            <div class="nav-wrapper top-nav">
+                    <a href="#" data-target="slide-out" class="sidenav-trigger hide-on-small-only show-on-medium-and-up"><i class="material-icons">menu</i></a>
+                <div class="img-hold">
+                    <a href="#" class="brand-logo"><img src="./images/p2p-logo-white-resize.png"></a>
+                </div>
+                
+                <!--Menu Trigger on Small Screen-->
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">  
+                    <li><a class="dropdown-trigger user-name" href="#" data-target="dropdown1">Username<i class="material-icons right">arrow_drop_down</i></a></li>
+                </ul>
             </div>
-            <!--Menu Trigger on Small Screen-->
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a class="dropdown-trigger" href="#" data-target="dropdown1">Username<i class="material-icons right">arrow_drop_down</i></a></li>
-            </ul>
-        </div>
-    </nav>
-    <!--Username DropDown Items-->
-    <ul id="dropdown1" class="dropdown-content">
-        <li><a href="#!">My Profile<i class="material-icons left">account_circle</i></a></li>
-        <li><a href="#!">Settings<i class="material-icons left">settings</i></a></li>
-        <li class="divider"></li>
-        <li><a href="#!">Logout<i class="material-icons left">power_settings_new</i></a></li>
-    </ul>
-    <!--NavBar Resize Menu-->
-    <ul class="sidenav" id="mobile-demo">
+        </nav>
+
+         <!--Username DropDown Items-->
+        <ul id="dropdown1" class="dropdown-content">
+            <li><a href="#!">My Profile<i class="material-icons left">account_circle</i></a></li>
+            <li><a href="#!">Settings<i class="material-icons left">settings</i></a></li>
+            <li class="divider"></li>
+            <li><a href="#!">Logout<i class="material-icons left">power_settings_new</i></a></li>
+        </ul>
+         <!--NavBar Resize Menu-->
+        <ul class="sidenav" id="mobile-demo">
             <li><a href="#">User Management<i class="material-icons left">supervised_user_circle</i></a></li>
             <li><a href="#">Transaction Management<i class="material-icons left">attach_money</i></a></li>
             <li><a href="#">User Feedback<i class="material-icons left">feedback</i></a></li>
             <li><a href="#">Manage Settings<i class="material-icons left">settings</i></a></li>
             <li><a href="#">Logout<i class="material-icons left">power_settings_new</i></a></li>
+         </ul>
+    <!-- </div> -->
+    
+    <!--Admin Side Menu Fixed-->
+    <ul id="slide-out" class="sidenav">
+            <li><a class="sidenav-close" href="#!">&#10005</a></li>
+
+        <li><div class="user-view">
+            <!-- <div class="background">
+                <img src="images/office.jpg">
+            </div> -->
+            <a href="#user"><img class="circle" src="images/default-user-icon.png"></a>
+            <a href="#name"><span class="white-text name">Username</span></a>
+            <a href="#email"><span class=" subheader white-text email">user@domain.com</span></a>
+        </div></li>
+        <li><a href="#!"><i class="material-icons">supervised_user_circle</i>User Management</a></li>
+        <li><a href="#!"><i class="material-icons">attach_money</i>Transaction Management</a></li>
+        <li><a href="#!"><i class="material-icons">feedback</i>User Feedback</a></li>
+        <li><div class="divider"></div></li>
+        <li><a href="#"><i class="material-icons">settings</i>Manage Settings</a></li>
+        <li><a class="waves-effect" href="#!"><i class="material-icons">power_settings_new</i>Logout</a></li>
     </ul>
+    <!--Page Content-->
+    <main>
+        <div class="dashboard-title">
+            <h6 class="left-align">Dashboard</h6>
+        </div>
+        <div class="row">
+            <div class="col s6">
+                    <div style="padding: 35px; text-align: center; " class="card" id="card-row">
+                        <div class="row">
+                            <div class="left card-title">
+                                <b class="white-text">User Management</b>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <a href="#">
+                                <div style="padding: 30px;" class="grey lighten-3 col s5 waves-effect">
+                                    <!-- <i class="large material-icons">person</i> -->
+                                    <i class="large fas fa-user-alt"></i>
+                                    <span><h6>Borrower</h6></span>
+                                </div>
+                            </a>
+                            <div class="col s2">&nbsp;</div>
+                            <a href="#">
+                                <div style="padding: 30px;" class="grey lighten-3 col s5 waves-effect">
+                                    <!-- <i class="large material-icons">person</i> -->
+                                    <i class="large fas fa-user-tie"></i>
+                                    <span><h6>Lender</h6></span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+            </div>
+            <div class="col s6">
+                <div style="padding:35px; text-align:center;" class="card" id="card-row">
+                    <div class="row">
+                        <div class="left card-title">
+                            <b class="white-text">Transaction Management</b>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <a href="#">
+                            <div style="padding: 30px;" class="grey lighten-3 col s5 waves-effect">
+                                <!-- <i class="large material-icons">swap_horiz</i> -->
+                                <i class="large fas fa-hand-holding-usd"></i>
+                                <span><h6>Lending Logs</h6></span>
+                            </div>
+                        </a>
+                        <div class="col s2">&nbsp;</div>
+                        <a href="#">
+                            <div style="padding: 30px;" class="grey lighten-3 col s5 waves-effect">
+                                <!-- <i class="large material-icons">swap_horiz</i> -->
+                                <i class="large fas fa-exchange-alt"></i>
+                                <span><h6>Payment Logs</h6></span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s6">
+                <div class="card" id="card-row" style="padding:35px; text-align: center">
+                    <div class="row">
+                        <div class="left card-title">
+                            <b class="white-text">User Feedback</b>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <a href="#">
+                            <div style="padding: 30px;" class="grey lighten-3 col s5 waves-effect">
+                                <i class="large fas fa-comment-alt"></i>
+                                <span><h6>User Messages</h6></span>
+                            </div>
+                        </a>
+                        <div class="col s2">&nbsp;</div>
+                        <a href="#">
+                            <div style="padding: 30px;" class="grey lighten-3 col s5 waves-effect">
+                                <i class=" large fas fa-times-circle"></i>
+                                <span><h6>User Complaints</h6></span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col s3">
+                    <div class="card" id="card-row" style="padding:35px; text-align: center">
+                        <div class="row">
+                            <div class="left card-title">
+                                <b class="white-text">Manage Settings</b>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <a href="#">
+                                <div style="padding: 30px;" class="grey lighten-3 col s12 waves-effect">
+                                    <i class=" large fas fa-cog"></i>
+                                    <span><h6>Settings</h6></span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            <div class="col s3">
+                    <div class="card" id="card-row" style="padding:35px; text-align: center">
+                        <div class="row">
+                            <div class="left card-title">
+                                <b class="white-text">Manage Session</b>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <a href="#">
+                                <div style="padding: 30px;" class="grey lighten-3 col s12 waves-effect">
+                                    <i class="large fas fa-power-off"></i>
+                                    <span><h6>Logout</h6></span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </main>
+    <footer class="black lighten-2 page-footer" style="text-align:center; padding: 10px;">
+        <!-- <div class="center-align container" id="foot-logo">
+            <img src="./images/p2p-blue-new-layout.png" alt="company-logo">
+        </div> -->
+        <div class=" center-align container">
+        © 2018 StrathFund
+        </div>
+    </footer>
     <script type="text/javascript" src="js/materialize.js"></script>
     <script type ="text/javascript" src="js/index.js"></script>
 </body>

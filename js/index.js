@@ -4,7 +4,10 @@ $(document).ready(function(){
         hover : true,
         constrainWidth : false
     });
-});
-$(document).ready(function(){
     $('.sidenav').sidenav();
+    // $(window).scroll(function(){
+    //     if($(window).scrollTop()>100){
+    //         $('nav').addClass('sticky-nav')
+    //     }
+    // });
 });

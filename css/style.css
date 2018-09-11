@@ -1,13 +1,23 @@
+body{
+    background-color: #E9E9E9;
+}
 .top-nav{
     background-color: #2E3E4F;
 }
 .img-hold{
-    width: 200px;
+    /* width: 200px; */
     float: left;
-    justify-content: center;
-    margin-left: 50px;
+    /* justify-content: center; */
+    margin-left: 5px;
     margin-top: 15px;
 }
+#content-text{
+    color: white;
+}
+.user-name{
+    background-color: #72D0A4;
+}
+
 #dropdown1 li a{
     color:#8c8c8c;
 }
@@ -25,4 +35,51 @@
 }
 #mobile-demo li a:hover > i{
     color: white;
+}
+#slide-out{
+    background-color: #2E3E4F;
+}
+#slide-out li a:hover{
+    color: #25BB9B;
+    background-color: white;
+}
+#slide-out li a:hover > i{
+    color: #25BB9B;
+    
+}
+#slide-out li a{
+    color: white;
+}
+#slide-out li a i{
+    color: white;
+}
+/* .page-wrap{
+    padding-left: 300px;
+} */
+
+
+/* Main content */
+#card-row{
+    border-top: 4px solid #8CDDCD;
+    border-left: none;
+    border-bottom: none;
+    border-right: none;
+    background-color: #2C3E50;
+    border-radius: 4px;
+}
+.row a{
+    color: #25BB9B;
+}
+.dashboard-title{
+    padding-left: 12px;
+}
+.dashboard-title h6{
+    color: #4A6076; 
+    font-size: 20px;
+}
+.row a:hover{
+    color: #4A6076;
+}
+#foot-logo{
+    padding-bottom: 20px;
 }
