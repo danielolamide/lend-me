@@ -1,13 +1,14 @@
 body{
     background-color: #E9E9E9;
 }
+/*Admin Dashboard HomePage**/
 .top-nav{
     background-color: #2E3E4F;
 }
 .img-hold{
     /* width: 200px; */
     float: left;
-    /* justify-content: center; */
+    justify-content: center;
     margin-left: 5px;
     margin-top: 15px;
 }
@@ -82,4 +83,9 @@ body{
 }
 #foot-logo{
     padding-bottom: 20px;
+}
+/**User Management**/
+#table-format{
+    max-height: 160px;
+    overflow-y: scroll;  
 }

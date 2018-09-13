@@ -10,4 +10,5 @@ $(document).ready(function(){
     //         $('nav').addClass('sticky-nav')
     //     }
     // });
+    $('.pushpin').pushpin();
 });
