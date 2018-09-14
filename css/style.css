@@ -89,3 +89,55 @@ body{
     max-height: 160px;
     overflow-y: scroll;  
 }
+.searchForm{
+    width: 80%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    float: left;
+    color: white;
+}
+.searchButton{
+    width: 20%;
+    float: left;
+    padding: 10px;
+    background-color: #25BB9B;
+    color: white;
+    cursor: pointer;
+    border-style: none;
+    border-radius: 10px;
+}
+.searchButton:hover{
+    background-color: #8CDDCD;
+     color: #4A6076;
+}
+#borrowers-table{
+    max-height: 120px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    /* border-radius: 10px; */
+}
+#borrowers-table i{
+    color: #2196F3;
+}
+#borrowers-table a:hover  > i{
+    color: #25BB9B;
+}
+#borrowers-table table{
+    color: black;
+}
+#lenders-table{
+    max-height: 120px;
+    overflow-y: scroll;
+    overflow-x: scroll;
+    /* border-radius: 10px; */
+}
+#lenders-table i{
+    color: #2196F3;
+}
+#lenders-table a:hover  > i{
+    color: #25BB9B;
+}
+#lenders-table table{
+    color: black;
+}
