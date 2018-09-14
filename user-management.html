@@ -41,7 +41,7 @@
             <ul class="sidenav" id="mobile-demo">
                 <li><a href="./admin-dash.html">Back to Dashboard Home<i class="material-icons">keyboard_backspace</i></a></li>
                 <li><a href="./user-management.html">User Management<i class="material-icons left">supervised_user_circle</i></a></li>
-                <li><a href="#">Transaction Management<i class="material-icons left">attach_money</i></a></li>
+                <li><a href="./transaction-mgmt.html">Transaction Management<i class="material-icons left">attach_money</i></a></li>
                 <li><a href="#">User Feedback<i class="material-icons left">feedback</i></a></li>
                 <li><a href="#">Manage Settings<i class="material-icons left">settings</i></a></li>
                 <li><a href="#">Logout<i class="material-icons left">power_settings_new</i></a></li>
@@ -62,7 +62,7 @@
             </div></li>
             <li><a href="./admin-dash.html">Back to Dashboard Home<i class="material-icons">keyboard_backspace</i></a></li>
             <li><a href="./user-management.html"><i class="material-icons">supervised_user_circle</i>User Management</a></li>
-            <li><a href="#!"><i class="material-icons">attach_money</i>Transaction Management</a></li>
+            <li><a href="./transaction-mgmt.html"><i class="material-icons">attach_money</i>Transaction Management</a></li>
             <li><a href="#!"><i class="material-icons">feedback</i>User Feedback</a></li>
             <li><div class="divider"></div></li>
             <li><a href="#"><i class="material-icons">settings</i>Manage Settings</a></li>
@@ -74,7 +74,7 @@
         </div>
         <div class="row">
             <div class="col s12 m12 l12">
-                <div style="padding: 30px; text-align: center" id="card-row">
+                <div style="padding: 20px; text-align: center" class="card" id="card-row">
                     <div class="row">
                         <div class="left card-title">
                             <b class="white-text">Borrowers' Table</b>
@@ -91,9 +91,9 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div style="padding:10px;" class="col s12 m12 l12">
-                            <div class="grey lighten-3 container" id="borrowers-table">
-                                <table>
+                        <div style="padding:20px;" class="grey lighten-3 col s12 m12 l12">
+                            <div class="center-align container" id="borrowers-table">
+                                <table class="responsive-table">
                                     <thead>
                                         <tr>
                                             <th>Name</th>
@@ -107,9 +107,8 @@
                                             <td>Daniel</td>
                                             <td>1234532</td>
                                             <td>2000</td>
-                                            <td class="left"><a href="#" title="Permanently Delete User"><i class="material-icons">delete_forever</i></a></td>
-                                            <td class="left"><a href="#" title="Disable User Account"><i class="material-icons">close</i></a></td>
-                                        </tr>
+                                            <td style="float:left"><a href="#" title="Permanently Delete User"><i class="material-icons">delete_forever</i></a></td>
+                                            <td style="float: left;"><a href="#" title="Disable User Account"><i class="material-icons">close</i></a></td>                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -123,7 +122,7 @@
         </div>
         <div class="row">
             <div class="col s12 m12 l12">
-                <div style="padding:30px; text-align: center" id="card-row">
+                <div style="padding:20px; text-align: center" class="card" id="card-row">
                     <div class="row">
                         <div class="left card-title">
                             <b class="white-text">
@@ -142,9 +141,9 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div style="padding:10px;" class="col s12 m12 l12">
-                                <div class="grey lighten-3 container" id="lenders-table">
-                                    <table>
+                        <div style="padding:20px;" class="grey lighten-3 col s12 m12 l12">
+                                <div class="center-align container" id="lenders-table">
+                                    <table class=" responsive-table">
                                         <thead>
                                             <tr>
                                                 <th>Name</th>
@@ -158,8 +157,8 @@
                                                 <td>Nicole</td>
                                                 <td>1234532</td>
                                                 <td>2000</td>
-                                                <td class="left"><a href="#" title="Permanently Delete User"><i class="material-icons">delete_forever</i></a></td>
-                                                <td class="left"><a href="#" title="Disable User Account"><i class="material-icons">close</i></a></td>
+                                                <td style="float:left;"><a href="#" title="Permanently Delete User"><i class="material-icons">delete_forever</i></a></td>
+                                                <td style="float: left;"><a href="#" title="Disable User Account"><i class="material-icons">close</i></a></td>
                                             </tr>
                                         </tbody>
                                     </table>

@@ -112,7 +112,7 @@ body{
      color: #4A6076;
 }
 #borrowers-table{
-    max-height: 120px;
+    max-height: 300px;
     overflow-y: scroll;
     overflow-x: hidden;
     /* border-radius: 10px; */
@@ -127,9 +127,9 @@ body{
     color: black;
 }
 #lenders-table{
-    max-height: 120px;
+    max-height: 300px;
     overflow-y: scroll;
-    overflow-x: scroll;
+    overflow-x: hidden;
     /* border-radius: 10px; */
 }
 #lenders-table i{
@@ -140,4 +140,15 @@ body{
 }
 #lenders-table table{
     color: black;
+}
+/***Transaction Management**/
+#transact-lenders{
+    max-height: 300px;
+    overflow-y:scroll;
+    overflow-x:hidden;
+}
+#transact-borrowers{
+    max-height: 300px;
+    overflow-y:scroll;
+    overflow-x:hidden; 
 }
