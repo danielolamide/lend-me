@@ -152,3 +152,51 @@ body{
     overflow-y:scroll;
     overflow-x:hidden; 
 }
+/**User Feedback**/
+#complaints{
+    max-height: 300px;
+    overflow-y:scroll;
+    overflow-x:hidden;
+}
+#complaints i{
+    color: #2196F3;
+}
+#complaints a:hover  > i{
+    color: #25BB9B;
+}
+#suggestions{
+    max-height: 300px;
+    overflow-y:scroll;
+    overflow-x:hidden;
+}
+#suggestions i{
+    color: #2196F3;
+}
+#suggestions a:hover  > i{
+    color: #25BB9B;
+}
+/**Admin Settings Page**/
+#admin-settings-container{
+    padding: 35px;
+}
+#save-btn-holder a{
+    background-color: #4A6076;
+    color: white;
+}
+#save-btn-holder a:hover{
+    background-color: #25BB9B;
+}
+#usrImg-settings-container a{
+    background-color: #25BB9B;
+    color: white;
+}
+#usrImg-settings-container a:hover{
+    color:#2C3E50;
+}
+i.material-icons , i.material-icons + span {
+    vertical-align: middle;
+}
+#email-field-settings input{
+    height: 2em;
+}
+
