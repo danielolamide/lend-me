@@ -199,4 +199,9 @@ i.material-icons , i.material-icons + span {
 #email-field-settings input{
     height: 2em;
 }
+/* My Profile Page */
+#my-profile-container{
+    padding: 35px;
+    /* margin-bottom: 35px; */
+}
 
