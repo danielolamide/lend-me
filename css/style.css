@@ -89,3 +89,146 @@ body{
     max-height: 160px;
     overflow-y: scroll;  
 }
+.searchForm{
+    width: 80%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    float: left;
+    color: white;
+}
+.searchButton{
+    width: 20%;
+    float: left;
+    padding: 10px;
+    background-color: #25BB9B;
+    color: white;
+    cursor: pointer;
+    border-style: none;
+    border-radius: 10px;
+}
+.searchButton:hover{
+    background-color: #8CDDCD;
+     color: #4A6076;
+}
+#borrowers-table{
+    max-height: 300px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    /* border-radius: 10px; */
+}
+#borrowers-table i{
+    color: #2196F3;
+}
+#borrowers-table a:hover  > i{
+    color: #25BB9B;
+}
+#borrowers-table table{
+    color: black;
+}
+#lenders-table{
+    max-height: 300px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    /* border-radius: 10px; */
+}
+#lenders-table i{
+    color: #2196F3;
+}
+#lenders-table a:hover  > i{
+    color: #25BB9B;
+}
+#lenders-table table{
+    color: black;
+}
+/***Transaction Management**/
+#transact-lenders{
+    max-height: 300px;
+    overflow-y:scroll;
+    overflow-x:hidden;
+}
+#transact-borrowers{
+    max-height: 300px;
+    overflow-y:scroll;
+    overflow-x:hidden; 
+}
+/**User Feedback**/
+#complaints{
+    max-height: 300px;
+    overflow-y:scroll;
+    overflow-x:hidden;
+}
+#complaints i{
+    color: #2196F3;
+}
+#complaints a:hover  > i{
+    color: #25BB9B;
+}
+#suggestions{
+    max-height: 300px;
+    overflow-y:scroll;
+    overflow-x:hidden;
+}
+#suggestions i{
+    color: #2196F3;
+}
+#suggestions a:hover  > i{
+    color: #25BB9B;
+}
+/**Admin Settings Page**/
+#admin-settings-container{
+    padding: 35px;
+}
+#save-btn-holder a{
+    background-color: #4A6076;
+    color: white;
+}
+#save-btn-holder a:hover{
+    background-color: #25BB9B;
+}
+#usrImg-settings-container a{
+    background-color: #25BB9B;
+    color: white;
+}
+#usrImg-settings-container a:hover{
+    color:#2C3E50;
+}
+i.material-icons , i.material-icons + span {
+    vertical-align: middle;
+}
+#email-field-settings input{
+    height: 2em;
+}
+/* My Profile Page */
+#my-profile-container{
+    padding: 35px;
+    /* margin-bottom: 35px; */
+}
+/* Landing Page */
+#mobile-demo-landing li a{
+    color: black;
+}
+#mobile-demo-landing li a:hover{
+    color: #72D0A4;
+}
+#mobile-demo-landing li a:hover > i{
+    color: #72D0A4;
+}
+#nav-mobile-landing li a:hover{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 4px solid #72D0A4;
+}
+#landing-text-hold{
+    padding: 47px 80px;
+}
+#landing-text-hold p{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    line-height: 30px;
+    color: rgb(129, 129, 129);
+}
+#landing-img-hold{
+    margin-top: 140px;
+}

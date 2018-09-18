@@ -19,7 +19,7 @@
                 <div class="nav-wrapper top-nav">
                         <a href="#" data-target="slide-out" class="sidenav-trigger hide-on-small-only show-on-medium-and-up"><i class="material-icons">menu</i></a>
                     <div class="img-hold" style="margin-top: 5px;">
-                        <a href="#" class="brand-logo"><img src="./images/p2p-logo-white-resize.png"></a>
+                        <a href="admin-dash.html" class="brand-logo"><img src="./images/p2p-logo-white-resize.png"></a>
                     </div>
                     
                     <!--Menu Trigger on Small Screen-->
@@ -32,17 +32,18 @@
     
              <!--Username DropDown Items-->
             <ul id="dropdown1" class="dropdown-content">
-                <li><a href="#!">My Profile<i class="material-icons left">account_circle</i></a></li>
-                <li><a href="#!">Settings<i class="material-icons left">settings</i></a></li>
+                <li><a href="admin-profile.html">My Profile<i class="material-icons left">account_circle</i></a></li>
+                <li><a href="./admin-settings.html">Settings<i class="material-icons left">settings</i></a></li>
                 <li class="divider"></li>
                 <li><a href="#!">Logout<i class="material-icons left">power_settings_new</i></a></li>
             </ul>
              <!--NavBar Resize Menu-->
             <ul class="sidenav" id="mobile-demo">
+                <li><a href="./admin-dash.html">Back to Dashboard Home<i class="material-icons">keyboard_backspace</i></a></li>
                 <li><a href="./user-management.html">User Management<i class="material-icons left">supervised_user_circle</i></a></li>
-                <li><a href="#">Transaction Management<i class="material-icons left">attach_money</i></a></li>
-                <li><a href="#">User Feedback<i class="material-icons left">feedback</i></a></li>
-                <li><a href="#">Manage Settings<i class="material-icons left">settings</i></a></li>
+                <li><a href="./transaction-mgmt.html">Transaction Management<i class="material-icons left">attach_money</i></a></li>
+                <li><a href="./user-messages.html">User Feedback<i class="material-icons left">feedback</i></a></li>
+                <li><a href="./admin-settings.html">Manage Settings<i class="material-icons left">settings</i></a></li>
                 <li><a href="#">Logout<i class="material-icons left">power_settings_new</i></a></li>
              </ul>
         <!-- </div> -->
@@ -55,107 +56,59 @@
                 <!-- <div class="background">
                     <img src="images/office.jpg">
                 </div> -->
-                <a href="#user"><img class="circle" src="images/default-user-icon.png"></a>
-                <a href="#name"><span class="white-text name">Username</span></a>
-                <a href="#email"><span class="subheader white-text email">user@domain.com</span></a>
+                <a href="admin-settings.html"><img class="circle" src="images/default-user-icon.png"></a>
+                <a href="admin-profile.html"><span class="white-text name">Username</span></a>
+                <a href="admin-settings.html"><span class="subheader white-text email">user@domain.com</span></a>
             </div></li>
+            <li><a href="./admin-dash.html">Back to Dashboard Home<i class="material-icons">keyboard_backspace</i></a></li>
             <li><a href="./user-management.html"><i class="material-icons">supervised_user_circle</i>User Management</a></li>
-            <li><a href="#!"><i class="material-icons">attach_money</i>Transaction Management</a></li>
-            <li><a href="#!"><i class="material-icons">feedback</i>User Feedback</a></li>
+            <li><a href="./transaction-mgmt.html"><i class="material-icons">attach_money</i>Transaction Management</a></li>
+            <li><a href="./user-messages.html"><i class="material-icons">feedback</i>User Feedback</a></li>
             <li><div class="divider"></div></li>
-            <li><a href="#"><i class="material-icons">settings</i>Manage Settings</a></li>
+            <li><a href="./admin-settings.html"><i class="material-icons">settings</i>Manage Settings</a></li>
             <li><a class="waves-effect" href="#!"><i class="material-icons">power_settings_new</i>Logout</a></li>
         </ul>
     <main>
         <div class="dashboard-title">
-            <h6 class="left-align">User Management</h6>
+            <h6 class="left-align">Manage Borrowers</h6>
         </div>
         <div class="row">
-            <div class="col s12 m6 l6">
-                <div style="padding: 35px;"id="card-row">
+            <div class="col s12 m12 l12">
+                <div style="padding: 20px; text-align: center" class="card" id="card-row">
                     <div class="row">
                         <div class="left card-title">
                             <b class="white-text">Borrowers' Table</b>
                         </div>
                     </div>
                     <div class="row">
-                        <div style="padding: 30px;" class="grey lighten-3 col s12 m12 l12">
-                            <div class="container" id="table-format">
-                                <table class="highlight responsive-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Phone Number</th>
-                                            <th>Unpaid Loan Amount</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Daniel</td>
-                                            <td>0798502767</td>
-                                            <td>1200</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Nicole</td>
-                                            <td>1232312</td>
-                                            <td>10000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Muswanya</td>
-                                            <td>123231211</td>
-                                            <td>19000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Olamide</td>
-                                            <td>1222100</td>
-                                            <td>100000</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>       
-                        </div>  
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m6 l6">
-                <div style="padding:35px;" id="card-row">
-                    <div class="row">
-                        <div class="left card-title">
-                            <b class="white-text">Lenders' Table</b>
+                        <div style="padding:20px;"class="col s12 m12 l12">
+                            <div class="container">
+                                <form>
+                                    <input class="searchForm" type="text" name="search" placeholder="Search..">
+                                    <button type="submit" class="searchButton"><i class="fa fa-search"></i></button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div style="padding: 30px;" class="grey lighten-3 col s12 m12 l12">
-                            <div class="container" id="table-format">
-                                <table class="highlight responsive-table">
+                        <div style="padding:20px;" class="grey lighten-3 col s12 m12 l12">
+                            <div class="center-align container" id="borrowers-table">
+                                <table class="responsive-table">
                                     <thead>
                                         <tr>
                                             <th>Name</th>
                                             <th>Phone Number</th>
-                                            <th>Amount Loaned Out</th>
+                                            <th>Payment Pending</th>
+                                            <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td>Daniel</td>
-                                            <td>0798502767</td>
-                                            <td>1200</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Nicole</td>
-                                            <td>1232312</td>
-                                            <td>10000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Muswanya</td>
-                                            <td>123231211</td>
-                                            <td>19000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Olamide</td>
-                                            <td>1222100</td>
-                                            <td>100000</td>
-                                        </tr>
+                                            <td>1234532</td>
+                                            <td>2000</td>
+                                            <td style="float:left"><a href="#" title="Permanently Delete User"><i class="material-icons">delete_forever</i></a></td>
+                                            <td style="float: left;"><a href="#" title="Disable User Account"><i class="material-icons">close</i></a></td>                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -165,14 +118,62 @@
             </div>
         </div>
         <div class="dashboard-title">
-                <h6 class="left-align">Manage Users</h6>
-            </div>
+            <h6 class="left-align">Manage Lenders</h6>            
+        </div>
         <div class="row">
-            <div>
-
+            <div class="col s12 m12 l12">
+                <div style="padding:20px; text-align: center" class="card" id="card-row">
+                    <div class="row">
+                        <div class="left card-title">
+                            <b class="white-text">
+                                Lenders' Table
+                            </b>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div style="padding:20px;"class="col s12 m12 l12">
+                            <div class="container">
+                                <form>
+                                    <input class="searchForm" type="text" name="search" placeholder="Search..">
+                                    <button type="submit" class="searchButton"><i class="fa fa-search"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div style="padding:20px;" class="grey lighten-3 col s12 m12 l12">
+                                <div class="center-align container" id="lenders-table">
+                                    <table class=" responsive-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Phone Number</th>
+                                                <th>Amount Loaned Out</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Nicole</td>
+                                                <td>1234532</td>
+                                                <td>2000</td>
+                                                <td style="float:left;"><a href="#" title="Permanently Delete User"><i class="material-icons">delete_forever</i></a></td>
+                                                <td style="float: left;"><a href="#" title="Disable User Account"><i class="material-icons">close</i></a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                        </div>  
+                    </div>
+                </div>
             </div>
         </div>
     </main>
+    <footer class="black lighten-2 page-footer" style="text-align:center; padding: 10px;">
+        <div class=" center-align container">
+        © 2018 StrathFund
+        </div>
+    </footer>
     <script type="text/javascript" src="js/materialize.js"></script>
     <script src="./js/index.js"></script>
 </body>

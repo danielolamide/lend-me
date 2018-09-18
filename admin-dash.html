@@ -18,7 +18,7 @@
             <div class="nav-wrapper top-nav">
                     <a href="#" data-target="slide-out" class="sidenav-trigger hide-on-small-only show-on-medium-and-up"><i class="material-icons">menu</i></a>
                 <div class="img-hold">
-                    <a href="#" class="brand-logo"><img src="./images/p2p-logo-white-resize.png"></a>
+                    <a href="admin-dash.html" class="brand-logo"><img src="./images/p2p-logo-white-resize.png"></a>
                 </div>
                 
                 <!--Menu Trigger on Small Screen-->
@@ -31,17 +31,17 @@
 
          <!--Username DropDown Items-->
         <ul id="dropdown1" class="dropdown-content">
-            <li><a href="#!">My Profile<i class="material-icons left">account_circle</i></a></li>
-            <li><a href="#!">Settings<i class="material-icons left">settings</i></a></li>
+            <li><a href="./admin-profile.html">My Profile<i class="material-icons left">account_circle</i></a></li>
+            <li><a href="./admin-settings.html">Settings<i class="material-icons left">settings</i></a></li>
             <li class="divider"></li>
             <li><a href="#!">Logout<i class="material-icons left">power_settings_new</i></a></li>
         </ul>
          <!--NavBar Resize Menu-->
         <ul class="sidenav" id="mobile-demo">
             <li><a href="./user-management.html">User Management<i class="material-icons left">supervised_user_circle</i></a></li>
-            <li><a href="#">Transaction Management<i class="material-icons left">attach_money</i></a></li>
-            <li><a href="#">User Feedback<i class="material-icons left">feedback</i></a></li>
-            <li><a href="#">Manage Settings<i class="material-icons left">settings</i></a></li>
+            <li><a href="./transaction-mgmt.html">Transaction Management<i class="material-icons left">attach_money</i></a></li>
+            <li><a href="./user-messages.html">User Feedback<i class="material-icons left">feedback</i></a></li>
+            <li><a href="./admin-settings.html">Manage Settings<i class="material-icons left">settings</i></a></li>
             <li><a href="#">Logout<i class="material-icons left">power_settings_new</i></a></li>
          </ul>
     <!-- </div> -->
@@ -54,15 +54,15 @@
             <!-- <div class="background">
                 <img src="images/office.jpg">
             </div> -->
-            <a href="#user"><img class="circle" src="images/default-user-icon.png"></a>
-            <a href="#name"><span class="white-text name">Username</span></a>
-            <a href="#email"><span class="subheader white-text email">user@domain.com</span></a>
+            <a href="./admin-settings.html"><img class="circle" src="images/default-user-icon.png"></a>
+            <a href="./admin-profile.html"><span class="white-text name">Username</span></a>
+            <a href="./admin-settings.html"><span class="subheader white-text email">user@domain.com</span></a>
         </div></li>
         <li><a href="./user-management.html"><i class="material-icons">supervised_user_circle</i>User Management</a></li>
-        <li><a href="#!"><i class="material-icons">attach_money</i>Transaction Management</a></li>
-        <li><a href="#!"><i class="material-icons">feedback</i>User Feedback</a></li>
+        <li><a href="./transaction-mgmt.html"><i class="material-icons">attach_money</i>Transaction Management</a></li>
+        <li><a href="./user-messages.html"><i class="material-icons">feedback</i>User Feedback</a></li>
         <li><div class="divider"></div></li>
-        <li><a href="#"><i class="material-icons">settings</i>Manage Settings</a></li>
+        <li><a href="./admin-settings.html"><i class="material-icons">settings</i>Manage Settings</a></li>
         <li><a class="waves-effect" href="#!"><i class="material-icons">power_settings_new</i>Logout</a></li>
     </ul>
     <!--Page Content-->
@@ -79,15 +79,15 @@
                             </div>
                         </div>
                         <div class="row">
-                            <a href="#">
+                            <a href="./user-management.html">
                                 <div style="padding: 30px;" class="grey lighten-3 col s5 waves-effect">
                                     <!-- <i class="large material-icons">person</i> -->
-                                    <i class="large fas fa-user-alt"></i>
+                                    <i class="center large fas fa-user-alt"></i>
                                     <span><h6>Borrower</h6></span>
                                 </div>
                             </a>
                             <div class="col s2">&nbsp;</div>
-                            <a href="#">
+                            <a href="./user-management.html#lenders-table">
                                 <div style="padding: 30px;" class="grey lighten-3 col s5 waves-effect">
                                     <!-- <i class="large material-icons">person</i> -->
                                     <i class="large fas fa-user-tie"></i>
@@ -105,19 +105,19 @@
                         </div>
                     </div>
                     <div class="row">
-                        <a href="#">
+                        <a href="./transaction-mgmt.html#transact-lenders">
                             <div style="padding: 30px;" class="grey lighten-3 col s5 waves-effect">
                                 <!-- <i class="large material-icons">swap_horiz</i> -->
                                 <i class="large fas fa-hand-holding-usd"></i>
-                                <span><h6>Lending Logs</h6></span>
+                                <span><h6>Lender's Logs</h6></span>
                             </div>
                         </a>
                         <div class="col s2">&nbsp;</div>
-                        <a href="#">
+                        <a href="./transaction-mgmt.html">
                             <div style="padding: 30px;" class="grey lighten-3 col s5 waves-effect">
                                 <!-- <i class="large material-icons">swap_horiz</i> -->
                                 <i class="large fas fa-exchange-alt"></i>
-                                <span><h6>Payment Logs</h6></span>
+                                <span><h6>Borrower's Logs</h6></span>
                             </div>
                         </a>
                     </div>
@@ -133,14 +133,14 @@
                         </div>
                     </div>
                     <div class="row">
-                        <a href="#">
+                        <a href="./user-messages.html#suggestions">
                             <div style="padding: 30px;" class="grey lighten-3 col s5 waves-effect">
                                 <i class="large fas fa-comment-alt"></i>
-                                <span><h6>User Messages</h6></span>
+                                <span><h6>User Suggestions</h6></span>
                             </div>
                         </a>
                         <div class="col s2">&nbsp;</div>
-                        <a href="#">
+                        <a href="./user-messages.html">
                             <div style="padding: 30px;" class="grey lighten-3 col s5 waves-effect">
                                 <i class=" large fas fa-times-circle"></i>
                                 <span><h6>User Complaints</h6></span>
@@ -157,7 +157,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <a href="#">
+                            <a href="./admin-settings.html">
                                 <div style="padding: 30px;" class="grey lighten-3 col s12 waves-effect">
                                     <i class=" large fas fa-cog"></i>
                                     <span><h6>Settings</h6></span>
