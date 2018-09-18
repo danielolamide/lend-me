@@ -4,16 +4,65 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Welcome to StrathFund</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection"/>
-
-    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
-    <script src="js/main.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="icon" type="image/png" href="./images/blue-coin.png">
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/style.css" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 </head>
-<body>
-    <div class="mdl-layout mdl-js-layout">
-    </div>
+<body style="background-color: white;">
+    <nav>
+        <div style="background-color: #38559F;"class="nav-wrapper">
+                <!-- <a href="#" data-target="slide-out" class="sidenav-trigger hide-on-small-only show-on-medium-and-up"><i class="material-icons">menu</i></a> -->
+            <div style="margin-left: 20px; margin-top: 5px;"class="img-hold">
+                <a href="./index.html" class="brand-logo"><img src="./images/p2p-logo-white-resize.png"></a>
+            </div>
+            
+            <!--Menu Trigger on Small Screen-->
+            <a href="#" data-target="mobile-demo-landing" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul id="nav-mobile-landing" class="right hide-on-small-only">  
+                <li><a href="./registration.html">Register</a></li>
+                <li><a href="./login.html">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+     <!--NavBar Resize Menu-->
+     <ul class="sidenav" id="mobile-demo-landing" style="background-color: white;">
+        <li><a href="./registration.html">Register<i class="left fas fa-user-plus"></i></a></li>
+        <li><a href="./login.html">Login<i class="left fas fa-sign-in-alt"></i></a></li>
+     </ul>
+     <main>
+        <div class="row">
+            <div class="col s12 m8 l8" id="landing-text-hold">
+                <span style="font-family: 'Montserrat', sans-serif; color: #50D189; font-size: 38px; font-weight: bold;">Trusted Platform for<br>investors & borrowers</span>
+                <p>
+                    Ever been in need of money?<br>Ever needed a cheap loan with minimal loan application processes?<br>
+                    Look no further as we introduce to you Strathfund!   
+                </p>
+                <p>Strathfund is a new simple way for Strathmore university students to borrow<br>and lend money 
+                    amongst themselves. Only one account is needed<br>from which you can be either an investor 
+                    or a borrower. 
+                <p>We have friendly interest rates and flexible repayment periods.<br>Guarantees for loans as well
+                    as rating for both borrowers and investors. </p>
+                <p>Register now to join the Strathfund community. </p> 
+            </div>
+            <div class="center col s12 m4 l4" id="landing-img-hold">
+                <img class="responsive-img" src="./images/bank.jpg" alt="money-icon" style="width:400px; height: 300px;">
+            </div>
+        </div>
+     </main>
+     <footer class="black lighten-2 page-footer" style="text-align:center; padding: 10px;">
+        <!-- <div class="center-align container" id="foot-logo">
+            <img src="./images/p2p-blue-new-layout.png" alt="company-logo">
+        </div> -->
+        <div class=" center-align container">
+        © 2018 StrathFund
+        </div>
+    </footer>
     <script type="text/javascript" src="js/materialize.js"></script>
+    <script src="js/index.js"></script>
 </body>
 </html>

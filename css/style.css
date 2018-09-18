@@ -204,4 +204,31 @@ i.material-icons , i.material-icons + span {
     padding: 35px;
     /* margin-bottom: 35px; */
 }
-
+/* Landing Page */
+#mobile-demo-landing li a{
+    color: black;
+}
+#mobile-demo-landing li a:hover{
+    color: #72D0A4;
+}
+#mobile-demo-landing li a:hover > i{
+    color: #72D0A4;
+}
+#nav-mobile-landing li a:hover{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 4px solid #72D0A4;
+}
+#landing-text-hold{
+    padding: 47px 80px;
+}
+#landing-text-hold p{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    line-height: 30px;
+    color: rgb(129, 129, 129);
+}
+#landing-img-hold{
+    margin-top: 140px;
+}
