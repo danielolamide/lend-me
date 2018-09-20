@@ -1,0 +1,165 @@
+body{
+    background-image: url(../images/auth-background.png);
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif ;
+}
+.content{
+    width: 1280px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+.shadow-box{
+    background: white;
+}
+p{
+    padding: 0;
+    margin: 0;
+}
+@media (min-width: 700px) {
+    .shadow-box{
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+    }
+}
+
+.signup-wrapper .company-details {
+    background:linear-gradient(rgba(99, 213, 196,0.62),rgba(83,197,185,0.4)),url("../images/strath.jpg");
+    background-size: cover;
+    position:relative;
+}
+.signup-wrapper .company-details:before {
+    content: "";
+  position: absolute;
+    display: block;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.75) 0%,rgba(0,0,0,0) 100%);
+}
+
+.signup-wrapper .company-details .wrapper-1{
+    position: relative;
+    padding-bottom: 10px;
+    padding-top: 22px;
+
+}
+.signup-wrapper .company-details .logo {
+    padding: 20px 10px;
+    width: 65%;
+    margin: 0 auto;
+}
+.signup-wrapper .company-details .logo .icon-sfund {
+    background: url(../images/p2p-logo-new.png);
+    background-size:contain ;
+    background-repeat: no-repeat;
+    width: 200px;
+    height: 120px;
+    margin: 0 auto;
+}
+#title{
+    font-size: 30px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 1px #4b4a4a;
+    color: white;
+    font-weight: 600;
+}
+.signup-wrapper .company-details .slogan {
+   display: none;
+}
+#tab-list{
+    background-color: #3C3E52;
+}
+#login-form{
+    padding: 20px;
+}
+#register-form{
+    padding: 20px;
+}
+#register-form input{
+    color: white;
+}
+#login-form a{
+    color: #25BB9B;
+    border-bottom: 2px solid white;
+    transition: all 0.5s ease-in-out;
+}
+.tabs .indicator{
+    background-color: #25BB9B;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+#retype-pass label{
+    font-size: 12px;
+}
+#login-form a:hover{
+    color: white;
+    border-bottom: 2px solid  #25BB9B;
+}
+#login-form input{
+    color: white;
+}
+#tab-container{
+    padding: 15px;;
+}
+
+.form-header{
+    color: white;
+    font-size: 24px;
+}
+
+@media (min-width: 200px) {
+
+    .signup-wrapper .company-details .title {
+        width: 90%;
+        font-size: 1.5em;
+    }
+
+}
+@media (min-width: 300px) {
+    .signup-wrapper .company-details .title {
+        width: 80%;
+       font-size: 2em;
+    }
+
+}
+@media (min-width: 500px) {
+    .signup-wrapper .signup-form .login{
+        display: inline;
+    }
+}
+
+@media (min-width: 700px) {
+    .signup-wrapper .company-details,
+    .signup-wrapper .signup-form {
+        width: 50%;
+    }
+    .signup-wrapper {
+       display: flex;
+        max-width: 800px;
+        margin: 2% auto;
+        border-radius: 20px;
+    }
+    .signup-wrapper .company-details .wrapper-1 {
+        padding-bottom: 150px;
+        padding-top: 160px;
+    }
+    .signup-wrapper .company-details .slogan {
+        padding: 0 20px;
+        width: 70%;
+        margin: 0 auto;
+        color: #fff;
+        font-size: 1.2em;
+        text-align: center;
+        text-shadow: 1px 1px #4b4a4a;
+        display: block;
+    }
+    .signup-wrapper .company-details .title {
+        width: 80%;
+    }
+}
