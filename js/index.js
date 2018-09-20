@@ -11,4 +11,9 @@ $(document).ready(function(){
     //     }
     // });
     $('.pushpin').pushpin();
+    $(document).ready(function(){
+        $('.tabs').tabs({
+            // swipeable:true
+        });
+      });
 });
