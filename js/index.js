@@ -16,4 +16,5 @@ $(document).ready(function(){
             // swipeable:true
         });
       });
+    $('.collapsible').collapsible();
 });

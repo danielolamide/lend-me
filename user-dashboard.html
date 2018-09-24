@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User Dashboard</title>
+    <link rel="icon" type="image/png" href="./images/blue-coin.png">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/materialize.css" media="screen,projection" />
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-wrapper top-nav">
+            <div style="margin-top: 5px;" class="img-hold">
+                <a href="user-dashboard.html" class="brand-logo"><img src="./images/p2p-logo-white-resize.png"></a>
+            </div>
+
+            <!--Menu Trigger on Small Screen-->
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="user-dashboard.html">Dashboard</a></li>
+                <li><a href="feedback.html">Suggestions & Complaints</a></li>
+                <li><a class="dropdown-trigger user-name" href="#" data-target="dropdown1">Username<i class="material-icons right">arrow_drop_down</i></a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Drop Down Links -->
+    <ul id="dropdown1" class="dropdown-content">
+        <li><a href="./user-profile.html">My Profile<i class="material-icons left">account_circle</i></a></li>
+        <li><a href="./user-settings.html">Settings<i class="material-icons left">settings</i></a></li>
+        <li class="divider"></li>
+        <li><a href="#!">Logout<i class="material-icons left">power_settings_new</i></a></li>
+    </ul>
+    <!-- Smaller Screen Menu -->
+    <ul class="sidenav" id="mobile-demo">
+        <li><a href="./payments.html">Payments<i class="fas fa-credit-card left"></i></a></li>
+        <li><a href="./lend.html">Lend Money<i class="fas fa-hand-holding-usd left"></i></a></li>
+        <li><a href="./borrow.html">Borrow Money<i class="fas fa-exchange-alt"></i></a></li>
+        <li><a href="./user-settings.html">Manage Settings<i class="fas fa-cog left"></i></a></li>
+        <li><a href="#">Logout<i class="fas fa-power-off left"></i></a></li>
+    </ul>
+    <main>
+        <div class="white container user-options">
+            <div class="row" style="padding: 5px 0px;">
+                <div class="col s4 m4 l4" style="border-right: 1px solid rgba(46,62,79,0.48);">
+                    <div class="row">
+                        <div class="col s12 m12 l12">
+                            <div class="center">
+                                <img src="./images/deposit-1.png" alt="deposit-icon" class="responsive-img">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 m12 l12">
+                            <div class="btn-hold center">
+                                <a href="" class="waves-effect waves-light btn ">Deposit</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s4 m4 l4" style="border-right: 1px solid rgba(46,62,79,0.48);">
+                    <div class="row">
+                        <div class="col s12 m12 l12">
+                            <div class="center">
+                                <img src="./images/loan.png" alt="loan-icon" class="responsive-img">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 m12 l12">
+                            <div class="btn-hold center">
+                                <a href="" class="waves-effect waves-light btn ">Lend</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s4 m4 l4 right">
+                    <div class="row">
+                        <div class="col s12 m12 l12">
+                            <div class="center">
+                                <img src="./images/borrow-1.png" alt="borrow-icon" class="responsive-img">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 m12 l12">
+                            <div class="btn-hold center">
+                                <a href="" class="waves-effect waves-light btn ">Borrow</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m4 l3">
+                <div class="container">
+                    <span class="grey-text" style="text-transform: uppercase;">Summary</span>
+                    <ul>
+                        <li class="super-list">Payments
+                            <div>&nbsp;</div>
+                            <div class="divider"></div>
+                            <ul class="sublists">
+                                <li><a href="">Deposit</a></li>
+                                <div class="divider"></div>
+                                <li><a href="">Withdraw</a></li>
+                                <div class="divider"></div>
+                                <li><a href="">Pay Loans</a></li>
+                                <div class="divider"></div>
+                                <div>&nbsp;</div>
+
+                            </ul>
+                        </li>
+                        <li class="super-list">Lend
+                            <div>&nbsp;</div>
+                            <div class="divider"></div>
+                            <ul class="sublists">
+                                <li><a href="">Lend Money</a></li>
+                                <div class="divider"></div>
+                                <div>&nbsp;</div>
+                            </ul>
+                        </li>
+                        <li class="super-list">Borrow
+                            <div>&nbsp;</div>
+                            <div class="divider"></div>
+                            <ul class="sublists">
+                                <li><a href="">Borrow Money</a></li>
+                                <div class="divider"></div>
+                            </ul>
+                        </li>
+                        <div>&nbsp;</div>
+                        <li class="super-list">Account History
+                            <div>&nbsp;</div>
+                            <div class="divider"></div>
+                            <ul class="sublists">
+                                <li><a href="">Transaction History</a></li>
+                                <div class="divider"></div>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col s12 m8 l9">
+                <div class="row">
+                    <div class="col s12 m12 l12 center">
+                        <div class="card" id="last-transact-container" style="padding:10px 15px;">
+                            <div class="row">
+                                <div class="col s12 m12 l12">
+                                    <div class="center-align card-title">
+                                        <span id="card-head">Last Transaction</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s12 m12 l12">
+                                    <div class="container col s12 m12 l12">
+                                        <div class="row" id="tr-header">
+                                            <div class="col s3 m3 l3">
+                                                <span>Recieved By</span>
+                                            </div>
+                                            <div class="col s3 m3 l3">
+                                                <span>Amount</span>
+                                            </div>
+                                            <div class="col s3 m3 l3">
+                                                <span>Date</span>
+                                            </div>
+                                            <div class="col s3 m3 l3">
+                                                <span>Transaction Type</span>
+                                            </div>
+                                        </div>
+                                        <div class="row tr-body">
+                                            <div class="col s3 m3 l3">
+                                                <span>Ola</span>
+                                            </div>
+                                            <div class="col s3 m3 l3">
+                                                <span>2000</span>
+                                            </div>
+                                            <div class="col s3 m3 l3">
+                                                <span>11/21/2018</span>
+                                            </div>
+                                            <div class="col s3 m3 l3">
+                                                <span>Loan Repayment</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 m12 l12">
+                            <ul class="collapsible popout">
+                                <li class="active">
+                                    <div class="collapsible-header" style="background-color: rgb(46,62,79); color: #25BB9B;">Your
+                                        Money</div>
+                                    <div class="collapsible-body">
+                                        <table class="stripped reponsive-table popup-table">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Amount on Loan</td>
+                                                    <td>Ksh. 1022</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Amount Owed</td>
+                                                    <td>Ksh. 20020</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Holding Account</td>
+                                                    <td>Ksh. 20000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Total</td>
+                                                    <td>$total_amount</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </li>
+                                <div>&nbsp;</div>
+                                <div>&nbsp;</div>
+                                <li>
+                                    <div class="collapsible-header" style="background-color: rgb(46,62,79); color: #25BB9B;">
+                                        Your Account History
+                                    </div>
+                                    <div class="collapsible-body">
+                                        <table class="responsive-table popup-table">
+                                            <tbody>
+                                                <tr>
+                                                    <td>No. of times you've borrower money</td>
+                                                    <td>$loan_type_count</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>No. of times you've loaned out money</td>
+                                                    <td>$loan_type_count</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <a href="transaction.html">View more details on my transactions</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    <div class="divider"></div>
+                </div>
+            </div>
+    </main>
+    <footer class="black lighten-2 page-footer" style="text-align:center; padding: 10px;">
+        <!-- <div class="center-align container" id="foot-logo">
+            <img src="./images/p2p-blue-new-layout.png" alt="company-logo">
+        </div> -->
+        <div class=" center-align container">
+            © 2018 StrathFund
+        </div>
+    </footer>
+    <script type="text/javascript" src="js/materialize.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+</body>
+
+</html>
