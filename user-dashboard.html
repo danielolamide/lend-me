@@ -81,7 +81,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col s4 m4 l4 right">
+                <div class="col s4 m4 l4">
                     <div class="row">
                         <div class="col s12 m12 l12">
                             <div class="center">
@@ -100,7 +100,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col s12 m4 l3">
+            <div class="col s12 m4 l3 hide-on-med-and-down">
                 <div class="container">
                     <span class="grey-text" style="text-transform: uppercase;">Summary</span>
                     <ul>
@@ -160,7 +160,7 @@
                             </div>
                             <div class="row">
                                 <div class="col s12 m12 l12">
-                                    <div class="container col s12 m12 l12">
+                                    <div class="container">
                                         <div class="row" id="tr-header">
                                             <div class="col s3 m3 l3">
                                                 <span>Recieved By</span>
@@ -177,16 +177,16 @@
                                         </div>
                                         <div class="row tr-body">
                                             <div class="col s3 m3 l3">
-                                                <span>Ola</span>
+                                                <span class="tr-values">Ola</span>
                                             </div>
                                             <div class="col s3 m3 l3">
-                                                <span>2000</span>
+                                                <span class="tr-values">2000</span>
                                             </div>
                                             <div class="col s3 m3 l3">
-                                                <span>11/21/2018</span>
+                                                <span class="tr-values">11/21/2018</span>
                                             </div>
                                             <div class="col s3 m3 l3">
-                                                <span>Loan Repayment</span>
+                                                <span class="tr-values">Loan Repayment</span>
                                             </div>
                                         </div>
                                     </div>
@@ -194,59 +194,65 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col s12 m12 l12">
-                            <ul class="collapsible popout">
-                                <li class="active">
-                                    <div class="collapsible-header" style="background-color: rgb(46,62,79); color: #25BB9B;">Your
-                                        Money</div>
-                                    <div class="collapsible-body">
-                                        <table class="stripped reponsive-table popup-table">
-                                            <tbody>
-                                                <tr>
-                                                    <td>Amount on Loan</td>
-                                                    <td>Ksh. 1022</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Amount Owed</td>
-                                                    <td>Ksh. 20020</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Holding Account</td>
-                                                    <td>Ksh. 20000</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Total</td>
-                                                    <td>$total_amount</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </li>
-                                <div>&nbsp;</div>
-                                <div>&nbsp;</div>
-                                <li>
-                                    <div class="collapsible-header" style="background-color: rgb(46,62,79); color: #25BB9B;">
-                                        Your Account History
-                                    </div>
-                                    <div class="collapsible-body">
-                                        <table class="responsive-table popup-table">
-                                            <tbody>
-                                                <tr>
-                                                    <td>No. of times you've borrower money</td>
-                                                    <td>$loan_type_count</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>No. of times you've loaned out money</td>
-                                                    <td>$loan_type_count</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <a href="transaction.html">View more details on my transactions</a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 m12 l12">
+                        <ul class="collapsible popout">
+                            <li class="active">
+                                <div class="collapsible-header" style="background-color: rgb(46,62,79); color: #25BB9B;">Your
+                                    Money</div>
+                                <div class="collapsible-body">
+                                    <table class="stripped reponsive-table popup-table">
+                                        <tbody>
+                                            <tr>
+                                                <td>Amount on Loan</td>
+                                                <td class="account-data">Ksh. 1022</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Amount Owed</td>
+                                                <td class="account-data">Ksh. 20020</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Holding Account</td>
+                                                <td class="account-data">Ksh. 20000</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Total</td>
+                                                <td class="account-data">$total_amount</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <div class="row">
+                    <div class="col s12 m12 l12">
+                        <ul class="collapsible popout">
+                            <li>
+                                <div class="collapsible-header" style="background-color: rgb(46,62,79); color: #25BB9B;">
+                                    Your Account History
+                                </div>
+                                <div class="collapsible-body">
+                                    <table class="popup-table">
+                                        <tbody>
+                                            <tr>
+                                                <td>No. of times you've borrower money</td>
+                                                <td class="account-data" >$loan_type_count</td>
+                                            </tr>
+                                            <tr>
+                                                <td>No. of times you've loaned out money</td>
+                                                <td class="account-data">$loan_type_count</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <a href="transaction.html">View more details on my transactions</a>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>

@@ -375,10 +375,25 @@ i.material-icons+span {
     color: white;
     font-size: 14px;
 }
-.tr-body div span{
+/* .tr-body div span{
     color: white;
     font-size: 20px;
-}
+} */
 .tr-body div:nth-child(-n+3){
     border-right: 1px solid rgba(46,62,79,0.48);
+}
+@media only screen and (max-width:600px){
+    span.tr-values{
+        font-size: 10px;
+        color: white;
+    }
+}
+@media only screen and (min-width:600px){
+    span.tr-values{
+        font-size: 20px;
+        color: white;
+    }
+}
+.account-data{
+    font-weight: 600;
 }
