@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User Dashboard</title>
+    <link rel="icon" type="image/png" href="./images/blue-coin.png">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/materialize.css" media="screen,projection" />
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+</head>
+
+<body style="display:flex; min-height: 100vh; flex-direction: column;">
+    <nav>
+        <div class="nav-wrapper" style="background-color:white;">
+            <div style="margin-top: 5px; margin-left: 10px;" class="img-hold">
+                <a href="user-dashboard.html" class="brand-logo"><img src="./images/p2p-green-logo-resized.png"></a>
+            </div>
+            <!-- <form action="" method="post" id="lend-search-form">
+                <div class="input-field">
+                    <input id="search" type="search" required>
+                    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                    <i class="material-icons" id="reset_search">close</i>
+                </div>
+            </form> -->
+            <!--Menu Trigger on Small Screen-->
+            <a href="#" data-target="mobile-demo" id="mobile-menu-icon" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li id="settings-link"><a href="./user-settings.html"><i class="material-icons">settings</i></a></li>
+                <li><a class="dropdown-trigger user-name-lend" href="#" data-target="dropdown1">Username<i class="material-icons right">arrow_drop_down</i></a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Drop Down Links -->
+    <ul id="dropdown1" class="dropdown-content">
+        <li><a href="./user-profile.html">My Profile<i class="material-icons left">account_circle</i></a></li>
+        <li><a href="./user-settings.html">Settings<i class="material-icons left">settings</i></a></li>
+        <li class="divider"></li>
+        <li><a href="#!">Logout<i class="material-icons left">power_settings_new</i></a></li>
+    </ul>
+    <!-- Smaller Screen Menu -->
+    <ul class="sidenav" id="mobile-demo">
+        <li><a href="./user-dashboard.html">Dashboard<i class="fas fa-tachometer-alt left"></i></a></li>
+        <li><a href="./lend.html">Lend Money<i class="fas fa-hand-holding-usd left"></i></a></li>
+        <li><a href="./borrow.html">Borrow Money<i class="fas fa-exchange-alt"></i></a></li>
+        <li><a href="./user-settings.html">Manage Settings<i class="fas fa-cog left"></i></a></li>
+        <li><a href="./user-profile.html">View Profile<i class="fas fa-user-circle left"></i></a></li>
+        <li><a href="./transaction.html">Manage Transactions<i class="fas fa-history left"></i></a></li>
+        <li><a href="#">Logout<i class="fas fa-power-off left"></i></a></li>
+    </ul>
+    <main style="flex:1 0 auto;">
+        <div class="row" style="padding:0; margin-bottom: 0px;">
+            <div class="col s12 m12 l1 hide-on-med-and-down">
+                <div class="row" style="margin-bottom:0px">
+                    <div class="col s4 m4 l12" style="min-height: 100vh;">
+                        <ul class=" white side-links-lend center-align tabs" style="margin-left:-15px; min-height: 100vh;">
+                            <div class="divider"></div>
+                            <li class="tab"><a href="./user-dashboard.html" title="Dashboard"><i class="fas fa-tachometer-alt "></i></a></li>
+                            <li class="tab"><a class="active" href="#lend-tab" title="Lend Money"><i class="fas fa-hand-holding-usd "></i></a></li>
+                            <li class="tab"><a href="./borrow.html" title="Borrow Money"><i class="fas fa-exchange-alt "></i></a></li>
+                            <li class="tab"><a href="./user-settings.html" title="Manage Settings"><i class="fas fa-cog "></i></a></li>
+                            <li class="tab"><a href="./user-profile.html" title="View Profile"><i class="fas fa-user-circle "></i></a></li>
+                            <li class="tab"><a href="./transaction.html" title="View Transactions"><i class="fas fa-history "></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m12 l11">
+                <div id="lend-tab">
+                    <div class="row">
+                        <div class="col s12 m4 l2">
+                            <div style="padding:20px 5px" class="header-h6">
+                                <h6 class="left-align" style="font-size: 24px; color: #95989A;">Live Borrowers</h6>
+                            </div>
+                        </div>
+                        <div class="col s12 m4 l2">
+                            <div style="padding:23px 5px;" class="header-h6">
+                                <h6 class="valign-wrapper left-align" style="font-size:20px;color:#95989A;"><i class="material-icons left">calendar_today</i>12/07/2018</h6>
+                            </div>
+                        </div>
+                        <div class="col s12 m4 l2">
+                            <div style="padding:23px 5px;" class="header-h6">
+                                <h6 class="valign-wrapper left-align" style="font-size:20px;color:#95989A"><i class="material-icons left">access_time</i>12:20</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 m12 l12 borrow-list-container   ">
+                            <table class="stripped responsive-table borrowers-list-lend">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Status</th>
+                                        <th>Description</th>
+                                        <th>Loan Amount</th>
+                                        <th>Loan Length</th>
+                                        <th>Interest</th>
+                                        <th>Rating</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Nicole</td>
+                                        <td>78% Funded</td>
+                                        <td>Startup Funding</td>
+                                        <td>Ksh. 70000</td>
+                                        <td>2 Mo</td>
+                                        <td>23%</td>
+                                        <td>4.8</td>
+                                        <td style="text-align: left"><a href="#modal-lend" class="action-icons btn-floating modal-trigger"
+                                                title="Loan Money"><i class="material-icons left">send</i></a>
+                                            <a class="action-icons btn-floating modal-trigger " href="#modal-profile"
+                                                title="View Complete Profile"><i class="material-icons left">more_horiz</i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Agnes</td>
+                                        <td>50% Funded</td>
+                                        <td>Personal</td>
+                                        <td>Ksh. 4000</td>
+                                        <td>2 Mo</td>
+                                        <td>23%</td>
+                                        <td>3.2</td>
+                                        <td style="text-align: left"><a href="" class="action-icons btn-floating" title="Loan Money"><i
+                                                    class="material-icons left">send</i></a>
+                                            <a class="action-icons btn-floating" href="" title="View Complete Profile"><i
+                                                    class="material-icons left">more_horiz</i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Muswanya</td>
+                                        <td>90% Funded</td>
+                                        <td>Investment</td>
+                                        <td>Ksh. 2000</td>
+                                        <td>2 Mo</td>
+                                        <td>23%</td>
+                                        <td>2.8</td>
+                                        <td style="text-align: left"><a href="" class="action-icons btn-floating" title="Loan Money"><i
+                                                    class="material-icons left">send</i></a>
+                                            <a class="action-icons btn-floating " href="" title="View Complete Profile"><i
+                                                    class="material-icons left">more_horiz</i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Muswanya</td>
+                                        <td>90% Funded</td>
+                                        <td>Investment</td>
+                                        <td>Ksh. 2000</td>
+                                        <td>2 Mo</td>
+                                        <td>23%</td>
+                                        <td>2.8</td>
+                                        <td style="text-align: left"><a href="" class="action-icons btn-floating" title="Loan Money"><i
+                                                    class="material-icons left">send</i></a>
+                                            <a class="action-icons btn-floating " href="" title="View Complete Profile"><i
+                                                    class="material-icons left">more_horiz</i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Muswanya</td>
+                                        <td>90% Funded</td>
+                                        <td>Investment</td>
+                                        <td>Ksh. 2000</td>
+                                        <td>2 Mo</td>
+                                        <td>23%</td>
+                                        <td>2.8</td>
+                                        <td style="text-align: left"><a href="" class="action-icons btn-floating" title="Loan Money"><i
+                                                    class="material-icons left">send</i></a>
+                                            <a class="action-icons btn-floating " href="" title="View Complete Profile"><i
+                                                    class="material-icons left">more_horiz</i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Muswanya</td>
+                                        <td>90% Funded</td>
+                                        <td>Investment</td>
+                                        <td>Ksh. 2000</td>
+                                        <td>2 Mo</td>
+                                        <td>23%</td>
+                                        <td>2.8</td>
+                                        <td style="text-align: left"><a href="" class="action-icons btn-floating" title="Loan Money"><i
+                                                    class="material-icons left">send</i></a>
+                                            <a class="action-icons btn-floating " href="" title="View Complete Profile"><i
+                                                    class="material-icons left">more_horiz</i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Muswanya</td>
+                                        <td>90% Funded</td>
+                                        <td>Investment</td>
+                                        <td>Ksh. 2000</td>
+                                        <td>2 Mo</td>
+                                        <td>23%</td>
+                                        <td>2.8</td>
+                                        <td style="text-align: left"><a href="" class="action-icons btn-floating" title="Loan Money"><i
+                                                    class="material-icons left">send</i></a>
+                                            <a class="action-icons btn-floating " href="" title="View Complete Profile"><i
+                                                    class="material-icons left">more_horiz</i></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- Modal View Profile Content -->
+                            <div class="modal new-modal" id="modal-profile">
+                                <div class="modal-content">
+                                    <div class="row">
+                                        <div class="col s8 m8 l8">
+                                            <span class="left borrower-id-modal">$Borrower-ID</span>
+                                        </div>
+                                        <div class="col s4 m4 l4">
+                                            <a href="#!" class="modal-close waves-effect waves-green right"><i class="material-icons center">close</i></a>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12 m12 l12 center-align">
+                                            <img src="./images/large-default-user.png" alt="user-image" class="responsive-image circle">
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-bottom: 0;">
+                                        <div class="col s12 m12 l12 center-align">
+                                            <span class="borrower-name-modal">$Borrower</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12 m12 l12 center-align">
+                                            <span class="borrower-rating-modal">$rating</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-fixed-footer">
+                                    <div class="row">
+                                        <div class="col s12 m12 l12">
+                                            <div class="row" style="margin-bottom:0px;">
+                                                <div class="col s4 m4 l4 center-align">
+                                                    <span class="borrower-det-val">13</span>
+                                                </div>
+                                                <div class="col s4 m4 l4 center-align">
+                                                    <span class="borrower-det-val">98%</span>
+                                                </div>
+                                                <div class="col s4 m4 l4 center-align">
+                                                    <span class="borrower-det-val">2</span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col s4 m4 l4 center-align">
+                                                    <span class="borrower-det-modal">Loans</span>
+                                                </div>
+                                                <div class="col s4 m4 l4 center-align">
+                                                    <span class="borrower-det-modal">Repayment</span>
+                                                </div>
+                                                <div class="col s4 m4 l4 center-align">
+                                                    <span class="borrower-det-modal">Defaults</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal" id="modal-lend">
+                                <div class="modal-content">
+                                    <div class="row">
+                                        <div class="col s8 m8 l8">
+                                            <span class="left lend-borrowername-modal">Lend $Borrower</span>
+                                        </div>
+                                        <div class="col s4 m4 l4">
+                                            <a href="#!" class="modal-close waves-effect waves-green right"><i class="material-icons center">close</i></a>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-bottom:0;">
+                                        <div class="col s12 m12 l12 center-align">
+                                            <span class="amnt-remaining-val">Ksh. 12000</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12 m12 l12 center-align">
+                                            <span class="amnt-remaining-det">Amount Remaining</span>
+                                        </div>
+                                    </div>
+                                   <div class="row">
+                                       <div class="col s12 m12 l12">
+                                           <form action="">
+                                               <div class="row">
+                                                   <div class="input-field col s12 m12 l12">
+                                                       <i class="material-icons prefix">attach_money</i>
+                                                       <input type="number" id="money-icon" class="validate">
+                                                       <label for="money-icon">Amount to lend</label>
+                                                   </div>
+                                               </div>
+                                               <div class="row">
+                                                   <div class="col s12 m12 l12 center-align">
+                                                       <button class="btn waves-effect waves-light" type="submit" name="lend_money">
+                                                        Lend Money
+                                                       </button>
+                                                   </div>
+                                               </div>
+                                               <div class="row" style="margin-bottom:0px;">
+                                                   <div class="col s12 m12 l12">
+                                                       <span class="ft-details">Some Calculations</span>
+                                                   </div>
+                                               </div>
+                                               <div class="row">
+                                                   <div class="col s12 m12 l12">
+                                                       <span class="ft-details">By clicking 'Lend Money' you have agreed to the borrowers conditions</span>
+                                                   </div>
+                                               </div>
+                                               <div class="row" style="margin-bottom:0px;">
+                                                   <div class="col s12 m12 l12">
+                                                       <span class="ft-details">Account Balance after loan:</span>
+                                                   </div>
+                                               </div>
+                                               <div class="row" style="margin-bottom:0px;">
+                                                   <div class="col s12 m12 l12">
+                                                       <span class="ft-details">Current Account Balance:</span>
+                                                   </div>
+                                               </div>
+                                           </form>
+                                       </div>
+                                   </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </main>
+    <footer class="black lighten-2 page-footer" style="text-align:center; padding: 10px; margin-top:0;">
+        <!-- <div class="center-align container" id="foot-logo">
+                <img src="./images/p2p-blue-new-layout.png" alt="company-logo">
+            </div> -->
+        <div class=" center-align container">
+            © 2018 StrathFund
+        </div>
+    </footer>
+    <script type="text/javascript" src="js/materialize.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+</body>
+
+</html>

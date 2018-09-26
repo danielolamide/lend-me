@@ -1,8 +1,8 @@
-$(document).ready(function(){
+$(document).ready(function () {
     $(".dropdown-trigger").dropdown({
-        coverTrigger : false,
-        hover : true,
-        constrainWidth : false
+        coverTrigger: false,
+        hover: true,
+        constrainWidth: false
     });
     $('.sidenav').sidenav();
     // $(window).scroll(function(){
@@ -11,10 +11,11 @@ $(document).ready(function(){
     //     }
     // });
     $('.pushpin').pushpin();
-    $(document).ready(function(){
+    $(document).ready(function () {
         $('.tabs').tabs({
             // swipeable:true
         });
-      });
+    });
     $('.collapsible').collapsible();
+    $('.modal').modal();
 });
