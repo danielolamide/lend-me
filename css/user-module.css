@@ -1,0 +1,261 @@
+/* Lending Page */
+.user-name-lend {
+    color: #323232;
+    transition: all 0.3s ease-out;
+}
+
+.user-name-lend:hover {
+    background-color: #EAEAEA;
+    color: #323232;
+}
+
+.user-name-lend:focus {
+    outline: none !important;
+}
+
+#dropdown-user-module li a {
+    color: #2C3E50;
+    background-color: white;
+    transition: all .2s ease-out;
+}
+
+#dropdown-user-module li a:hover {
+    color: #1CC7A4;
+}
+
+.user-name:focus {
+    outline: none !important;
+}
+
+#settings-link a {
+    color: #323232;
+    transition: all .2s ease-out;
+}
+
+/* #settings-link {
+    border-left: 1px solid rgba(46, 62, 79, 0.48);
+} */
+
+#settings-link a:hover {
+    background-color: initial;
+    transform: scale(1.3);
+}
+
+#settings-link a:hover>i {
+    color: #72D0A4;
+}
+
+#mobile-menu-icon i {
+    color: #323232;
+}
+
+#mobile-menu-icon:hover>i {
+    color: #25BB9B;
+}
+
+.side-nav-user-module {
+    min-height: 100vh;
+}
+
+.side-nav-user-module li a {
+    font-size: 24px;
+    color: #D1D2D3;
+    transition: color .2s ease-out;
+}
+
+.side-nav-user-module li a:hover {
+    color: #1CC7A4;
+}
+
+.side-nav-user-module li {
+    padding-bottom: 20px;
+}
+
+#lend-header-container {
+    padding-top: 25px;
+}
+
+#lend-header-container .headers span {
+    font-size: 22px;
+    color: #505056;
+}
+
+.action-icons i {
+    color: #505056;
+    ;
+    transition: all 0.2s ease-in;
+}
+
+.action-icons:hover>i {
+    color: #1CC7A4;
+}
+
+.action-icons:hover {
+    background-color: white;
+}
+
+.action-icons {
+    background-color: white;
+    transition: all .2s ease-in;
+}
+
+.material-icons {
+    vertical-align: middle !important;
+    padding-bottom: 3px;
+}
+
+.rounded-table tbody tr {
+    background-color: white;
+}
+
+#modal-profile {
+    width: 25% !important;
+    height: 57% !important;
+    overflow: hidden;
+    background-color: #2E3E4F;
+
+}
+
+.borrower-id-modal {
+    color: #72D0A4;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.borrower-name-modal {
+    color: white;
+    font-size: 22px;
+}
+
+.borrower-rating-modal {
+    font-size: 16px;
+    color: #25BB9B;
+}
+
+@media only screen and (min-width:992px) {
+    .borrowers-list-container {
+        max-height: 500px;
+        overflow-y: scroll;
+    }
+
+}
+
+@media only screen and (max-width:600px) {
+    #modal-profile {
+        width: 75% !important;
+        height: 50% !important;
+        overflow: hidden;
+    }
+
+    .modal-fixed-footer .row .col {
+        background-color: #F5F5FD;
+    }
+}
+
+
+.borrower-det-modal {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #323232;
+}
+
+.borrower-det-val {
+    font-size: 22px;
+    color: #323232;
+
+}
+
+.modal-fixed-footer .row .col {
+    background-color: #F5F5FD;
+    padding: 5px 0px;
+}
+
+.profile-label {
+    font-size: 20px;
+    color: #25BB9B;
+}
+
+.profile-value {
+    font-size: 20px;
+    color: #eaeaea;
+}
+
+
+#modal-lend {
+    background-color: white;
+    width: 35% !important;
+    height: 100% !important;
+    overflow: hidden;
+}
+
+@media only screen and (max-width:600px) {
+    #modal-lend {
+        background-color: white;
+        width: 100% !important;
+        height: 100% !important;
+        /* overflow: hidden; */
+    }
+}
+.lend-header{
+    color: #25BB9B;
+    font-size: 20px;
+    font-weight: bold;
+}
+.loan-amount-remaining{
+    color: #323232;
+    font-weight: bold;
+    font-size: 30px;
+    letter-spacing: 2px;
+}
+
+.loan-amount-detail{
+    color: #25BB9B;
+    font-size: 14px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+#lend-money:hover{
+    color: #2E3E4F;
+}
+.agreement-text{
+    /* font-weight: bold; */
+    font-size: 14px;
+}
+.red-asterix{
+    color:red;
+}
+
+/* Loan Application Tab */
+.application-header {
+    color: #8c8c8c;
+}
+
+.funding-table-container {
+    max-height: 300px;
+    overflow-y: scroll;
+    background-color: white;
+}
+
+#loanButton {
+    color: white;
+    background-color: #2E3E4F;
+    transition: all .2s ease-out;
+
+}
+
+#loanButton:hover {
+    color: white;
+    background-color: #25BB9B;
+}
+
+#loan-form-modal {
+    background-color: white;
+}
+
+.app-form-name {
+    font-size: 18px;
+}
