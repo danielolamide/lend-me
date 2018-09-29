@@ -21,7 +21,7 @@
   <div class="content-wrapper">
     <div class="content">
       <div class="signup-wrapper shadow-box">
-        <div class="company-details ">
+        <div class="company-details">
 
           <div class="shadow"></div>
           <div class="wrapper-1">
@@ -43,19 +43,19 @@
               <li class="tab col s6 m6 l6 center"><a class="white-text" href="#register">Register</a></li>
             </ul>
             <div id="login" class="col s12 m12 l12">
-              <form class="col s12 " action="" id="login-form">
+              <form class="col s12 " action="Login.php" id="login-form" method="POST" >
                 <div class="form-header center">Sign In</div>
                 <div class="row" style="padding-top: 20px;">
                   <div class="input-field col s12">
                     <i class="material-icons prefix">email</i>
-                    <input id="icon_email" name="user_email" type="email" class="validate">
+                    <input id="icon_email" name="user_email" type="email" class="validate" required>
                     <label for="icon_email">Email</label>
                   </div>
                 </div>
                 <div class="row">
                   <div class="input-field col s12">
                     <i class="material-icons prefix">vpn_key</i>
-                    <input type="password" id="icon_password" class="validate">
+                    <input type="password" name="user_pass" id="icon_password" class="validate" required>
                     <label for="icon_password">Password</label>
                     <a class="right" href="">Forgot Password?</a>
                   </div>
@@ -69,51 +69,53 @@
                 </div>
               </form>
             </div>
+
+
             <div id="register" class="col s12 m12 l12">
-              <form class="col s12" id="register-form" action="" method="POST">
+              <form class="col s12" id="register-form" action="Register.php" method="POST">
                 <div class="form-header center">Sign Up</div>
                 <div class="row" style="padding-top:20px;">
                   <div class="input-field col s12 m6 l6">
                     <i class="material-icons prefix">person</i>
-                    <input id="first-name-icon" type="text" class="validate">
+                    <input id="first-name-icon" name="fname" type="text" class="validate" required>
                     <label for="first-name-icon">First Name</label>
                   </div>
                   <div class="input-field col s12 m6 l6">
                     <i class="material-icons prefix">person</i>
-                    <input id="last-name-icon" type="text" class="validate">
+                    <input id="last-name-icon" name="lname" type="text" class="validate" required>
                     <label for="last-name-icon">Last Name</label>
                   </div>
                 </div>
                 <div class="row">
                   <div class="input-field col s12 m12 l12">
                     <i class="material-icons prefix">email</i>
-                    <input id="email-icon" type="email" class="validate">
+                    <input id="email-icon" name="email" type="email" class="validate" required title="Use a strathmore.edu email">
                     <label for="email-icon">Email</label>
                   </div>
                 </div>
                 <div class="row">
                   <div class="input-field col s12 m12 l12">
                     <i class="material-icons prefix">perm_identity</i>
-                    <input id="idNo-icon" type="number" class="validate">
+                    <input id="idNo-icon" name="ID" type="number" class="validate" required>
                     <label for="idNo-icon">ID Number</label>
                   </div>
                 </div>
                 <div class="row">
                   <div class="input-field col s12 m6 l6">
                     <i class="material-icons prefix">vpn_key</i>
-                    <input id="pass-icon" type="password" class="validate">
+                    <input id="pass-icon" name="pass" type="password" class="validate" pattern=".{8,}" title="Eight or more characters">
                     <label for="pass-icon">Password</label>
                   </div>
                   <div class="input-field col s12 m6 l6" id="retype-pass">
                     <i class="material-icons prefix">vpn_key</i>
-                    <input id="pass-icon-2" type="password" class="validate">
+                    <input id="pass-icon-2" name="pass1" type="password" class="validate" pattern=".{8,}" title="Eight or more characters">
                     <label for="pass-icon-2">Confirm Password</label>
                   </div>
                 </div>
                 <div class="row">
                   <div class="input-field col s12 m12 l12">
                     <i class="material-icons prefix">phone</i>
-                    <input id="phoneNo-icon" type="number" class="validate">
+                    <input id="phoneNo-icon" type="number" name="number" class="validate" required>
                     <label for="phoneNo-icon">Phone</label>
                   </div>
                 </div>
@@ -126,7 +128,7 @@
                   <div class="col s6 m6 l6">
                     <p>
                       <label>
-                        <input name="gender" type="radio" value="Male" />
+                        <input name="gender" type="radio" value="Male" required />
                         <span class="white-text">Male</span>
                       </label>
                     </p>
@@ -134,7 +136,7 @@
                   <div class="col s6 m6 l6">
                     <p>
                       <label>
-                        <input name="gender" type="radio" value="Female" />
+                        <input name="gender" type="radio" value="Female" required/>
                         <span class="white-text">Female</span>
                       </label>
                     </p>
