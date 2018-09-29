@@ -270,60 +270,293 @@ input[type=number]::-webkit-outer-spin-button {
 #loan-form-modal {
     background-color: white;
 }
-#delete-confirmation-modal{
+
+#delete-confirmation-modal {
     background-color: #2C3E50;
 }
-.delete-confirmation-modal-header span{
+
+.delete-confirmation-modal-header span {
     color: #1CC7A4;
     font-size: 20px;
 }
-#delete-loan-button{
+
+#delete-loan-button {
     color: white;
     background-color: #E50000;
 }
-.delete-accept-btn a{
+
+.delete-accept-btn a {
     background-color: #1CC7A4;
     color: white;
     transition: all .2s ease-in;
 }
-.delete-accept-btn a:hover{
+
+.delete-accept-btn a:hover {
     background-color: white;
     color: #1CC7A4;
 }
-.delete-close-btn a{
+
+.delete-close-btn a {
     color: white;
     background-color: #E50000;
     transition: all .2s ease-in
 }
-.delete-close-btn a:hover{
+
+.delete-close-btn a:hover {
     color: #E50000;
     background-color: white;
 }
-.delete-confirmation-message span{
+
+.delete-confirmation-message span {
     color: white;
     font-size: 18px;
 }
-.loan-modal-head{
+
+.loan-modal-head {
     color: white;
     font-size: 16px;
     text-transform: uppercase;
     height: 50% !important;
     width: 70% !important;
-    
+
 }
-.loan-modal-head-container{
+
+.loan-modal-head-container {
     background-color: #2C3E50;
     padding: 10px 5px;
 
 }
-#loan-modal-content{
+
+#loan-modal-content {
     padding: 0px;
     overflow: hidden;
 }
-.borrow-form-name{
+
+.borrow-form-name {
     color: #1CC7A4;
     font-size: 22px;
 }
-#loan-form .row{
+
+#loan-form .row {
     padding: 0px 30px;
+}
+
+#wallet-header-container span {
+    color: #505056;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+#wallet-header-container {
+    padding-top: 25px;
+}
+
+#account-balance-row {
+    margin: 0 auto;
+    margin-bottom: 20px;
+    background: #4f78a4;
+    /* Old browsers */
+    background: -moz-linear-gradient(45deg, #4f78a4 0%, #70baba 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(45deg, #4f78a4 0%, #70baba 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(45deg, #4f78a4 0%, #70baba 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#4f78a4', endColorstr='#70baba', GradientType=1);
+    /* IE6-9 fallback on horizontal gradient */
+}
+
+#acc-balance-header-container span {
+    color: white;
+    font-size: 20px;
+    text-transform: uppercase
+}
+
+#acc-balance-header-container {
+    padding: 10px;
+}
+
+#acc-balance-value-container span {
+    color: white;
+    font-size: 40px;
+    letter-spacing: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#wallet-deposit-btn {
+    color: white;
+    background-color: #2C3E50;
+    transition: all .2s ease-in;
+}
+
+#wallet-deposit-btn:hover {
+    color: #2C3E50;
+    background-color: white;
+    transform: scale(1.1, 1.1);
+
+}
+
+#wallet-withdraw-btn {
+    color: white;
+    background-color: #2C3E50;
+    transition: all .2s ease-in;
+}
+
+#wallet-withdraw-btn:hover {
+    color: #2C3E50;
+    background-color: white;
+    transform: scale(1.1, 1.1);
+}
+
+.transaction-history-header-container {
+    font-size: 22px;
+    color: #505056;
+    margin-top: 40px;
+    font-weight: 600;
+}
+
+.thistory-description-container {
+    color: #505056;
+    font-size: 18px;
+    letter-spacing: 2px;
+}
+
+.transaction-table-container {
+    max-height: 180px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.transaction-table-container thead th {
+    color: white;
+}
+
+.transaction-table-container thead {
+    background-color: #2C3E50;
+    border-top: 4px solid #1CC7A4;
+}
+
+.transaction-table-container tbody tr {
+    color: #505056;
+    background-color: white;
+}
+
+.transaction-table-container table {
+    padding: 5px 10px;
+}
+
+#modal-deposit {
+    background-color: white;
+}
+.deposit-header{
+    color:#1CC7A4;
+    font-size: 22px;
+    font-weight: 600;
+}
+.modal-deposit-denomination{
+    color: #323232;
+    font-size: 20px;
+    font-weight: 600;
+}
+.deposit-form-container{
+    padding: 20px;
+}
+#withdraw-container{
+    padding: 20px;
+}   
+.withdraw-modal-header{
+    font-size: 22px;
+    font-weight: 600;
+    color: #1CC7A4;
+}
+.manage-settings-header{
+    font-size: 22px;
+    color: #505056;
+    font-weight: 600;
+}
+.edit-settings-form{
+    background-color: white;
+    margin: 0 auto;
+    padding: 10px 20px;
+}
+.edit-form-header{
+    color: #505056;
+    font-size: 22px;
+    font-weight: 600;
+}
+.profile-text{
+    color: #323232;
+    font-size: 20px;
+    font-weight: 500;
+}
+.save-user-settings-btn{
+    color: white;
+    background-color: #2C3E50;
+    transition: all .2s ease-out;
+}
+.save-user-settings-btn:hover{
+    color: white;
+    background-color: #1CC7A4;
+}
+.field-labels{
+    color: #323232;
+    font-size: 18px;
+}
+.change-user-image-btn:hover{
+    color: #2C3E50;
+}
+.field-values{
+    color: #505056;
+    font-size: 18px;
+}
+.user-profile-header{
+    padding-top: 25px;
+    color:#505056;
+    font-size: 22px;
+
+}
+#profile-container{
+    background-color: white;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+#feedback-suggestions-header{
+    padding-top: 25px;
+    font-size: 22px;
+    color: #505056;
+    font-weight: 600;
+}
+#suggestion-courtesy{
+    color: #323232;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+#report-header{
+    color: #323232;
+    font-size: 22px;
+    padding-top: 20px;
+}
+#report-text{
+    color: #505056;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+#report-btn{
+    color: white;
+    background-color: #2C3E50;
+}
+#report-btn:hover{
+    color: #1CC7A4;
+    transform: scale(1.1,1.1);
+}
+#modal-report{
+    background-color: #2C3E50;
+}
+.report-modal-header{
+    color: #1CC7A4;
+    font-size: 22px;
+}
+#report-name-area{
+    color: white;
 }

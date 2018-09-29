@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Borrowing Page</title>
+    <title>My Wallet</title>
     <link rel="icon" type="image/png" href="./images/blue-coin.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
         crossorigin="anonymous">
@@ -44,8 +44,8 @@
         <li><a href="./lend.html">Lend Money<i class="fas fa-hand-holding-usd left"></i></a></li>
         <li><a href="./wallet.html">Wallet<i class="fas fa-wallet left"></i></a></li>
         <li><a href="./borrow.html">Borrow Money<i class="fas fa-exchange-alt"></i></a></li>
-        <li><a href="./user-settings.html">Manage Settings<i class="fas fa-cog left"></i></a></li>
         <li><a href="./feedback.html">Feedback<i class="fas fa-comment-alt left"></i></a></li>        
+        <li><a href="./user-settings.html">Manage Settings<i class="fas fa-cog left"></i></a></li>
         <li><a href="./user-profile.html">View Profile<i class="fas fa-user-circle left"></i></a></li>
         <li><a href="./wallet.html#recent-transactions">Recent Transactions<i class="fas fa-history left"></i></a></li>
         <li><a href="#">Logout<i class="fas fa-power-off left"></i></a></li>
@@ -68,125 +68,141 @@
                     </div>
                 </div>
             </div>
-            <div class="col s12 m12 l11" id="borrower-header-container">
+            <div class="col s12 m12 l11">
                 <div class="row">
-                    <div class="col s12 m4 l2 headers">
-                        <span>Apply for a loan</span>
+                    <div class="col s12 m12 l3" id="wallet-header-container">
+                        <span><i class="fas fa-wallet"></i> My Wallet</span>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" id="account-balance-row">
                     <div class="col s12 m12 l12">
-                        <ul class="collapsible popout">
-                            <li class="active">
-                                <div class="collapsible-header application-report-header">View Loan Application Report</div>
-                                <div class="collapsible-body">
-                                    <div class="funding-table-container">
-                                        <table class="responsive-table">
-                                            <thead>
-                                                <tr>
-                                                    <th>Lender's Name</th>
-                                                    <th>Amount Loaned</th>
-                                                    <th>Date and Time</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Tiffnay</td>
-                                                    <td>Ksh. 10,000</td>
-                                                    <td>21/09/2018 12:49pm</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
+                        <div class="row">
+                            <div class="col s12 m12 l12 center-align" id="acc-balance-header-container">
+                                <span>Wallet Balance</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12 m12 l12 center-align" id="acc-balance-value-container">
+                                <span>Ksh. 30000</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col s6 m6 l2">
-                        <a class="btn waves-effect waves-light" id="loan-button" onclick="$('#loan-form-modal').modal('open');">Get
-                            Loan</a>
-                    </div>
-                    <div class="col s6 m6 l2">
-                        <a class="btn waves-effect waves-light" id="delete-loan-button" onclick="$('#delete-confirmation-modal').modal('open');">Delete
-                            Request</a>
+                    <div class="col s12 m12 l8" id="wallet-btn-container">
+                        <a href="#modal-deposit" onclick="$('#modal-deposit').modal('open');" class="btn-large waves-effect waves-light"
+                            id="wallet-deposit-btn">Deposit</a>
+                        <a href="#modal-withdraw" class="btn-large waves-effect waves-light" onclick="$('#modal-withdraw').modal('open');" id="wallet-withdraw-btn">Withdraw</a>
                     </div>
                 </div>
-                <div class="modal" id="delete-confirmation-modal">
+                <div class="row">
+                    <div class="col s12 m12 l3 transaction-history-header-container">
+                        <span><i class="fas fa-history"></i> Transaction History</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 m12 l12 thistory-description-container">
+                        <span>View all your recent transactions and account for your transactions</span>
+                    </div>
+                </div>
+                <!-- Deposit Modal -->
+                <div class="modal" id="modal-deposit">
                     <div class="modal-content">
                         <div class="row">
-                            <div class="col s12 m12 l12 delete-confirmation-modal-header center-align">
-                                <span>Confirm Loan Application Deletion</span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col s12 m12 l12 delete-confirmation-message center-align">
-                                <span>Are you sure you want to delete your loan request?</span>
-                            </div>
-                        </div>
-                        <div class="row">
-                                <div class="col s6 m6 l6 right-align delete-accept-btn">
-                                    <a href="" class="btn waves-effect waves-light">Yes</a>
-                                </div>
-                                <div class="col s6 m6 l6 left-align delete-close-btn">
-                                    <a href="#!" class="btn modal-close waves-effect waves-green">No</a>
-                                </div>
-                            </div>
-                    </div>
-                    
-                </div>
-                <div class="modal" id="loan-form-modal">
-                    <div class="modal-content" id="loan-modal-content">
-                        <div class="row loan-modal-head-container">
-                            <div class="col s8 m8 l8 left-align">
-                                <span class="loan-modal-head">Kindly provide us with your loan requirements</span>
+                            <div class="col s8 m8 l8">
+                                <span class="deposit-header"><i class="fas fa-piggy-bank"></i> Deposit Money</span>
                             </div>
                             <div class="col s4 m4 l4">
-                                <a href="#!" class="modal-close btn waves-effect waves-green right"><i class="material-icons center">close</i></a>
+                                <a href="#!" class="modal-close waves-effect waves-green right"><i class="material-icons center">close</i></a>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col s12 m12 l12 center-align">
-                                <span class="borrow-form-name">Loan Application Form</span>
-                            </div>
-                        </div>
-                        <form action="" id="loan-form">
-                            <div class="row">
-                                <div class="input-field col s12 m12 l12">
+                        <form action="">
+                            <div class="row deposit-form-container">
+                                <div class=" input-field col s12 m12 l12">
                                     <i class="material-icons prefix">attach_money</i>
-                                    <input type="number" id="money-icon" class="validate">
-                                    <label for="money-icon">Loan Amount</label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s12 m12 l8">
-                                    <i class="material-icons prefix">timelapse</i>
-                                    <input type="number" id="time-icon" class="validate">
-                                    <label for="time-icon">Loan Period in Months</label>
-                                </div>
-                                <div class="input-field col s12 m12 l4">
-                                    <i class="fas fa-percent prefix" style="font-size:20px;"></i>
-                                    <input type="number" id="percent-icon" class="validate">
-                                    <label for="percent-icon">Interest Rate</label>
-                                </div>
-                            </div>
-                            <div class="row" style="padding:0px 40px;">
-                                <div class="input-field s12 m12 l12">
-                                    <i class="material-icons prefix">notes</i>
-                                    <textarea maxlength="40" id="description-text" class="materialize-textarea"></textarea>
-                                    <label for="description-text">Loan Purpose</label>
+                                    <input type="number" id="deposit-icon">
+                                    <label for="deposit-icon">Amount to Deposit</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col s12 m12 l12 center-align">
-                                    <button class="btn waves-effect waves-light" type="submit" name="submit_loan_application">Submit
-                                        Application
-                                        <i class="material-icons right">send</i>
+                                    <button class="btn waves-effect waves-light type
+                                    submit"
+                                        name="deposit-money-btn">
+                                        Deposit<i class="material-icons">send</i>
                                     </button>
                                 </div>
                             </div>
                         </form>
+                    </div>
+                </div>
+                <!-- Withdraw Modal -->
+                <div class="modal" id="modal-withdraw">
+                    <div class="modal-content">
+                        <div class="row">
+                            <div class="col s8 m8 l8" id="withdraw-container">
+                                <span class="withdraw-modal-header">Withdraw Money</span>
+                            </div>
+                            <div class="col s4 m4 l4">
+                                <a href="#!" class="modal-close waves-effect waves-green right"><i class="material-icons center">close</i></a>
+                            </div>
+                        </div>
+                        <form action="">
+                            <div class="row">
+                                <div class="input-field col s12 m12 l12">
+                                    <i class="material-icons prefix">attach_money</i>
+                                    <input type="number" id="withdraw-icon">
+                                    <label for="withdraw-icon">Amount to Withdraw</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s12 m12 l12 center-align">
+                                    <button class="btn waves-effect waves-light" type="submit" name="withdraw-money-btn">
+                                        Withdraw <i class="material-icons">send</i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 m12 l12">
+                        <div class="transaction-table-container" id="recent-transactions">
+                            <table class="responsive-table">
+                                <thead>
+                                    <th style="width:200px;">Transaction ID</th>
+                                    <th>Time Stamp</th>
+                                    <th>Amount</th>
+                                    <th>Payment Type</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>T1000</td>
+                                        <td>02/11/2019 12:42pm</td>
+                                        <td>Ksh. 1000</td>
+                                        <td>Loan Repayment</td>
+                                    </tr>
+                                    <tr>
+                                        <td>T1000</td>
+                                        <td>02/11/2019 12:42pm</td>
+                                        <td>Ksh. 1000</td>
+                                        <td>Loan Funding</td>
+                                    </tr>
+                                    <tr>
+                                        <td>T1000</td>
+                                        <td>02/11/2019 12:42pm</td>
+                                        <td>Ksh. 1000</td>
+                                        <td>Loan Funding</td>
+                                    </tr>
+                                    <tr>
+                                        <td>T1000</td>
+                                        <td>02/11/2019 12:42pm</td>
+                                        <td>Ksh. 1000</td>
+                                        <td>Loan Funding</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -196,8 +212,8 @@
     <script type="text/javascript" src="js/index.js"></script>
     <footer style="background-color: #323232;" class="page-footer" style="text-align:center; padding: 10px; margin-top:0;">
         <!-- <div class="center-align container" id="foot-logo">
-                        <img src="./images/p2p-blue-new-layout.png" alt="company-logo">
-                    </div> -->
+                            <img src="./images/p2p-blue-new-layout.png" alt="company-logo">
+                        </div> -->
         <div class=" center-align container">
             © 2018 StrathFund
         </div>
