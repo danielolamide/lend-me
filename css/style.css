@@ -6,7 +6,9 @@ body {
 .top-nav {
     background-color: #2E3E4F;
 }
-
+.page-footer{
+    background-color: #323232;
+}
 .img-hold {
     /* width: 200px; */
     float: left;

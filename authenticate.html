@@ -5,11 +5,14 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Sign In/Sign Up</title>
+  <script src="./js/offline.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/png" href="./images/blue-coin.png">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
     crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/offline-theme-dark.css">
+  <link rel="stylesheet" href="./css/offline-language-english.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link type="text/css" rel="stylesheet" href="css/materialize.css" media="screen,projection" />
   <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -33,17 +36,15 @@
             <h1 class="center-align" id="title">strathfund.com</h1>
             <div class="slogan">Join us today and enjoy quick & easy loans.</div>
           </div>
-
         </div>
         <div class="signup-form" style="background-color: #3C3E52">
-
           <div class="container" id="tab-container" style="width:100%; padding:5px;">
             <ul class="center tabs" id="tab-list">
               <li class="tab col s6 m6 l6 center"><a class="white-text active" href="#login">Login</a></li>
               <li class="tab col s6 m6 l6 center"><a class="white-text" href="#register">Register</a></li>
             </ul>
             <div id="login" class="col s12 m12 l12">
-              <form class="col s12 " action="Login.php" id="login-form" method="POST" >
+              <form class="col s12 " action="Login.php" id="login-form" method="POST">
                 <div class="form-header center">Sign In</div>
                 <div class="row" style="padding-top: 20px;">
                   <div class="input-field col s12">
@@ -69,8 +70,6 @@
                 </div>
               </form>
             </div>
-
-
             <div id="register" class="col s12 m12 l12">
               <form class="col s12" id="register-form" action="Register.php" method="POST">
                 <div class="form-header center">Sign Up</div>
@@ -136,7 +135,7 @@
                   <div class="col s6 m6 l6">
                     <p>
                       <label>
-                        <input name="gender" type="radio" value="Female" required/>
+                        <input name="gender" type="radio" value="Female" required />
                         <span class="white-text">Female</span>
                       </label>
                     </p>
