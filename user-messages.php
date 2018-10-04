@@ -1,3 +1,6 @@
+<?
+    session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,31 +22,31 @@
             <div class="nav-wrapper top-nav">
                     <a href="#" data-target="slide-out" class="sidenav-trigger hide-on-small-only show-on-medium-and-up"><i class="material-icons">menu</i></a>
                 <div class="img-hold" style="margin-top: 5px;">
-                    <a href="admin-dash.html" class="brand-logo"><img src="./images/p2p-logo-white-resize.png"></a>
+                    <a href="admin-dash.php" class="brand-logo"><img src="./images/p2p-logo-white-resize.png"></a>
                 </div>
                 
                 <!--Menu Trigger on Small Screen-->
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul id="nav-mobile" class="right hide-on-small-only">  
-                    <li><a class="dropdown-trigger user-name" href="#" data-target="dropdown1">Username<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li><a class="dropdown-trigger user-name" href="#" data-target="dropdown1"><?php echo $_SESSION['FName'][0]?><i class="material-icons right">arrow_drop_down</i></a></li>
                 </ul>
             </div>
         </nav>
 
             <!--Username DropDown Items-->
         <ul id="dropdown1" class="dropdown-content">
-            <li><a href="admin-profile.html">My Profile<i class="material-icons left">account_circle</i></a></li>
-            <li><a href="./admin-settings.html">Settings<i class="material-icons left">settings</i></a></li>
+            <li><a href="admin-profile.php">My Profile<i class="material-icons left">account_circle</i></a></li>
+            <li><a href="./admin-settings.php">Settings<i class="material-icons left">settings</i></a></li>
             <li class="divider"></li>
             <li><a href="#!">Logout<i class="material-icons left">power_settings_new</i></a></li>
         </ul>
             <!--NavBar Resize Menu-->
         <ul class="sidenav" id="mobile-demo">
-            <li><a href="./admin-dash.html">Back to Dashboard Home<i class="material-icons">keyboard_backspace</i></a></li>
-            <li><a href="./user-management.html">User Management<i class="material-icons left">supervised_user_circle</i></a></li>
-            <li><a href="./transaction-mgmt.html">Transaction Management<i class="material-icons left">attach_money</i></a></li>
-            <li><a href="./user-messages.html">User Feedback<i class="material-icons left">feedback</i></a></li>
-            <li><a href="./admin-settings.html">Manage Settings<i class="material-icons left">settings</i></a></li>
+            <li><a href="./admin-dash.php">Back to Dashboard Home<i class="material-icons">keyboard_backspace</i></a></li>
+            <li><a href="./user-management.php">User Management<i class="material-icons left">supervised_user_circle</i></a></li>
+            <li><a href="./transaction-mgmt.php">Transaction Management<i class="material-icons left">attach_money</i></a></li>
+            <li><a href="./user-messages.php">User Feedback<i class="material-icons left">feedback</i></a></li>
+            <li><a href="./admin-settings.php">Manage Settings<i class="material-icons left">settings</i></a></li>
             <li><a href="#">Logout<i class="material-icons left">power_settings_new</i></a></li>
             </ul>
     <!-- </div> -->
@@ -56,16 +59,16 @@
             <!-- <div class="background">
                 <img src="images/office.jpg">
             </div> -->
-            <a href="admin-settings.html"><img class="circle" src="images/default-user-icon.png"></a>
-            <a href="admin-profile.html"><span class="white-text name">Username</span></a>
-            <a href="admin-settings.html"><span class="subheader white-text email">user@domain.com</span></a>
+            <a href="admin-settings.php"><img class="circle" src="images/default-user-icon.png"></a>
+            <a href="admin-profile.php"><span class="white-text name">Username</span></a>
+            <a href="admin-settings.php"><span class="subheader white-text email">user@domain.com</span></a>
         </div></li>
-        <li><a href="./admin-dash.html">Back to Dashboard Home<i class="material-icons">keyboard_backspace</i></a></li>
-        <li><a href="./user-management.html"><i class="material-icons">supervised_user_circle</i>User Management</a></li>
-        <li><a href="./transaction-mgmt.html"><i class="material-icons">attach_money</i>Transaction Management</a></li>
-        <li><a href="./user-messages.html"><i class="material-icons">feedback</i>User Feedback</a></li>
+        <li><a href="./admin-dash.php">Back to Dashboard Home<i class="material-icons">keyboard_backspace</i></a></li>
+        <li><a href="./user-management.php"><i class="material-icons">supervised_user_circle</i>User Management</a></li>
+        <li><a href="./transaction-mgmt.php"><i class="material-icons">attach_money</i>Transaction Management</a></li>
+        <li><a href="./user-messages.php"><i class="material-icons">feedback</i>User Feedback</a></li>
         <li><div class="divider"></div></li>
-        <li><a href="./admin-settings.html"><i class="material-icons">settings</i>Manage Settings</a></li>
+        <li><a href="./admin-settings.php"><i class="material-icons">settings</i>Manage Settings</a></li>
         <li><a class="waves-effect" href="#!"><i class="material-icons">power_settings_new</i>Logout</a></li>
     </ul>
     <main>

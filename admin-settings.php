@@ -21,7 +21,7 @@
             <div class="nav-wrapper top-nav">
                     <a href="#" data-target="slide-out" class="sidenav-trigger hide-on-small-only show-on-medium-and-up"><i class="material-icons">menu</i></a>
                 <div class="img-hold" style="margin-top: 5px;">
-                    <a href="./admin-dash.html" class="brand-logo"><img src="./images/p2p-logo-white-resize.png"></a>
+                    <a href="./admin-dash.php" class="brand-logo"><img src="./images/p2p-logo-white-resize.png"></a>
                 </div>
                 
                 <!--Menu Trigger on Small Screen-->
@@ -34,18 +34,18 @@
 
             <!--Username DropDown Items-->
         <ul id="dropdown1" class="dropdown-content">
-            <li><a href="./admin-profile.html">My Profile<i class="material-icons left">account_circle</i></a></li>
-            <li><a href="./admin-settings.html">Settings<i class="material-icons left">settings</i></a></li>
+            <li><a href="./admin-profile.php">My Profile<i class="material-icons left">account_circle</i></a></li>
+            <li><a href="./admin-settings.php">Settings<i class="material-icons left">settings</i></a></li>
             <li class="divider"></li>
             <li><a href="#!">Logout<i class="material-icons left">power_settings_new</i></a></li>
         </ul>
             <!--NavBar Resize Menu-->
         <ul class="sidenav" id="mobile-demo">
-            <li><a href="./admin-dash.html">Back to Dashboard Home<i class="material-icons">keyboard_backspace</i></a></li>
-            <li><a href="./user-management.html">User Management<i class="material-icons left">supervised_user_circle</i></a></li>
-            <li><a href="./transaction-mgmt.html">Transaction Management<i class="material-icons left">attach_money</i></a></li>
-            <li><a href="./user-messages.html">User Feedback<i class="material-icons left">feedback</i></a></li>
-            <li><a href="./admin-settings.html">Manage Settings<i class="material-icons left">settings</i></a></li>
+            <li><a href="./admin-dash.php">Back to Dashboard Home<i class="material-icons">keyboard_backspace</i></a></li>
+            <li><a href="./user-management.php">User Management<i class="material-icons left">supervised_user_circle</i></a></li>
+            <li><a href="./transaction-mgmt.php">Transaction Management<i class="material-icons left">attach_money</i></a></li>
+            <li><a href="./user-messages.php">User Feedback<i class="material-icons left">feedback</i></a></li>
+            <li><a href="./admin-settings.php">Manage Settings<i class="material-icons left">settings</i></a></li>
             <li><a href="#">Logout<i class="material-icons left">power_settings_new</i></a></li>
             </ul>
     <!-- </div> -->
@@ -58,16 +58,16 @@
             <!-- <div class="background">
                 <img src="images/office.jpg">
             </div> -->
-            <a href="./admin-settings.html"><img class="circle" src="images/default-user-icon.png"></a>
-            <a href="./admin-profile.html"><span class="white-text name">Username</span></a>
-            <a href="./admin-settings.html"><span class="subheader white-text email">user@domain.com</span></a>
+            <a href="./admin-settings.php"><img class="circle" src="images/default-user-icon.png"></a>
+            <a href="./admin-profile.php"><span class="white-text name">Username</span></a>
+            <a href="./admin-settings.php"><span class="subheader white-text email">user@domain.com</span></a>
         </div></li>
-        <li><a href="./admin-dash.html">Back to Dashboard Home<i class="material-icons">keyboard_backspace</i></a></li>
-        <li><a href="./user-management.html"><i class="material-icons">supervised_user_circle</i>User Management</a></li>
-        <li><a href="./transaction-mgmt.html"><i class="material-icons">attach_money</i>Transaction Management</a></li>
-        <li><a href="./user-messages.html"><i class="material-icons">feedback</i>User Feedback</a></li>
+        <li><a href="./admin-dash.php">Back to Dashboard Home<i class="material-icons">keyboard_backspace</i></a></li>
+        <li><a href="./user-management.php"><i class="material-icons">supervised_user_circle</i>User Management</a></li>
+        <li><a href="./transaction-mgmt.php"><i class="material-icons">attach_money</i>Transaction Management</a></li>
+        <li><a href="./user-messages.php"><i class="material-icons">feedback</i>User Feedback</a></li>
         <li><div class="divider"></div></li>
-        <li><a href="./admin-settings.html"><i class="material-icons">settings</i>Manage Settings</a></li>
+        <li><a href="./admin-settings.php"><i class="material-icons">settings</i>Manage Settings</a></li>
         <li><a class="waves-effect" href="#!"><i class="material-icons">power_settings_new</i>Logout</a></li>
     </ul> 
     <main>
@@ -106,7 +106,7 @@
                         <span style="color:#C5C5C3; font-size:18px;">Display Name</span>
                     </div>
                     <div class="col s7 m7 l7">
-                        <span class="left" style="color:#494949; font-size:18px;">Username</span>                        
+                        <span class="left" style="color:#494949; font-size:18px;"><?echo $_SESSION['uName']?></span>                        
                     </div>
                 </div>
                 <div class="row">
@@ -119,7 +119,7 @@
                             <span style="color:#C5C5C3; font-size:18px;">Email Address</span>&nbsp;<i class="grey-text material-icons">edit</i>
                     </div>
                     <div class="input-field col s7 m7 l7" id="email-field-settings">
-                        <input type="email" name="admin-email" class="validate" value="admin@strathmore.edu">
+                        <input type="email" name="admin-email" class="validate" value="<?echo $_SESSION['email'];?>">
                         <span class="helper-text" data-error="Incorrect Email Format" data-success=""></span>
                     </div>
                 </div>
@@ -144,7 +144,7 @@
                         <span style="color:#C5C5C3; font-size:18px;">Gender</span>
                     </div>
                     <div class="col s7 m7 l7">
-                        <span class="left" style="color:#494949; font-size:18px;">User-Gender</span>                        
+                        <span class="left" style="color:#494949; font-size:18px;"><?echo $_SESSION['gender'];?></span>                        
                     </div>
                 </div>
                 <div class="row">

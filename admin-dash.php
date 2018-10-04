@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if($_SESSION['uType']="Admin"){
+    if($_SESSION['uType']!="Admin"){
         header("location: user-dashboard.php");
     }
 ?>
@@ -24,7 +24,7 @@
             <div class="nav-wrapper top-nav">
                     <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large hide-on-med-and-down"><i class="material-icons">menu</i></a>
                 <div class="img-hold">
-                    <a href="admin-dash.html" class="brand-logo"><img src="./images/p2p-logo-white-resize.png"></a>
+                    <a href="admin-dash.php" class="brand-logo"><img src="./images/p2p-logo-white-resize.png"></a>
                 </div>
                 
                 <!--Menu Trigger on Small Screen-->
@@ -37,17 +37,17 @@
 
          <!--Username DropDown Items-->
         <ul id="dropdown1" class="dropdown-content">
-            <li><a href="./admin-profile.html">My Profile<i class="material-icons left">account_circle</i></a></li>
-            <li><a href="./admin-settings.html">Settings<i class="material-icons left">settings</i></a></li>
+            <li><a href="./admin-profile.php">My Profile<i class="material-icons left">account_circle</i></a></li>
+            <li><a href="./admin-settings.php">Settings<i class="material-icons left">settings</i></a></li>
             <li class="divider"></li>
             <li><a href="#!">Logout<i class="material-icons left">power_settings_new</i></a></li>
         </ul>
          <!--NavBar Resize Menu-->
         <ul class="sidenav" id="mobile-demo">
-            <li><a href="./user-management.html">User Management<i class="material-icons left">supervised_user_circle</i></a></li>
-            <li><a href="./transaction-mgmt.html">Transaction Management<i class="material-icons left">attach_money</i></a></li>
-            <li><a href="./user-messages.html">User Feedback<i class="material-icons left">feedback</i></a></li>
-            <li><a href="./admin-settings.html">Manage Settings<i class="material-icons left">settings</i></a></li>
+            <li><a href="./user-management.php">User Management<i class="material-icons left">supervised_user_circle</i></a></li>
+            <li><a href="./transaction-mgmt.php">Transaction Management<i class="material-icons left">attach_money</i></a></li>
+            <li><a href="./user-messages.php">User Feedback<i class="material-icons left">feedback</i></a></li>
+            <li><a href="./admin-settings.php">Manage Settings<i class="material-icons left">settings</i></a></li>
             <li><a href="#">Logout<i class="material-icons left">power_settings_new</i></a></li>
          </ul>
     <!-- </div> -->
@@ -60,15 +60,15 @@
             <!-- <div class="background">
                 <img src="images/office.jpg">
             </div> -->
-            <a href="./admin-settings.html"><img class="circle" src="images/default-user-icon.png"></a>
-            <a href="./admin-profile.html"><span class="white-text name">Username</span></a>
-            <a href="./admin-settings.html"><span class="subheader white-text email">user@domain.com</span></a>
+            <a href="./admin-settings.php"><img class="circle" src="images/default-user-icon.png"></a>
+            <a href="./admin-profile.php"><span class="white-text name">Username</span></a>
+            <a href="./admin-settings.php"><span class="subheader white-text email">user@domain.com</span></a>
         </div></li>
-        <li><a href="./user-management.html"><i class="material-icons">supervised_user_circle</i>User Management</a></li>
-        <li><a href="./transaction-mgmt.html"><i class="material-icons">attach_money</i>Transaction Management</a></li>
-        <li><a href="./user-messages.html"><i class="material-icons">feedback</i>User Feedback</a></li>
+        <li><a href="./user-management.php"><i class="material-icons">supervised_user_circle</i>User Management</a></li>
+        <li><a href="./transaction-mgmt.php"><i class="material-icons">attach_money</i>Transaction Management</a></li>
+        <li><a href="./user-messages.php"><i class="material-icons">feedback</i>User Feedback</a></li>
         <li><div class="divider"></div></li>
-        <li><a href="./admin-settings.html"><i class="material-icons">settings</i>Manage Settings</a></li>
+        <li><a href="./admin-settings.php"><i class="material-icons">settings</i>Manage Settings</a></li>
         <li><a class="waves-effect" href="#!"><i class="material-icons">power_settings_new</i>Logout</a></li>
     </ul>
     <!--Page Content-->
@@ -85,7 +85,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <a href="./user-management.html">
+                            <a href="./user-management.php">
                                 <div style="padding: 30px;" class="grey lighten-3 col s5 waves-effect">
                                     <!-- <i class="large material-icons">person</i> -->
                                     <i class="center large fas fa-user-alt"></i>
@@ -93,7 +93,7 @@
                                 </div>
                             </a>
                             <div class="col s2">&nbsp;</div>
-                            <a href="./user-management.html#lenders-table">
+                            <a href="./user-management.php#lenders-table">
                                 <div style="padding: 30px;" class="grey lighten-3 col s5 waves-effect">
                                     <!-- <i class="large material-icons">person</i> -->
                                     <i class="large fas fa-user-tie"></i>
@@ -111,7 +111,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <a href="./transaction-mgmt.html#transact-lenders">
+                        <a href="./transaction-mgmt.php#transact-lenders">
                             <div style="padding: 30px;" class="grey lighten-3 col s5 waves-effect">
                                 <!-- <i class="large material-icons">swap_horiz</i> -->
                                 <i class="large fas fa-hand-holding-usd"></i>
@@ -119,7 +119,7 @@
                             </div>
                         </a>
                         <div class="col s2">&nbsp;</div>
-                        <a href="./transaction-mgmt.html">
+                        <a href="./transaction-mgmt.php">
                             <div style="padding: 30px;" class="grey lighten-3 col s5 waves-effect">
                                 <!-- <i class="large material-icons">swap_horiz</i> -->
                                 <i class="large fas fa-exchange-alt"></i>
@@ -139,14 +139,14 @@
                         </div>
                     </div>
                     <div class="row">
-                        <a href="./user-messages.html#suggestions">
+                        <a href="./user-messages.php#suggestions">
                             <div style="padding: 30px;" class="grey lighten-3 col s5 waves-effect">
                                 <i class="large fas fa-comment-alt"></i>
                                 <span><h6>User Suggestions</h6></span>
                             </div>
                         </a>
                         <div class="col s2">&nbsp;</div>
-                        <a href="./user-messages.html">
+                        <a href="./user-messages.php">
                             <div style="padding: 30px;" class="grey lighten-3 col s5 waves-effect">
                                 <i class=" large fas fa-times-circle"></i>
                                 <span><h6>User Complaints</h6></span>
@@ -163,7 +163,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <a href="./admin-settings.html">
+                            <a href="./admin-settings.php">
                                 <div style="padding: 30px;" class="grey lighten-3 col s12 waves-effect">
                                     <i class=" large fas fa-cog"></i>
                                     <span><h6>Settings</h6></span>

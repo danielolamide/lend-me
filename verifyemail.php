@@ -70,7 +70,7 @@
 				echo $alert;
 				echo "<br>";
 				echo "<br>";
-				echo "<a href='./admin-dash.html'>Continue to Dashboard</a>";
+				echo "<a href='./admin-dash.php'>Continue to Dashboard</a>";
 			}
 		 ?>
 		 <div>
