@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -20,34 +23,33 @@
     <nav>
         <div class="nav-wrapper" style="background-color:white;">
             <div style="margin-top: 5px; margin-left:12px;" class="img-hold">
-                <a href="user-dashboard.html" class="brand-logo"><img src="./images/p2p-green-logo-resized.png"></a>
+                <a href="user-dashboard.php" class="brand-logo"><img src="./images/p2p-green-logo-resized.png"></a>
             </div>
             <!--Menu Trigger on Small Screen-->
             <a href="#" data-target="mobile-demo" id="mobile-menu-icon" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li id="settings-link"><a href="./user-settings.html"><i class="material-icons">settings</i></a></li>
-                <li><a class="dropdown-trigger user-name-lend" href="#" data-target="dropdown-user-module">Username<i
+                <li id="settings-link"><a href="./user-settings.php"><i class="material-icons">settings</i></a></li>
+                <li><a class="dropdown-trigger user-name-lend" href="#" data-target="dropdown-user-module"><?php echo $_SESSION['FName'][0];?><i
                             class="material-icons right">arrow_drop_down</i></a></li>
             </ul>
         </div>
     </nav>
     <!-- Drop Down Links -->
     <ul id="dropdown-user-module" class="dropdown-content">
-        <li><a href="./user-profile.html">My Profile<i class="material-icons left">account_circle</i></a></li>
-        <li><a href="./user-settings.html">Settings<i class="material-icons left">settings</i></a></li>
+        <li><a href="./user-profile.php">My Profile<i class="material-icons left">account_circle</i></a></li>
         <li class="divider"></li>
         <li><a href="#!">Logout<i class="material-icons left">power_settings_new</i></a></li>
     </ul>
     <!-- Smaller Screen Menu -->
     <ul class="sidenav" id="mobile-demo">
-        <li><a href="./user-dashboard.html">Dashboard<i class="fas fa-tachometer-alt left"></i></a></li>
-        <li><a href="./lend.html">Lend Money<i class="fas fa-hand-holding-usd left"></i></a></li>
-        <li><a href="./wallet.html">Wallet<i class="fas fa-wallet left"></i></a></li>
-        <li><a href="./borrow.html">Borrow Money<i class="fas fa-exchange-alt"></i></a></li>
-        <li><a href="./user-settings.html">Manage Settings<i class="fas fa-cog left"></i></a></li>
-        <li><a href="./feedback.html">Feedback<i class="fas fa-comment-alt left"></i></a></li>
-        <li><a href="./user-profile.html">View Profile<i class="fas fa-user-circle left"></i></a></li>
-        <li><a href="./wallet.html#recent-transactions">Recent Transactions<i class="fas fa-history left"></i></a></li>
+        <li><a href="./user-dashboard.php">Dashboard<i class="fas fa-tachometer-alt left"></i></a></li>
+        <li><a href="./lend.php">Lend Money<i class="fas fa-hand-holding-usd left"></i></a></li>
+        <li><a href="./wallet.php">Wallet<i class="fas fa-wallet left"></i></a></li>
+        <li><a href="./borrow.php">Borrow Money<i class="fas fa-exchange-alt"></i></a></li>
+        <li><a href="./user-settings.php">Manage Settings<i class="fas fa-cog left"></i></a></li>
+        <li><a href="./feedback.php">Feedback<i class="fas fa-comment-alt left"></i></a></li>
+        <li><a href="./user-profile.php">View Profile<i class="fas fa-user-circle left"></i></a></li>
+        <li><a href="./wallet.php#recent-transactions">Recent Transactions<i class="fas fa-history left"></i></a></li>
         <li><a href="#">Logout<i class="fas fa-power-off left"></i></a></li>
     </ul>
     <main style="flex:1 0 auto;">
@@ -56,14 +58,14 @@
                 <div class="row" style="margin-bottom:0px;">
                     <div class="white col l6 center-align">
                         <ul class="side-nav-user-module">
-                            <li><a href="./user-dashboard.html" title="Dashboard"><i class="fas fa-tachometer-alt"></i></a></li>
-                            <li><a href="./lend.html" title="Lend Money"><i class="fas fa-hand-holding-usd"></i></a></li>
-                            <li><a href="./wallet.html" title="Wallet"><i class="fas fa-wallet"></i></a></li>
-                            <li><a href="./borrow.html" title="Borrow Money"><i class="fas fa-exchange-alt"></i></a></li>
-                            <li><a href="./user-settings.html" title="Manage Settings"><i class="fas fa-cog"></i></a></li>
-                            <li><a href="./feedback.html" title="Feedback"><i class="fas fa-comment-alt"></i></a></li>                            
-                            <li><a href="./wallet.html#recent-transactions" title="Transaction History"><i class="fas fa-history"></i></a></li>
-                            <li><a href="./user-profile.html" title="View Profile"><i class="fas fa-user-circle"></i></a></li>
+                            <li><a href="./user-dashboard.php" title="Dashboard"><i class="fas fa-tachometer-alt"></i></a></li>
+                            <li><a href="./lend.php" title="Lend Money"><i class="fas fa-hand-holding-usd"></i></a></li>
+                            <li><a href="./wallet.php" title="Wallet"><i class="fas fa-wallet"></i></a></li>
+                            <li><a href="./borrow.php" title="Borrow Money"><i class="fas fa-exchange-alt"></i></a></li>
+                            <li><a href="./user-settings.php" title="Manage Settings"><i class="fas fa-cog"></i></a></li>
+                            <li><a href="./feedback.php" title="Feedback"><i class="fas fa-comment-alt"></i></a></li>                            
+                            <li><a href="./wallet.php#recent-transactions" title="Transaction History"><i class="fas fa-history"></i></a></li>
+                            <li><a href="./user-profile.php" title="View Profile"><i class="fas fa-user-circle"></i></a></li>
                         </ul>
                     </div>
                 </div>

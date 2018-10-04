@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +27,7 @@
                 <!--Menu Trigger on Small Screen-->
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul id="nav-mobile" class="right hide-on-small-only">  
-                    <li><a class="dropdown-trigger user-name" href="#" data-target="dropdown1">Username<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li><a class="dropdown-trigger user-name" href="#" data-target="dropdown1"><?php echo $_SESSION['FName'][0];?><i class="material-icons right">arrow_drop_down</i></a></li>
                 </ul>
             </div>
         </nav>

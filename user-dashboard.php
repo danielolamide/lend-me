@@ -1,3 +1,6 @@
+<?
+    session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -19,33 +22,33 @@
     <nav>
         <div class="nav-wrapper top-nav">
             <div style="margin-top: 5px;" class="img-hold">
-                <a href="user-dashboard.html" class="brand-logo"><img src="./images/p2p-logo-white-resize.png"></a>
+                <a href="user-dashboard.php" class="brand-logo"><img src="./images/p2p-logo-white-resize.png"></a>
             </div>
 
             <!--Menu Trigger on Small Screen-->
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="user-dashboard.html">Dashboard</a></li>
-                <li><a href="feedback.html">Suggestions & Complaints</a></li>
-                <li><a class="dropdown-trigger user-name" href="#" data-target="dropdown1">Username<i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a href="user-dashboard.php">Dashboard</a></li>
+                <li><a href="feedback.php">Suggestions & Complaints</a></li>
+                <li><a class="dropdown-trigger user-name" href="#" data-target="dropdown1"><?php echo $_SESSION['FName'][0];?><i class="material-icons right">arrow_drop_down</i></a></li>
             </ul>
         </div>
     </nav>
     <!-- Drop Down Links -->
     <ul id="dropdown1" class="dropdown-content">
-        <li><a href="./user-profile.html">My Profile<i class="material-icons left">account_circle</i></a></li>
-        <li><a href="./user-settings.html">Settings<i class="material-icons left">settings</i></a></li>
+        <li><a href="./user-profile.php">My Profile<i class="material-icons left">account_circle</i></a></li>
+        <li><a href="./user-settings.php">Settings<i class="material-icons left">settings</i></a></li>
         <li class="divider"></li>
         <li><a href="#!">Logout<i class="material-icons left">power_settings_new</i></a></li>
     </ul>
     <!-- Smaller Screen Menu -->
     <ul class="sidenav" id="mobile-demo">
-        <li><a href="./wallet.html">Wallet<i class="fas fa-wallet left"></i></a></li>
-        <li><a href="./lend.html">Lend Money<i class="fas fa-hand-holding-usd left"></i></a></li>
-        <li><a href="./borrow.html">Borrow Money<i class="fas fa-exchange-alt"></i></a></li>
-        <li><a href="./user-settings.html">Manage Settings<i class="fas fa-cog left"></i></a></li>
-        <li><a href="./feedback.html">Feedback<i class="fas fa-comment-alt left"></i></a></li>
-        <li><a href="./wallet.html#recent-transactions">Recent Transactions<i class="fas fa-history left"></i></a></li>
+        <li><a href="./wallet.php">Wallet<i class="fas fa-wallet left"></i></a></li>
+        <li><a href="./lend.php">Lend Money<i class="fas fa-hand-holding-usd left"></i></a></li>
+        <li><a href="./borrow.php">Borrow Money<i class="fas fa-exchange-alt"></i></a></li>
+        <li><a href="./user-settings.php">Manage Settings<i class="fas fa-cog left"></i></a></li>
+        <li><a href="./feedback.php">Feedback<i class="fas fa-comment-alt left"></i></a></li>
+        <li><a href="./wallet.phpcent-transactions">Recent Transactions<i class="fas fa-history left"></i></a></li>
         <li><a href="#">Logout<i class="fas fa-power-off left"></i></a></li>
     </ul>
     <main style="flex:1 0 auto;">
@@ -62,7 +65,7 @@
                     <div class="row">
                         <div class="col s12 m12 l12">
                             <div class="btn-hold center">
-                                <a href="./wallet.html" class="waves-effect waves-light btn ">Deposit</a>
+                                <a href="./wallet.php" class="waves-effect waves-light btn ">Deposit</a>
                             </div>
                         </div>
                     </div>
@@ -78,7 +81,7 @@
                     <div class="row">
                         <div class="col s12 m12 l12">
                             <div class="btn-hold center">
-                                <a href="lend.html" class="waves-effect waves-light btn ">Lend</a>
+                                <a href="lend.php" class="waves-effect waves-light btn ">Lend</a>
                             </div>
                         </div>
                     </div>
@@ -94,7 +97,7 @@
                     <div class="row">
                         <div class="col s12 m12 l12">
                             <div class="btn-hold center">
-                                <a href="./borrow.html" class="waves-effect waves-light btn ">Borrow</a>
+                                <a href="./borrow.php" class="waves-effect waves-light btn ">Borrow</a>
                             </div>
                         </div>
                     </div>
@@ -110,9 +113,9 @@
                             <div>&nbsp;</div>
                             <div class="divider"></div>
                             <ul class="sublists">
-                                <li><a href="./wallet.html">Deposit</a></li>
+                                <li><a href="./wallet.php">Deposit</a></li>
                                 <div class="divider"></div>
-                                <li><a href="./wallet.html">Withdraw</a></li>
+                                <li><a href="./wallet.php">Withdraw</a></li>
                                 <div class="divider"></div>
                                 <div>&nbsp;</div>
 
@@ -122,7 +125,7 @@
                             <div>&nbsp;</div>
                             <div class="divider"></div>
                             <ul class="sublists">
-                                <li><a href="./lend.html">Lend Money</a></li>
+                                <li><a href="./lend.php">Lend Money</a></li>
                                 <div class="divider"></div>
                                 <div>&nbsp;</div>
                             </ul>
@@ -131,7 +134,7 @@
                             <div>&nbsp;</div>
                             <div class="divider"></div>
                             <ul class="sublists">
-                                <li><a href="./borrow.html">Borrow Money</a></li>
+                                <li><a href="./borrow.php">Borrow Money</a></li>
                                 <div class="divider"></div>
                             </ul>
                         </li>
@@ -140,7 +143,7 @@
                             <div>&nbsp;</div>
                             <div class="divider"></div>
                             <ul class="sublists">
-                                <li><a href="wallet.html#recent-transactions">Transaction History</a></li>
+                                <li><a href="wallet.php#recent-transactions">Transaction History</a></li>
                                 <div class="divider"></div>
                             </ul>
                         </li>

@@ -1,14 +1,14 @@
 <?php  
 	$alert="";
 	$error="";
-	echo '<script type="text/javascript">','checkOnlineStatus();','</script>'; 
+	$error1="";
 	if(isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['hash']) && !empty($_GET['hash'])){
-		include 'connet-db.php';
+		require_once ('connect-db.php');
 		$email = $con->real_escape_string($_GET['email']);
 		$passHash = $con->real_escape_string($_GET['hash']);
-		$query = $con->query("SELECT * FROM s_details WHERE s_email='$email' AND s_pass='$passHash' AND isEmailConfirmed='0'");
+		$query = $con->query("SELECT * FROM users WHERE Email='$email' AND Password='$passHash' AND AccStatus='0'");
 		if($query->num_rows>0){
-			$updateConfirmation = "UPDATE s_details SET isEmailConfirmed='1' WHERE s_email='$email' AND s_pass='$passHash'";
+			$updateConfirmation = "UPDATE users SET AccStatus='1' WHERE Email='$email' AND Password ='$passHash'";
 			$activate = $con->query($updateConfirmation);
 			$alert ="<p>Successful Account Activation</p>";
 		}
@@ -18,7 +18,7 @@
 
 	}
 	else{
-		$error="<p>Invalid. Please use the activaiton link sent to your email to activate your account.";
+		$error1="<p>Invalid. Please use the activaiton link sent to your email to activate your account.";
 	}
 ?>
 <!DOCTYPE html>
@@ -64,13 +64,13 @@
 				echo $error;
 				echo "<br>";
 				echo "<br>";
-				echo "<a href='./index.php'>Return to Home Page</a>";
+				echo "<a href='./authenticate.html'>Return to Home Page</a>";
 			}
 			if($alert){
 				echo $alert;
 				echo "<br>";
 				echo "<br>";
-				echo "<a href='./home.php'>Continue to Dashboard</a>";
+				echo "<a href='./admin-dash.html'>Continue to Dashboard</a>";
 			}
 		 ?>
 		 <div>

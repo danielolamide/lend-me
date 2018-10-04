@@ -14,23 +14,23 @@
 				if((password_verify($uPassword, $data['Password']))&&($email==$data['Email'])){
                     if($data['AccStatus']==1){
 					    if($data['UserType']=="User"){
-                            $_SESSION['fname']= $data['Fname'];
-                            $_SESSION['lname']= $data['Lname'];
+							$_SESSION['uName']= $data['Username'];
+							$_SESSION['FName']= explode(" ",$_SESSION['uName']);
     	    				$_SESSION['email']= $data['Email'];
 	    	    			$_SESSION['idNo']= $data['ID'];
 		    	    		$_SESSION['gender'] = $data['Gender'];
 			    	    	$_SESSION['uType'] = $data['UserType'];
-					        header("location: user-dashboard.html'");
+					        header("location: user-dashboard.php");
 					    }
 
     					else{
-                            $_SESSION['fname']= $data['Fname'];
-                            $_SESSION['lname']= $data['Lname'];
+							$_SESSION['uName']= $data['Username'];
+							$_SESSION['FName']= explode(" ",$_SESSION['uName']);
     		    			$_SESSION['email']= $data['Email'];
 	    		    		$_SESSION['idNo']= $data['ID'];
 		    		    	$_SESSION['gender'] = $data['Gender'];
 			    		    $_SESSION['uType'] = $data['UserType'];
-					        header("location: admin-dash.html");
+					        header("location: admin-dash.php");
                         }
                     }
                     else {
