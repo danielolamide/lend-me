@@ -1,5 +1,35 @@
 <?php
     session_start();
+    require_once("connect-db.php");
+    if(!isset($_SESSION['idNo'])){
+        header("Location: authenticate.html#login");
+    }
+    else{
+        $wallet_query = "SELECT * FROM wallet WHERE ID='{$_SESSION['idNo']}'";
+        $select_wallet = $con->query($wallet_query);
+        if($select_wallet->num_rows>0){
+            $wallet_row=$select_wallet->fetch_array();
+            $_SESSION['wallet-id']= $wallet_row['WalletID'];
+            $_SESSION['wallet-balance']= $wallet_row['WalletBalance'];
+        }
+        if(isset($_POST['deposit-money-btn'])){
+            $amount_to_deposit = $con->real_escape_string($_POST['amount-to-deposit']);
+            $total_amount= $_SESSION['wallet-balance'] + $amount_to_deposit;
+            $depositMoneySQL = "UPDATE wallet SET WalletBalance='$total_amount' WHERE ID='{$_SESSION['idNo']}'";
+            $depositWallet= $con->query($depositMoneySQL);
+            
+            if($depositWallet===true){
+                $msg="Successfully Deposited ".'$amount_to_deposit';
+                echo "<script>Materialize.toast('$msg','3000', 'rounded')</script>";
+            }
+        }
+        if(isset($_POST['withdraw-money-btn'])){
+            $amount_to_withdraw = $con->real_escape_string($_POST['amount-to-withdraw']);
+            $total_amount = $_SESSION['wallet-balance'] - $amount_to_withdraw;
+            $withdrawMoneySQL ="UPDATE wallet SET WalletBalance='$total_amount' WHERE ID='{$_SESSION['idNo']}'";
+            $withdrawWallet = $con->query($withdrawMoneySQL);
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -38,7 +68,7 @@
     <ul id="dropdown-user-module" class="dropdown-content">
         <li><a href="./user-profile.php">My Profile<i class="material-icons left">account_circle</i></a></li>
         <li class="divider"></li>
-        <li><a href="#!">Logout<i class="material-icons left">power_settings_new</i></a></li>
+        <li><a href="./logout.php">Logout<i class="material-icons left">power_settings_new</i></a></li>
     </ul>
     <!-- Smaller Screen Menu -->
     <ul class="sidenav" id="mobile-demo">
@@ -50,7 +80,7 @@
         <li><a href="./user-settings.php">Manage Settings<i class="fas fa-cog left"></i></a></li>
         <li><a href="./user-profile.php">View Profile<i class="fas fa-user-circle left"></i></a></li>
         <li><a href="./wallet.php#recent-transactions">Recent Transactions<i class="fas fa-history left"></i></a></li>
-        <li><a href="#">Logout<i class="fas fa-power-off left"></i></a></li>
+        <li><a href="./logout.php">Logout<i class="fas fa-power-off left"></i></a></li>
     </ul>
     <main style="flex:1 0 auto;">
         <div class="row" style="margin-bottom:0px;">
@@ -85,7 +115,7 @@
                         </div>
                         <div class="row">
                             <div class="col s12 m12 l12 center-align" id="acc-balance-value-container">
-                                <span>Ksh. 30000</span>
+                                <span>Ksh.<?php echo $_SESSION['wallet-balance'];?></span>
                             </div>
                         </div>
                     </div>
@@ -118,11 +148,11 @@
                                 <a href="#!" class="modal-close waves-effect waves-green right"><i class="material-icons center">close</i></a>
                             </div>
                         </div>
-                        <form action="">
+                        <form method="post">
                             <div class="row deposit-form-container">
                                 <div class=" input-field col s12 m12 l12">
                                     <i class="material-icons prefix">attach_money</i>
-                                    <input type="number" id="deposit-icon">
+                                    <input type="number" id="deposit-icon" name="amount-to-deposit">
                                     <label for="deposit-icon">Amount to Deposit</label>
                                 </div>
                             </div>
@@ -149,11 +179,11 @@
                                 <a href="#!" class="modal-close waves-effect waves-green right"><i class="material-icons center">close</i></a>
                             </div>
                         </div>
-                        <form action="">
+                        <form method="post">
                             <div class="row">
                                 <div class="input-field col s12 m12 l12">
                                     <i class="material-icons prefix">attach_money</i>
-                                    <input type="number" id="withdraw-icon">
+                                    <input type="number" id="withdraw-icon" name="amount-to-withdraw">
                                     <label for="withdraw-icon">Amount to Withdraw</label>
                                 </div>
                             </div>

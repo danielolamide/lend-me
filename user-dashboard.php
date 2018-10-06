@@ -43,7 +43,7 @@
         <li><a href="./user-profile.php">My Profile<i class="material-icons left">account_circle</i></a></li>
         <li><a href="./user-settings.php">Settings<i class="material-icons left">settings</i></a></li>
         <li class="divider"></li>
-        <li><a href="#!">Logout<i class="material-icons left">power_settings_new</i></a></li>
+        <li><a href="./logout.php">Logout<i class="material-icons left">power_settings_new</i></a></li>
     </ul>
     <!-- Smaller Screen Menu -->
     <ul class="sidenav" id="mobile-demo">
@@ -53,7 +53,7 @@
         <li><a href="./user-settings.php">Manage Settings<i class="fas fa-cog left"></i></a></li>
         <li><a href="./feedback.php">Feedback<i class="fas fa-comment-alt left"></i></a></li>
         <li><a href="./wallet.phpcent-transactions">Recent Transactions<i class="fas fa-history left"></i></a></li>
-        <li><a href="#">Logout<i class="fas fa-power-off left"></i></a></li>
+        <li><a href="./logout.php">Logout<i class="fas fa-power-off left"></i></a></li>
     </ul>
     <main style="flex:1 0 auto;">
         <div class="white container user-options">

@@ -49,9 +49,10 @@ if(isset($_POST['sign_up']))
         else{
             $hashed = password_hash($uPass, PASSWORD_BCRYPT);
             $sql = "INSERT INTO users (Username,Email,ID,Password,Phone_No,Gender,UserType,AccStatus) VALUES ('$username', '$email', '$id', '$hashed', '$no', '$sex', '$user', '$acc')";
+            $intitalize_wallet="INSERT INTO wallet(ID) VALUES('$id')";
 
 
-            if($con->query($sql) === true){
+            if($con->query($sql) === true && $con->query($intitalize_wallet)){
                 echo "<script language='javascript'>
                     alert ('Your Account has been created. Activate your account to login. WELCOME!');
                     window.location='index.html';

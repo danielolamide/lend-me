@@ -36,7 +36,7 @@
         <li><a href="./admin-profile.php">My Profile<i class="material-icons left">account_circle</i></a></li>
         <li><a href="./admin-settings.php">Settings<i class="material-icons left">settings</i></a></li>
         <li class="divider"></li>
-        <li><a href="#!">Logout<i class="material-icons left">power_settings_new</i></a></li>
+        <li><a href="./logout.php">Logout<i class="material-icons left">power_settings_new</i></a></li>
     </ul>
         <!--NavBar Resize Menu-->
     <ul class="sidenav" id="mobile-demo">
@@ -45,7 +45,7 @@
         <li><a href="./transaction-mgmt.php">Transaction Management<i class="material-icons left">attach_money</i></a></li>
         <li><a href="./user-messages.php">User Feedback<i class="material-icons left">feedback</i></a></li>
         <li><a href="./admin-settings.php">Manage Settings<i class="material-icons left">settings</i></a></li>
-        <li><a href="#">Logout<i class="material-icons left">power_settings_new</i></a></li>
+        <li><a href="./logout.php">Logout<i class="material-icons left">power_settings_new</i></a></li>
         </ul>
 
     <!--Admin Side Menu Fixed-->
@@ -66,7 +66,7 @@
         <li><a href="./user-messages.php"><i class="material-icons">feedback</i>User Feedback</a></li>
         <li><div class="divider"></div></li>
         <li><a href="./admin-settings.php"><i class="material-icons">settings</i>Manage Settings</a></li>
-        <li><a class="waves-effect" href="#!"><i class="material-icons">power_settings_new</i>Logout</a></li>
+        <li><a class="waves-effect" href="./logout.php"><i class="material-icons">power_settings_new</i>Logout</a></li>
     </ul>
     <main>
         <div class="center-align dashboard-title">
