@@ -4,32 +4,6 @@
     if(!isset($_SESSION['idNo'])){
         header("Location: authenticate.html#login");
     }
-    else{
-        $wallet_query = "SELECT * FROM wallet WHERE ID='{$_SESSION['idNo']}'";
-        $select_wallet = $con->query($wallet_query);
-        if($select_wallet->num_rows>0){
-            $wallet_row=$select_wallet->fetch_array();
-            $_SESSION['wallet-id']= $wallet_row['WalletID'];
-            $_SESSION['wallet-balance']= $wallet_row['WalletBalance'];
-        }
-        if(isset($_POST['deposit-money-btn'])){
-            $amount_to_deposit = $con->real_escape_string($_POST['amount-to-deposit']);
-            $total_amount= $_SESSION['wallet-balance'] + $amount_to_deposit;
-            $depositMoneySQL = "UPDATE wallet SET WalletBalance='$total_amount' WHERE ID='{$_SESSION['idNo']}'";
-            $depositWallet= $con->query($depositMoneySQL);
-            
-            if($depositWallet===true){
-                $msg="Successfully Deposited ".'$amount_to_deposit';
-                echo "<script>Materialize.toast('$msg','3000', 'rounded')</script>";
-            }
-        }
-        if(isset($_POST['withdraw-money-btn'])){
-            $amount_to_withdraw = $con->real_escape_string($_POST['amount-to-withdraw']);
-            $total_amount = $_SESSION['wallet-balance'] - $amount_to_withdraw;
-            $withdrawMoneySQL ="UPDATE wallet SET WalletBalance='$total_amount' WHERE ID='{$_SESSION['idNo']}'";
-            $withdrawWallet = $con->query($withdrawMoneySQL);
-        }
-    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -46,7 +20,7 @@
     <link type="text/css" rel="stylesheet" href="css/materialize.css" media="screen,projection" />
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/user-module.css">
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script> 
 </head>
 
 <body style="display:flex; min-height: 100vh; flex-direction: column;">
@@ -115,7 +89,15 @@
                         </div>
                         <div class="row">
                             <div class="col s12 m12 l12 center-align" id="acc-balance-value-container">
-                                <span>Ksh.<?php echo $_SESSION['wallet-balance'];?></span>
+                                <span id="w-balance">Ksh. <?php
+                                    $getBalanceSQL = "SELECT WalletBalance FROM wallet WHERE ID='{$_SESSION['idNo']}'";
+                                    $select_balance = $con->query($getBalanceSQL);
+                                    if($select_balance->num_rows>0){
+                                        $balance_data = $select_balance->fetch_array();
+                                        $currentBalance = $balance_data['WalletBalance'];
+                                        echo $currentBalance; 
+                                    }
+                                ?></span>
                             </div>
                         </div>
                     </div>
@@ -148,11 +130,11 @@
                                 <a href="#!" class="modal-close waves-effect waves-green right"><i class="material-icons center">close</i></a>
                             </div>
                         </div>
-                        <form method="post">
+                        <form method="post" action="processDeposit.php" id="depositForm"> 
                             <div class="row deposit-form-container">
                                 <div class=" input-field col s12 m12 l12">
                                     <i class="material-icons prefix">attach_money</i>
-                                    <input type="number" id="deposit-icon" name="amount-to-deposit">
+                                    <input type="number" id="deposit-icon" name="amount-to-deposit" required>
                                     <label for="deposit-icon">Amount to Deposit</label>
                                 </div>
                             </div>
@@ -160,7 +142,7 @@
                                 <div class="col s12 m12 l12 center-align">
                                     <button class="btn waves-effect waves-light type
                                     submit"
-                                        name="deposit-money-btn">
+                                        name="deposit-money-btn" id="deposit-btn">
                                         Deposit<i class="material-icons">send</i>
                                     </button>
                                 </div>
@@ -179,17 +161,17 @@
                                 <a href="#!" class="modal-close waves-effect waves-green right"><i class="material-icons center">close</i></a>
                             </div>
                         </div>
-                        <form method="post">
+                        <form method="post" action="processWithdraw.php"id="withdrawForm">
                             <div class="row">
                                 <div class="input-field col s12 m12 l12">
                                     <i class="material-icons prefix">attach_money</i>
-                                    <input type="number" id="withdraw-icon" name="amount-to-withdraw">
+                                    <input type="number" id="withdraw-icon" name="amount-to-withdraw" required>
                                     <label for="withdraw-icon">Amount to Withdraw</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col s12 m12 l12 center-align">
-                                    <button class="btn waves-effect waves-light" type="submit" name="withdraw-money-btn">
+                                    <button class="btn waves-effect waves-light" id="withdraw-btn" type="submit" name="withdraw-money-btn">
                                         Withdraw <i class="material-icons">send</i>
                                     </button>
                                 </div>

@@ -1,7 +1,16 @@
 <?
+    require_once('connect-db.php');
     session_start();
     if(!isset($_SESSION['idNo'])){
         header("location: authenticate.html#login");
+    }
+    else{
+        $selectBalance = "SELECT * FROM wallet where ID = {$_SESSION['idNo']}";
+        $balanceSelectQuery = $con->query($selectBalance);
+        if($balanceSelectQuery->num_rows>0){
+            $balanceData = $balanceSelectQuery->fetch_array();
+            $_SESSION['wallet-balance'] = $balanceData['WalletBalance'];
+        }
     }
     
 ?>
@@ -220,8 +229,8 @@
                                                 <td class="account-data">Ksh. 20020</td>
                                             </tr>
                                             <tr>
-                                                <td>Holding Account</td>
-                                                <td class="account-data">Ksh. 20000</td>
+                                                <td>Wallet Balance</td>
+                                                <td class="account-data"><?php echo "Ksh. ".$_SESSION['wallet-balance'];?></td>
                                             </tr>
                                             <tr>
                                                 <td>Total</td>
