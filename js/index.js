@@ -34,7 +34,9 @@ $(document).ready(function () {
                 var instance = M.Modal.init(depositModal);
                 instance.close();
                 $('#w-balance').load('updateWallet.php');
+                $('#recent-transactions').load('updateTransaction.php');
                 M.toast({html:"Successfully Deposited Ksh "+depositFormData["amount-to-deposit"], classes:'rounded green', displayLength:'1000'});
+                location.reload();
             }
         });
         event.preventDefault();
@@ -65,7 +67,9 @@ $(document).ready(function () {
                 var instance = M.Modal.init(withdrawModal);
                 instance.close();
                 $('#w-balance').load('updateWallet.php');
+                $('#recent-transactions').load('updateTransaction.php');
                 M.toast({html:"Successfully Withdrawn Ksh "+withdrawFormData["amount-to-withdraw"], classes:'rounded green', displayLength:'1000'});
+                location.reload();
                 
             },
             error: function(){
@@ -73,7 +77,9 @@ $(document).ready(function () {
                 var instance = M.Modal.init(withdrawModal);
                 instance.close();
                 $('#w-balance').load('updateWallet.php');
+                $('#recent-transactions').load('updateTransaction.php');
                 M.toast({html:"You have insufficient funds", classes:'rounded red', displayLength:'1000'});
+                location.reload();
             }
                 
         });

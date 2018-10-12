@@ -8,5 +8,7 @@
         $currentBalance = $balance_data['WalletBalance'];
      
     }
-    echo "Ksh. ".$currentBalance;
+    echo "<span>Ksh. ";
+    echo $currentBalance;
+    echo"</span>";
 ?>

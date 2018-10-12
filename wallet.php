@@ -23,7 +23,7 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script> 
 </head>
 
-<body style="display:flex; min-height: 100vh; flex-direction: column;">
+<body style="display:flex; min-height: 100vh; flex-direction: column; scroll: auto;">
     <nav>
         <div class="nav-wrapper" style="background-color:white;">
             <div style="margin-top: 5px; margin-left:12px;" class="img-hold">
@@ -89,15 +89,17 @@
                         </div>
                         <div class="row">
                             <div class="col s12 m12 l12 center-align" id="acc-balance-value-container">
-                                <span id="w-balance">Ksh. <?php
+                                <div id="w-balance"><?php
                                     $getBalanceSQL = "SELECT WalletBalance FROM wallet WHERE User_ID='{$_SESSION['idNo']}'";
                                     $select_balance = $con->query($getBalanceSQL);
                                     if($select_balance->num_rows>0){
                                         $balance_data = $select_balance->fetch_array();
                                         $currentBalance = $balance_data['WalletBalance'];
-                                        echo $currentBalance; 
+                                        echo "<span>Ksh. ";
+                                        echo $currentBalance;
+                                        echo"</span>"; 
                                     }
-                                ?></span>
+                                ?></div>
                             </div>
                         </div>
                     </div>

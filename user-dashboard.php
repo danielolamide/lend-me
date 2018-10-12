@@ -15,7 +15,7 @@
     
 ?>
 <!DOCTYPE html>
-<html>houd
+<html>
 
 <head>
     <meta charset="UTF-8">
