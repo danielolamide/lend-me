@@ -14,7 +14,7 @@
 							$_SESSION['uName']= $data['Username'];
 							$_SESSION['FName']= explode(" ",$_SESSION['uName']);
     	    				$_SESSION['email']= $data['Email'];
-	    	    			$_SESSION['idNo']= $data['ID'];
+	    	    			$_SESSION['idNo']= $data['ID_Number'];
 		    	    		$_SESSION['gender'] = $data['Gender'];
 			    	    	$_SESSION['uType'] = $data['UserType'];
 					        header("location: user-dashboard.php");
@@ -24,7 +24,7 @@
 							$_SESSION['uName']= $data['Username'];
 							$_SESSION['FName']= explode(" ",$_SESSION['uName']);
     		    			$_SESSION['email']= $data['Email'];
-	    		    		$_SESSION['idNo']= $data['ID'];
+	    		    		$_SESSION['idNo']= $data['ID_Number'];
 		    		    	$_SESSION['gender'] = $data['Gender'];
 			    		    $_SESSION['uType'] = $data['UserType'];
 					        header("location: admin-dash.php");

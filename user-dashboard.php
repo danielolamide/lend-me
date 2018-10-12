@@ -5,7 +5,7 @@
         header("location: authenticate.html#login");
     }
     else{
-        $selectBalance = "SELECT * FROM wallet where ID = {$_SESSION['idNo']}";
+        $selectBalance = "SELECT * FROM wallet where User_ID = {$_SESSION['idNo']}";
         $balanceSelectQuery = $con->query($selectBalance);
         if($balanceSelectQuery->num_rows>0){
             $balanceData = $balanceSelectQuery->fetch_array();
@@ -15,7 +15,7 @@
     
 ?>
 <!DOCTYPE html>
-<html>
+<html>houd
 
 <head>
     <meta charset="UTF-8">

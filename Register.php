@@ -22,7 +22,7 @@ if(isset($_POST['sign_up']))
     }
 
     else {
-        $userExists= $con->query("SELECT * FROM users WHERE ID='$id'");
+        $userExists= $con->query("SELECT * FROM users WHERE ID_Number='$id'");
 			if ($userExists->num_rows>0) {
 				echo "<script language='javascript'>
                     alert('User with this ID exists.');
@@ -48,8 +48,8 @@ if(isset($_POST['sign_up']))
     
         else{
             $hashed = password_hash($uPass, PASSWORD_BCRYPT);
-            $sql = "INSERT INTO users (Username,Email,ID,Password,Phone_No,Gender,UserType,AccStatus) VALUES ('$username', '$email', '$id', '$hashed', '$no', '$sex', '$user', '$acc')";
-            $intitalize_wallet="INSERT INTO wallet(ID) VALUES('$id')";
+            $sql = "INSERT INTO users (Username,Email,ID_Number,Password,Phone_No,Gender,UserType,AccStatus) VALUES ('$username', '$email', '$id', '$hashed', '$no', '$sex', '$user', '$acc')";
+            $intitalize_wallet="INSERT INTO wallet(User_ID) VALUES('$id')";
 
 
             if($con->query($sql) === true && $con->query($intitalize_wallet)){

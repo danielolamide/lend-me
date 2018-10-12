@@ -90,7 +90,7 @@
                         <div class="row">
                             <div class="col s12 m12 l12 center-align" id="acc-balance-value-container">
                                 <span id="w-balance">Ksh. <?php
-                                    $getBalanceSQL = "SELECT WalletBalance FROM wallet WHERE ID='{$_SESSION['idNo']}'";
+                                    $getBalanceSQL = "SELECT WalletBalance FROM wallet WHERE User_ID='{$_SESSION['idNo']}'";
                                     $select_balance = $con->query($getBalanceSQL);
                                     if($select_balance->num_rows>0){
                                         $balance_data = $select_balance->fetch_array();
@@ -182,40 +182,34 @@
                 <div class="row">
                     <div class="col s12 m12 l12">
                         <div class="transaction-table-container" id="recent-transactions">
-                            <table class="responsive-table">
-                                <thead>
-                                    <th style="width:200px;">Transaction ID</th>
-                                    <th>Time Stamp</th>
-                                    <th>Amount</th>
-                                    <th>Payment Type</th>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>T1000</td>
-                                        <td>02/11/2019 12:42pm</td>
-                                        <td>Ksh. 1000</td>
-                                        <td>Loan Repayment</td>
-                                    </tr>
-                                    <tr>
-                                        <td>T1000</td>
-                                        <td>02/11/2019 12:42pm</td>
-                                        <td>Ksh. 1000</td>
-                                        <td>Loan Funding</td>
-                                    </tr>
-                                    <tr>
-                                        <td>T1000</td>
-                                        <td>02/11/2019 12:42pm</td>
-                                        <td>Ksh. 1000</td>
-                                        <td>Loan Funding</td>
-                                    </tr>
-                                    <tr>
-                                        <td>T1000</td>
-                                        <td>02/11/2019 12:42pm</td>
-                                        <td>Ksh. 1000</td>
-                                        <td>Loan Funding</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <?php
+                                $select_transactions = "SELECT * FROM transactions WHERE User_ID = '{$_SESSION['idNo']}'";
+                                $process_selection = $con->query($select_transactions);
+                                
+                                    if($process_selection->num_rows>0){  
+                                        echo "<table class='responsive-table'>
+                                        <thead>
+                                            <th style='width:200px;'>Transaction ID</th>
+                                            <th>Time Stamp</th>
+                                            <th>Amount</th>
+                                            <th>Transaction Type</th>
+                                        </thead>
+                                        <tbody>";  
+                                        while($transactionTData = $process_selection->fetch_array()){
+                                            echo "<tr>";
+                                            echo"<td>".$transactionTData['TID']."</td>";
+                                            echo"<td>".$transactionTData['TimeStamp']."</td>";
+                                            echo"<td>".$transactionTData['Amount']."</td>";
+                                            echo"<td>".$transactionTData['TransactionType']."</td>";
+                                            echo "</tr>";
+                                        }
+                                        echo "</tbody>";
+                                        echo "</table>";
+                                    }
+                                    else{
+                                        echo "<span class='black-text'>You do not have any transactions yet</span>";
+                                    }
+                            ?>
                         </div>
                     </div>
                 </div>

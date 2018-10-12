@@ -14,7 +14,7 @@
 
     }
     else{
-        $wallet_query = "SELECT * FROM wallet WHERE ID='{$_SESSION['idNo']}'";
+        $wallet_query = "SELECT * FROM wallet WHERE User_ID='{$_SESSION['idNo']}'";
         $select_wallet = $con->query($wallet_query);
         if($select_wallet->num_rows>0){
             $wallet_row=$select_wallet->fetch_array();
@@ -35,8 +35,11 @@
         }
         else{
             $total_amount= $_SESSION['wallet-balance'] - $withdrawAmount;
-            $withdrawMoneySQL = "UPDATE wallet SET WalletBalance='$total_amount' WHERE ID='{$_SESSION['idNo']}'";
+            $withdrawMoneySQL = "UPDATE wallet SET WalletBalance='$total_amount' WHERE User_ID='{$_SESSION['idNo']}'";
             $withdrawWallet= $con->query($withdrawMoneySQL);
+            $transactionType ="Cash Withdrawal";
+            $insertTransactionsSQL = "INSERT INTO transactions (User_ID,Amount,TransactionType) VALUES('{$_SESSION['idNo']}','$withdrawAmount','$transactionType')";
+            $insertTransactions = $con->query($insertTransactionsSQL);
             $data[3] = true;
             $data[4] = "Successfully Withdrawn".$_POST['amount-to-withdraw'] ;
         }
