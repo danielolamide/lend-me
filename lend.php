@@ -224,7 +224,7 @@
                                         <form action="">
                                             <div class="row">
                                                 <div class="input-field col s12 m12 l12">
-                                                    <i class="material-icons prefix">attach_money</i>
+                                                    <i class="fas fa-money-bill prefix"></i>
                                                     <input type="number" id="money-icon" class="validate">
                                                     <label for="money-icon">Amount to lend</label>
                                                 </div>

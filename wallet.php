@@ -135,7 +135,7 @@
                         <form method="post" action="processDeposit.php" id="depositForm"> 
                             <div class="row deposit-form-container">
                                 <div class=" input-field col s12 m12 l12">
-                                    <i class="material-icons prefix">attach_money</i>
+                                    <i class="fas fa-money-bill prefix"></i>
                                     <input type="number" id="deposit-icon" name="amount-to-deposit" required>
                                     <label for="deposit-icon">Amount to Deposit</label>
                                 </div>
@@ -166,7 +166,7 @@
                         <form method="post" action="processWithdraw.php"id="withdrawForm">
                             <div class="row">
                                 <div class="input-field col s12 m12 l12">
-                                    <i class="material-icons prefix">attach_money</i>
+                                    <i class="fas fa-money-bill prefix"></i>
                                     <input type="number" id="withdraw-icon" name="amount-to-withdraw" required>
                                     <label for="withdraw-icon">Amount to Withdraw</label>
                                 </div>
@@ -209,7 +209,7 @@
                                         echo "</table>";
                                     }
                                     else{
-                                        echo "<span class='black-text'>You do not have any transactions yet</span>";
+                                        echo "<span class='black-text' style='font-size:20px;'>You do not have any transactions yet</span>";
                                     }
                             ?>
                         </div>

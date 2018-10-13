@@ -25,6 +25,6 @@
             echo "</table>";
         }
         else{
-            echo "<span class='black-text'>You do not have any transactions yet</span>";
+            echo "<span class='black-text' style='font-size:20px;'>You do not have any transactions yet</span>";
         }
 ?>
