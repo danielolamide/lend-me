@@ -179,31 +179,45 @@
                                     <div class="container">
                                         <div class="row" id="tr-header">
                                             <div class="col s3 m3 l3">
-                                                <span>Recieved By</span>
+                                                <span>Transaction ID</span>
+                                            </div>
+                                            <div class="col s3 m3 l3">
+                                                <span>Time Stamp</span>
                                             </div>
                                             <div class="col s3 m3 l3">
                                                 <span>Amount</span>
-                                            </div>
-                                            <div class="col s3 m3 l3">
-                                                <span>Date</span>
                                             </div>
                                             <div class="col s3 m3 l3">
                                                 <span>Transaction Type</span>
                                             </div>
                                         </div>
                                         <div class="row tr-body">
-                                            <div class="col s3 m3 l3">
-                                                <span class="tr-values">Ola</span>
-                                            </div>
-                                            <div class="col s3 m3 l3">
-                                                <span class="tr-values">2000</span>
-                                            </div>
-                                            <div class="col s3 m3 l3">
-                                                <span class="tr-values">11/21/2018</span>
-                                            </div>
-                                            <div class="col s3 m3 l3">
-                                                <span class="tr-values">Loan Repayment</span>
-                                            </div>
+                                            <?php
+                                                $selectTransactionSQL = "SELECT * FROM transactions WHERE User_ID ={$_SESSION['idNo']} ORDER BY TimeStamp DESC LIMIT 1";
+                                                $selectTransaction = $con->query($selectTransactionSQL);
+                                                if($selectTransaction->num_rows>0){
+                                                    $tRow = $selectTransaction->fetch_array();
+                                                    echo "<div class='col s3 m3 l3>";
+                                                    echo "<span class='tr-values'>".$tRow['TID']."</span>";
+                                                    echo "</div>";
+
+                                                    echo "<div class='col s3 m3 l3>";
+                                                    echo "<span class='tr-values'>".$tRow['TimeStamp']."</span>";
+                                                    echo "</div>";
+
+                                                    echo "<div class='col s3 m3 l3>";
+                                                    echo "<span class='tr-values'>".$tRow['Amount']."</span>";
+                                                    echo "</div>";
+
+                                                    echo "<div class='col s3 m3 l3>";
+                                                    echo "<span class='tr-values'>".$tRow['TransactionType']."</span>";
+                                                    echo "</div>";
+                                                }
+                                                else{
+                                                    echo "<span style='font-size:22px; font-weight:600;'>You don't have any transactions</span>";
+                                                }
+
+                                            ?>
                                         </div>
                                     </div>
                                 </div>
@@ -257,15 +271,15 @@
                                         <tbody>
                                             <tr>
                                                 <td>No. of times you've borrower money</td>
-                                                <td class="account-data">$loan_type_count</td>
+                                                <td class="account-data"><?php echo $_SESSION['bCount'];?> times</td>
                                             </tr>
                                             <tr>
                                                 <td>No. of times you've loaned out money</td>
-                                                <td class="account-data">$loan_type_count</td>
+                                                <td class="account-data"><?php echo $_SESSION['lCount'];?> times</td>
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <a href="transaction.html">View more details on my transactions</a>
+                                    <a href="wallet.php#recent-transactions">View more details on my transactions</a>
                                 </div>
                             </li>
                         </ul>

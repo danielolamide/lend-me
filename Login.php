@@ -16,7 +16,9 @@
     	    				$_SESSION['email']= $data['Email'];
 	    	    			$_SESSION['idNo']= $data['ID_Number'];
 		    	    		$_SESSION['gender'] = $data['Gender'];
-			    	    	$_SESSION['uType'] = $data['UserType'];
+							$_SESSION['uType'] = $data['UserType'];
+							$_SESSION['lCount']= $data['loanCount'];
+							$_SESSION['bCount'] = $data['borrowCount'];
 					        header("location: user-dashboard.php");
 					    }
 

@@ -1,5 +1,26 @@
-<?
+<?  
+    require_once('connect-db.php');
     session_start();
+    if(!isset($_SESSION['idNo'])){
+        header("location: authenticate.html#login");
+    }
+    else{
+        if(isset($_POST['submit_loan_application'])){
+            $checkWalletHistorySQL = "SELECT WalletHistory FROM wallet WHERE User_ID = '{$_SESSION['idNo']}'";
+            $checkWalletHistory = $con->query($checkWalletHistorySQL);
+            $borrowAmount = $con->real_escape_string($_POST['amount_being_borrowed']);
+            $loanPeriod = $con->real_escape_string($_POST['loan-period']);
+            $interestRate = $con->real_escape_string($_POST['loan-interest-rate']);
+            $loanReason = $con->real_escape_string($_POST['loan-reason']);
+            if($checkWalletHistory->num_rows>0){
+                $wRow = $checkWalletHistory->fetch_array();
+                $walletHistory = $wRow['WalletHistory'];
+                
+
+            }
+        }
+    }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -153,30 +174,30 @@
                                 <span class="borrow-form-name">Loan Application Form</span>
                             </div>
                         </div>
-                        <form action="" id="loan-form">
+                        <form id="loan-form" method="post">
                             <div class="row">
                                 <div class="input-field col s12 m12 l12">
                                     <i class="fas fa-money-bill prefix"></i>
-                                    <input type="number" id="money-icon" class="validate">
+                                    <input type="number" id="money-icon" class="validate" name="amount_being_borrowed" required>
                                     <label for="money-icon">Loan Amount</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12 m12 l8">
                                     <i class="material-icons prefix">timelapse</i>
-                                    <input type="number" id="time-icon" class="validate">
+                                    <input type="number" id="time-icon" class="validate" name="loan-period" required>
                                     <label for="time-icon">Loan Period in Months</label>
                                 </div>
                                 <div class="input-field col s12 m12 l4">
                                     <i class="fas fa-percent prefix" style="font-size:20px;"></i>
-                                    <input type="number" id="percent-icon" class="validate">
+                                    <input type="number" id="percent-icon" class="validate" name="loan-interest-rate" required>
                                     <label for="percent-icon">Interest Rate</label>
                                 </div>
                             </div>
                             <div class="row" style="padding:0px 40px;">
                                 <div class="input-field s12 m12 l12">
                                     <i class="material-icons prefix">notes</i>
-                                    <textarea maxlength="40" id="description-text" class="materialize-textarea"></textarea>
+                                    <textarea data-length="40" name="loan-reason" id="description-text" class="materialize-textarea" required></textarea>
                                     <label for="description-text">Loan Purpose</label>
                                 </div>
                             </div>

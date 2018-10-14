@@ -1,5 +1,8 @@
 <?php
     session_start();
+    if(!isset($_SESSION['idNo'])){
+        header('Location: authenticate.html#login');
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -107,7 +110,7 @@
                                     <td>10%</td>
                                     <td>3.4</td>
                                     <td style="text-align: left"><a href="#modal-lend" class="action-icons btn-floating modal-trigger"
-                                            title="Loan Money"><i class="material-icons left">send</i></a>
+                                            title="Loan Money"><i class="fas fa-hand-holding-usd left"></i></a>
                                         <a class="action-icons btn-floating modal-trigger " href="#modal-profile" title="View Complete Profile"><i
                                                 class="material-icons left">more_horiz</i></a>
                                     </td>
@@ -121,7 +124,7 @@
                                     <td>13%</td>
                                     <td>4.4</td>
                                     <td style="text-align: left"><a href="#modal-lend" class="action-icons btn-floating modal-trigger"
-                                            title="Loan Money"><i class="material-icons left">send</i></a>
+                                            title="Loan Money"><i class="fas fa-hand-holding-usd left"></i></a>
                                         <a class="action-icons btn-floating modal-trigger " href="#modal-profile" title="View Complete Profile"><i
                                                 class="material-icons left">more_horiz</i></a>
                                     </td>
@@ -134,8 +137,8 @@
                                     <td>2 Mo</td>
                                     <td>10%</td>
                                     <td>3.4</td>
-                                    <td style="text-align: left"><a href="#model-lend" class="action-icons btn-floating modal-trigger"
-                                            title="Loan Money"><i class="material-icons left">send</i></a>
+                                    <td style="text-align: left"><a href="#modal-lend" class="action-icons btn-floating modal-trigger"
+                                            title="Loan Money"><i class="fas fa-hand-holding-usd left"></i></a>
                                         <a class="action-icons btn-floating modal-trigger " href="#modal-profile" title="View Complete Profile"><i
                                                 class="material-icons left">more_horiz</i></a>
                                     </td>
