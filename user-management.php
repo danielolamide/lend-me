@@ -1,7 +1,7 @@
 <?
     session_start();
     if(!isset($_SESSION['idNo'])){
-        header(";ocation: authenticate.html#login");
+        header("location: authenticate.html#login");
     }
     if($_SESSION['uType']!="Admin"){
         header("location: user-dashboard.php");
@@ -12,7 +12,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>User Mana"gement</title>
+    <title>User Management</title>
     <link rel="icon" type="image/png" href="./images/blue-coin.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
@@ -108,7 +108,7 @@
                                             <th>Name</th>
                                             <th>Phone Number</th>
                                             <th>Payment Pending</th>
-                                            <th>Actions</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -116,8 +116,8 @@
                                             <td>Daniel</td>
                                             <td>1234532</td>
                                             <td>2000</td>
-                                            <td style="float:left"><a href="#" title="Permanently Delete User"><i class="material-icons">delete_forever</i></a></td>
-                                            <td style="float: left;"><a href="#" title="Disable User Account"><i class="material-icons">close</i></a></td>                                        </tr>
+                                            <td style="float: left;"><a href="user-disable.php" title="Disable User Account"><i class="material-icons">close</i></a></td>                                        
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -158,7 +158,7 @@
                                                 <th>Name</th>
                                                 <th>Phone Number</th>
                                                 <th>Amount Loaned Out</th>
-                                                <th>Actions</th>
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -166,8 +166,7 @@
                                                 <td>Nicole</td>
                                                 <td>1234532</td>
                                                 <td>2000</td>
-                                                <td style="float:left;"><a href="#" title="Permanently Delete User"><i class="material-icons">delete_forever</i></a></td>
-                                                <td style="float: left;"><a href="#" title="Disable User Account"><i class="material-icons">close</i></a></td>
+                                                <td style="float: left;"><a href="user-disable.php" title="Disable User Account"><i class="material-icons">close</i></a></td>
                                             </tr>
                                         </tbody>
                                     </table>
