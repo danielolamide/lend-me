@@ -210,7 +210,7 @@
                                                     echo "</div>";
 
                                                     echo "<div class='col s3 m3 l3>";
-                                                    echo "<span class='tr-values'>".$tRow['TransactionType']."</span>";
+                                                    echo "<span class='tr-values>".$tRow['TransactionType']."</span>";
                                                     echo "</div>";
                                                 }
                                                 else{

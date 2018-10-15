@@ -4,23 +4,6 @@
     if(!isset($_SESSION['idNo'])){
         header("location: authenticate.html#login");
     }
-    else{
-        if(isset($_POST['submit_loan_application'])){
-            $checkWalletHistorySQL = "SELECT WalletHistory FROM wallet WHERE User_ID = '{$_SESSION['idNo']}'";
-            $checkWalletHistory = $con->query($checkWalletHistorySQL);
-            $borrowAmount = $con->real_escape_string($_POST['amount_being_borrowed']);
-            $loanPeriod = $con->real_escape_string($_POST['loan-period']);
-            $interestRate = $con->real_escape_string($_POST['loan-interest-rate']);
-            $loanReason = $con->real_escape_string($_POST['loan-reason']);
-            if($checkWalletHistory->num_rows>0){
-                $wRow = $checkWalletHistory->fetch_array();
-                $walletHistory = $wRow['WalletHistory'];
-                
-
-            }
-        }
-    }
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -174,11 +157,11 @@
                                 <span class="borrow-form-name">Loan Application Form</span>
                             </div>
                         </div>
-                        <form id="loan-form" method="post">
+                        <form id="loan-form" method="post" action="processLoanApplication.php">
                             <div class="row">
                                 <div class="input-field col s12 m12 l12">
                                     <i class="fas fa-money-bill prefix"></i>
-                                    <input type="number" id="money-icon" class="validate" name="amount_being_borrowed" required>
+                                    <input type="number" id="money-icon" class="validate" name="amount-being-borrowed" required>
                                     <label for="money-icon">Loan Amount</label>
                                 </div>
                             </div>
