@@ -194,10 +194,10 @@
                             <div class="col s4 m4 l4">
                                 <a href="#!" class="modal-close waves-effect waves-green right"><i class="material-icons center">close</i></a>
                             </div> <br><br>
-                            <a href="user-disable.php" button>Delete</a>
+                            <a href="user-disable.php">Delete</a>
                             <a href="user-management.php">Cancel</a>
                         </div>
-                            </div>
+                    </div>
 
 </body>
 </html>
