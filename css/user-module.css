@@ -109,8 +109,8 @@
 }
 
 #modal-profile {
-    width: 25% !important;
-    height: 57% !important;
+    width: 50% !important;
+    height: 50% !important;
     overflow: hidden;
     background-color: #2E3E4F;
 
@@ -142,9 +142,29 @@
 
 @media only screen and (max-width:600px) {
     #modal-profile {
-        width: 75% !important;
-        height: 50% !important;
+        width: 80% !important;
+        height: 55% !important;
         overflow: hidden;
+    }
+
+    .modal-fixed-footer .row {
+        margin-bottom: 40px;
+    }
+
+    .modal-fixed-footer .row .col {
+        background-color: #F5F5FD;
+    }
+}
+
+@media only screen and (max-width:450px) {
+    #modal-profile {
+        width: 85% !important;
+        height: 55% !important;
+        overflow: hidden;
+    }
+
+    .modal-fixed-footer .row {
+        margin-bottom: 40px;
     }
 
     .modal-fixed-footer .row .col {
@@ -425,7 +445,7 @@ input[type=number]::-webkit-outer-spin-button {
 .transaction-table-container {
     max-height: 180px;
     overflow-y: scroll;
-    
+
 }
 
 .transaction-table-container thead th {
@@ -449,114 +469,139 @@ input[type=number]::-webkit-outer-spin-button {
 #modal-deposit {
     background-color: white;
 }
-.deposit-header{
-    color:#1CC7A4;
+
+.deposit-header {
+    color: #1CC7A4;
     font-size: 22px;
     font-weight: 600;
 }
-.modal-deposit-denomination{
+
+.modal-deposit-denomination {
     color: #323232;
     font-size: 20px;
     font-weight: 600;
 }
-.deposit-form-container{
+
+.deposit-form-container {
     padding: 20px;
 }
-#withdraw-container{
+
+#withdraw-container {
     padding: 20px;
-}   
-.withdraw-modal-header{
+}
+
+.withdraw-modal-header {
     font-size: 22px;
     font-weight: 600;
     color: #1CC7A4;
 }
-.manage-settings-header{
+
+.manage-settings-header {
     font-size: 22px;
     color: #505056;
     font-weight: 600;
 }
-.edit-settings-form{
+
+.edit-settings-form {
     background-color: white;
     margin: 0 auto;
     padding: 10px 20px;
 }
-.edit-form-header{
+
+.edit-form-header {
     color: #505056;
     font-size: 22px;
     font-weight: 600;
 }
-.profile-text{
+
+.profile-text {
     color: #323232;
     font-size: 20px;
     font-weight: 500;
 }
-.save-user-settings-btn{
+
+.save-user-settings-btn {
     color: white;
     background-color: #2C3E50;
     transition: all .2s ease-out;
 }
-.save-user-settings-btn:hover{
+
+.save-user-settings-btn:hover {
     color: white;
     background-color: #1CC7A4;
 }
-.field-labels{
+
+.field-labels {
     color: #323232;
     font-size: 18px;
 }
-.change-user-image-btn:hover{
+
+.change-user-image-btn:hover {
     color: #2C3E50;
 }
-.field-values{
+
+.field-values {
     color: #505056;
     font-size: 18px;
 }
-.user-profile-header{
+
+.user-profile-header {
     padding-top: 25px;
-    color:#505056;
+    color: #505056;
     font-size: 22px;
 
 }
-#profile-container{
+
+#profile-container {
     background-color: white;
     margin: 0 auto;
     padding: 0 10px;
 }
-#feedback-suggestions-header{
+
+#feedback-suggestions-header {
     padding-top: 25px;
     font-size: 22px;
     color: #505056;
     font-weight: 600;
 }
-#suggestion-courtesy{
+
+#suggestion-courtesy {
     color: #323232;
     font-size: 18px;
     letter-spacing: 1px;
 }
-#report-header{
+
+#report-header {
     color: #323232;
     font-size: 22px;
     padding-top: 20px;
 }
-#report-text{
+
+#report-text {
     color: #505056;
     font-size: 18px;
     letter-spacing: 1px;
 }
-#report-btn{
+
+#report-btn {
     color: white;
     background-color: #2C3E50;
 }
-#report-btn:hover{
+
+#report-btn:hover {
     color: #1CC7A4;
-    transform: scale(1.1,1.1);
+    transform: scale(1.1, 1.1);
 }
-#modal-report{
+
+#modal-report {
     background-color: #2C3E50;
 }
-.report-modal-header{
+
+.report-modal-header {
     color: #1CC7A4;
     font-size: 22px;
 }
-#report-name-area{
+
+#report-name-area {
     color: white;
 }

@@ -246,10 +246,6 @@
                                                 <td>Wallet Balance</td>
                                                 <td class="account-data"><?php echo "Ksh. ".$_SESSION['wallet-balance'];?></td>
                                             </tr>
-                                            <tr>
-                                                <td>Total</td>
-                                                <td class="account-data">$total_amount</td>
-                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>

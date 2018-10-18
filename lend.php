@@ -1,7 +1,14 @@
 <?php
+    require_once('connect-db.php');
     session_start();
     if(!isset($_SESSION['idNo'])){
         header('Location: authenticate.html#login');
+    }
+    else{
+        $processLiveBorrowersSQL = "SELECT * FROM liveBorrower WHERE liveStatus ='1'";
+        $processLiveBorrowers = $con -> query($processLiveBorrowersSQL);
+        // $CardDetails
+       
     }
 ?>
 <!DOCTYPE html>
@@ -20,6 +27,32 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/user-module.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript">
+        function clockRefresh(){
+            var refresh = 1000;
+            currentTime = setTimeout('showTime()',refresh);  
+        }
+        function showTime(){
+            var timeInstance = new Date();
+            var month = timeInstance.getMonth();
+            var day = timeInstance.getDate();
+            var year = timeInstance.getFullYear();
+            if (month <10 ){month='0' + month;}
+            if (day <10 ){day='0' + day;}
+            var date = month + "/" + day + "/" + year;
+            var hour = timeInstance.getHours();
+            var minute = timeInstance.getMinutes();
+            var second = timeInstance.getSeconds();
+            if(hour <10 ){hour='0'+hour;}
+            if(minute <10 ) {minute='0' + minute; }
+            if(second<10){second='0' + second;}
+            var time = hour + ':' + minute + ':' + second;
+            document.getElementById('date').innerHTML= date;
+            document.getElementById('time').innerHTML = time;
+            clockRefresh();
+        }
+        window.onload = clockRefresh();
+    </script>
 </head>
 
 <body style="display:flex; min-height: 100vh; flex-direction: column;">
@@ -79,10 +112,10 @@
                         <span class="left">Live Borrowers</span>
                     </div>
                     <div class="col s12 m4 l2 left-align headers">
-                        <span class="left"><i class="material-icons">calendar_today</i>&nbsp;22/05/2018</span>
+                        <span class="left"><i class="material-icons">calendar_today</i>&nbsp;<div style="display:inline;" id="date"></div></span>
                     </div>
                     <div class="col s12 m4 l2 left-align headers">
-                        <span class="left"><i class="material-icons">access_time</i>&nbsp;20:49</span>
+                        <span class="left"><i class="material-icons">access_time</i>&nbsp;<div style="display:inline;" id="time"></div></span>
                     </div>
                 </div>
                 <div class="row">
@@ -101,56 +134,49 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Nicole</td>
-                                    <td>75% Funded</td>
-                                    <td>Personal Needs</td>
-                                    <td>Ksh. 1000</td>
-                                    <td>2 Mo</td>
-                                    <td>10%</td>
-                                    <td>3.4</td>
-                                    <td style="text-align: left"><a href="#modal-lend" class="action-icons btn-floating modal-trigger"
-                                            title="Loan Money"><i class="fas fa-hand-holding-usd left"></i></a>
-                                        <a class="action-icons btn-floating modal-trigger " href="#modal-profile" title="View Complete Profile"><i
-                                                class="material-icons left">more_horiz</i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Agnes</td>
-                                    <td>25% Funded</td>
-                                    <td>Personal Needs</td>
-                                    <td>Ksh. 10000</td>
-                                    <td>2 Mo</td>
-                                    <td>13%</td>
-                                    <td>4.4</td>
-                                    <td style="text-align: left"><a href="#modal-lend" class="action-icons btn-floating modal-trigger"
-                                            title="Loan Money"><i class="fas fa-hand-holding-usd left"></i></a>
-                                        <a class="action-icons btn-floating modal-trigger " href="#modal-profile" title="View Complete Profile"><i
-                                                class="material-icons left">more_horiz</i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Nicole</td>
-                                    <td>75% Funded</td>
-                                    <td>Personal Needs</td>
-                                    <td>Ksh. 1000</td>
-                                    <td>2 Mo</td>
-                                    <td>10%</td>
-                                    <td>3.4</td>
-                                    <td style="text-align: left"><a href="#modal-lend" class="action-icons btn-floating modal-trigger"
-                                            title="Loan Money"><i class="fas fa-hand-holding-usd left"></i></a>
-                                        <a class="action-icons btn-floating modal-trigger " href="#modal-profile" title="View Complete Profile"><i
-                                                class="material-icons left">more_horiz</i></a>
-                                    </td>
-                                </tr>
+                                <?php
+                                    
+                                    if ($processLiveBorrowers->num_rows>0){
+                                        while($liveBorrowersTData = $processLiveBorrowers->fetch_array() ){
+                                            $bName = $liveBorrowersTData['BorrowerName'];
+                                            $user_id = $liveBorrowersTData['User_ID'];
+                                            $user_rating = $_SESSION['rating'];
+                                            echo "<tr>";
+                                            echo "<td>".$liveBorrowersTData['BorrowerName']."</td>";
+                                            echo "<td>".$liveBorrowersTData['Status']." % Funded"."</td>";
+                                            echo "<td>".$liveBorrowersTData['Description']."</td>";
+                                            echo "<td>"."Ksh ".$liveBorrowersTData['LoanAmount']."</td>";
+                                            echo "<td>".$liveBorrowersTData['LoanLength']." Mo."."</td>";
+                                            echo "<td>".$liveBorrowersTData['LoanInterest']."%"."</td>";
+                                            echo "<td>".$_SESSION['rating']."<i class = 'fas fa-star' style='color:gold;'></i></td>";
+                                            if($_SESSION['idNo']===$user_id){
+                                                echo "<td><a href='#modal-lend' class='action-icons  btn-floating disabled modal-trigger'
+                                                title='Loan Money'><i class='fas fa-hand-holding-usd left'></i></a>
+                                                <a class='action-icons btn-floating modal-trigger' href='#modal-profile' title='View Complete Profile'><i
+                                                class='material-icons left'>more_horiz</i></a></td>";   
+                                            }
+                                            else{
+                                                echo "<td><a href='#modal-lend' class='action-icons btn-floating modal-trigger'
+                                                title='Loan Money'><i class='fas fa-hand-holding-usd left'></i></a>
+                                                <a class='action-icons btn-floating modal-trigger' href='#modal-profile' title='View Complete Profile'><i
+                                                class='material-icons left'>more_horiz</i></a></td>";
+                                            } 
+                                        }
+                                    } 
+                                    else{
+                                        echo "<tr><td style = 'color: #E50000;' colspan ='8'>There are no borrowers currently</td></tr>";
+                                    }
+                                ?>
                             </tbody>
+                            
                         </table>
                         <!-- View Profile Modal -->
                         <div class="modal" id="modal-profile">
+                                    
                             <div class="modal-content">
                                 <div class="row">
                                     <div class="col s8 m8 l8">
-                                        <span class="left borrower-id-modal">$Borrower-ID</span>
+                                        <span class="left borrower-id-modal"><?php echo $user_id;?></span>
                                     </div>
                                     <div class="col s4 m4 l4">
                                         <a href="#!" class="modal-close waves-effect waves-green right"><i class="material-icons center">close</i></a>
@@ -163,12 +189,12 @@
                                 </div>
                                 <div class="row" style="margin-bottom: 0;">
                                     <div class="col s12 m12 l12 center-align">
-                                        <span class="borrower-name-modal">$Borrower</span>
+                                        <span class="borrower-name-modal"><?echo $bName;?></span>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col s12 m12 l12 center-align">
-                                        <span class="borrower-rating-modal">$rating</span>
+                                        <span class="borrower-rating-modal"><? echo $user_rating."<i class = 'fas fa-star' style='color:gold;'></i>";?></span>
                                     </div>
                                 </div>
                             </div>
@@ -177,7 +203,7 @@
                                     <div class="col s12 m12 l12">
                                         <div class="row" style="margin-bottom:0px;">
                                             <div class="col s4 m4 l4 center-align">
-                                                <span class="borrower-det-val">13</span>
+                                                <span class="borrower-det-val"><?php echo $_SESSION['lCount']?></span>
                                             </div>
                                             <div class="col s4 m4 l4 center-align">
                                                 <span class="borrower-det-val">98%</span>
@@ -186,7 +212,7 @@
                                                 <span class="borrower-det-val">2</span>
                                             </div>
                                         </div>
-                                        <div class="row">
+                                        <div class="row" style="margin-bottom:35px;">
                                             <div class="col s4 m4 l4 center-align">
                                                 <span class="borrower-det-modal">Loans</span>
                                             </div>

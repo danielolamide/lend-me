@@ -1,5 +1,8 @@
 <?php
     session_start();
+    if(!(isset($_SESSION['idNo']))){
+        header("location : authenticate#login");
+    }
     
 ?>
 <!DOCTYPE html>
@@ -82,7 +85,7 @@
                         <span class="edit-form-header">Edit Profile</span>
                     </div>
                 </div>
-                <form action="" class="edit-settings-form">
+                <form  class="edit-settings-form" enctype="multipart/form-data" method ="POST">
                     <div class="row">
                         <div class="col s5 m5 l5 left-align">
                             <span class="profile-text">Profile</span>
@@ -103,7 +106,7 @@
                         <div class="input-field file-field col s7 m7 l7">
                             <img src="./images/large-default-user.png" class="responsive-img left"alt="user-image">
                             <button class="btn waves-effect waves-light change-user-image-btn">
-                                Change<input type="file">
+                                Change<input type="file" name="new-user-img">
                             </button>
                             
                         </div>

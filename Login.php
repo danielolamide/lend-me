@@ -19,6 +19,7 @@
 							$_SESSION['uType'] = $data['UserType'];
 							$_SESSION['lCount']= $data['loanCount'];
 							$_SESSION['bCount'] = $data['borrowCount'];
+							$_SESSION['rating'] = $data['UserRating'];
 					        header("location: user-dashboard.php");
 					    }
 
