@@ -183,7 +183,21 @@
         </div>
     </footer>
     <script type="text/javascript" src="js/materialize.js"></script>
-    <script src="./js/index.js"></script>
+    <script src="./js/index.js"></script>  
+        <!-- confirm Modal -->
+        <div class="modal" id="confirm">
+                    <div class="modal-content">
+                        <div class="row">
+                            <div class="col s8 m8 l8" id="report-container">
+                                <span class="report-modal-header">Are you sure you want to disable this account?</span>
+                            </div>
+                            <div class="col s4 m4 l4">
+                                <a href="#!" class="modal-close waves-effect waves-green right"><i class="material-icons center">close</i></a>
+                            </div> <br><br>
+                            <a href="user-disable.php" button>Delete</a>
+                            <a href="user-management.php">Cancel</a>
+                        </div>
+                            </div>
 
 </body>
 </html>
