@@ -116,7 +116,7 @@
                                             <td>Daniel</td>
                                             <td>1234532</td>
                                             <td>2000</td>
-                                            <td style="float: left;"><a href="user-disable.php" title="Disable User Account"><i class="material-icons">close</i></a></td>                                        
+                                            <td style="float: left;"><a href="#confirm" onclick="$('#confirm').modal('open')" title="Disable User Account"><i class="material-icons">close</i></a></td>                                        
                                         </tr>
                                     </tbody>
                                 </table>
@@ -184,5 +184,6 @@
     </footer>
     <script type="text/javascript" src="js/materialize.js"></script>
     <script src="./js/index.js"></script>
+
 </body>
 </html>
