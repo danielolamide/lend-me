@@ -2,8 +2,8 @@
 -- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 10, 2018 at 11:16 AM
+-- Host: localhost
+-- Generation Time: Oct 17, 2018 at 10:50 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.10
 
@@ -29,11 +29,47 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `complaints` (
-  `ComplaintID` varchar(5) NOT NULL,
+  `ComplaintID` int(11) NOT NULL,
   `UserID` int(11) NOT NULL,
   `Complaint` text NOT NULL,
   `Time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `imageUpload`
+--
+
+CREATE TABLE `imageUpload` (
+  `upload_id` int(11) NOT NULL,
+  `User_ID` int(11) NOT NULL,
+  `status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `liveBorrower`
+--
+
+CREATE TABLE `liveBorrower` (
+  `User_ID` int(11) NOT NULL,
+  `BorrowerName` text NOT NULL,
+  `Status` int(11) NOT NULL DEFAULT '0',
+  `Description` varchar(255) NOT NULL,
+  `LoanAmount` int(11) NOT NULL,
+  `LoanLength` int(11) NOT NULL,
+  `LoanInterest` int(11) NOT NULL,
+  `liveStatus` int(11) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `liveBorrower`
+--
+
+INSERT INTO `liveBorrower` (`User_ID`, `BorrowerName`, `Status`, `Description`, `LoanAmount`, `LoanLength`, `LoanInterest`, `liveStatus`) VALUES
+(102214, 'Daniel Ola', 0, 'Food', 100, 10, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -53,15 +89,47 @@ CREATE TABLE `loans` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `loanStatus`
+--
+
+CREATE TABLE `loanStatus` (
+  `User_ID` int(11) NOT NULL,
+  `loanAvailability` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `suggestions`
 --
 
 CREATE TABLE `suggestions` (
-  `SuggestionID` varchar(5) NOT NULL,
+  `SuggestionID` int(11) NOT NULL,
   `UserID` int(11) NOT NULL,
   `Suggestion` text NOT NULL,
   `Time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transactions`
+--
+
+CREATE TABLE `transactions` (
+  `TID` int(11) NOT NULL,
+  `User_ID` int(11) NOT NULL,
+  `Amount` int(11) NOT NULL,
+  `TransactionType` text NOT NULL,
+  `TimeStamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `transactions`
+--
+
+INSERT INTO `transactions` (`TID`, `User_ID`, `Amount`, `TransactionType`, `TimeStamp`) VALUES
+(1, 102214, 1000, 'Cash Deposit', '2018-10-15 10:08:12');
 
 -- --------------------------------------------------------
 
@@ -77,15 +145,40 @@ CREATE TABLE `users` (
   `Phone_No` int(10) NOT NULL,
   `Gender` text NOT NULL,
   `UserType` text NOT NULL,
-  `AccStatus` varchar(1) NOT NULL
+  `AccStatus` varchar(1) NOT NULL,
+  `UserRating` int(11) NOT NULL DEFAULT '0',
+  `loanCount` int(11) NOT NULL DEFAULT '0',
+  `borrowCount` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`Username`, `Email`, `ID_Number`, `Password`, `Phone_No`, `Gender`, `UserType`, `AccStatus`) VALUES
-('Nicole Yiega', 'nicole.muswanya@strathmore.edu', 12345, '$2y$10$BWBfDqOQ1Y.DGCX7X0kqKee4pKylZGo43Ysdb833sFK7SDVpMsjny', 78612344, 'Female', 'User', '0');
+INSERT INTO `users` (`Username`, `Email`, `ID_Number`, `Password`, `Phone_No`, `Gender`, `UserType`, `AccStatus`, `UserRating`, `loanCount`, `borrowCount`) VALUES
+('Malik Ibrahim', 'malik.mohamed@strathmore.edu', 0, '$2y$10$Y27HclQB14QmtK2gl0eP/uPok.xcjceaRphwpH6lWhRgmpIvIuopG', 0, 'Male', 'User', '1', 0, 0, 0),
+('Daniel Ola', 'joseph.wole@strathmore.edu', 102214, '$2y$10$4p57qUcOljZ/8JK4eBzuROaQk1gz48n8ikggL3ADoXd2LQwc7So6S', 2147483647, 'Male', 'User', '1', 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wallet`
+--
+
+CREATE TABLE `wallet` (
+  `User_ID` int(11) NOT NULL,
+  `WalletID` int(11) NOT NULL,
+  `WalletBalance` bigint(20) NOT NULL DEFAULT '0',
+  `WalletHistory` bigint(20) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `wallet`
+--
+
+INSERT INTO `wallet` (`User_ID`, `WalletID`, `WalletBalance`, `WalletHistory`) VALUES
+(102214, 1, 1000, 1000),
+(0, 2, 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -99,12 +192,31 @@ ALTER TABLE `complaints`
   ADD KEY `UserID` (`UserID`);
 
 --
+-- Indexes for table `imageUpload`
+--
+ALTER TABLE `imageUpload`
+  ADD PRIMARY KEY (`upload_id`),
+  ADD KEY `User_ID` (`User_ID`);
+
+--
+-- Indexes for table `liveBorrower`
+--
+ALTER TABLE `liveBorrower`
+  ADD KEY `User_ID` (`User_ID`);
+
+--
 -- Indexes for table `loans`
 --
 ALTER TABLE `loans`
   ADD PRIMARY KEY (`LoanID`),
   ADD KEY `BorrowerID` (`BorrowerID`,`LenderID`),
   ADD KEY `LenderID` (`LenderID`);
+
+--
+-- Indexes for table `loanStatus`
+--
+ALTER TABLE `loanStatus`
+  ADD KEY `User_ID` (`User_ID`);
 
 --
 -- Indexes for table `suggestions`
@@ -114,10 +226,58 @@ ALTER TABLE `suggestions`
   ADD KEY `UserID` (`UserID`);
 
 --
+-- Indexes for table `transactions`
+--
+ALTER TABLE `transactions`
+  ADD PRIMARY KEY (`TID`),
+  ADD KEY `User_ID` (`User_ID`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`ID_Number`);
+
+--
+-- Indexes for table `wallet`
+--
+ALTER TABLE `wallet`
+  ADD PRIMARY KEY (`WalletID`),
+  ADD KEY `User_ID` (`User_ID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `complaints`
+--
+ALTER TABLE `complaints`
+  MODIFY `ComplaintID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `imageUpload`
+--
+ALTER TABLE `imageUpload`
+  MODIFY `upload_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `suggestions`
+--
+ALTER TABLE `suggestions`
+  MODIFY `SuggestionID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `transactions`
+--
+ALTER TABLE `transactions`
+  MODIFY `TID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `wallet`
+--
+ALTER TABLE `wallet`
+  MODIFY `WalletID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
@@ -127,20 +287,50 @@ ALTER TABLE `users`
 -- Constraints for table `complaints`
 --
 ALTER TABLE `complaints`
-  ADD CONSTRAINT `complaints_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `users` (`ID_Number`);
+  ADD CONSTRAINT `complaints_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `users` (`ID_Number`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `imageUpload`
+--
+ALTER TABLE `imageUpload`
+  ADD CONSTRAINT `imageupload_ibfk_1` FOREIGN KEY (`User_ID`) REFERENCES `users` (`ID_Number`);
+
+--
+-- Constraints for table `liveBorrower`
+--
+ALTER TABLE `liveBorrower`
+  ADD CONSTRAINT `liveborrower_ibfk_1` FOREIGN KEY (`User_ID`) REFERENCES `users` (`ID_Number`);
 
 --
 -- Constraints for table `loans`
 --
 ALTER TABLE `loans`
-  ADD CONSTRAINT `loans_ibfk_1` FOREIGN KEY (`BorrowerID`) REFERENCES `users` (`ID_Number`),
-  ADD CONSTRAINT `loans_ibfk_2` FOREIGN KEY (`LenderID`) REFERENCES `users` (`ID_Number`);
+  ADD CONSTRAINT `loans_ibfk_1` FOREIGN KEY (`BorrowerID`) REFERENCES `users` (`ID_Number`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `loans_ibfk_2` FOREIGN KEY (`LenderID`) REFERENCES `users` (`ID_Number`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `loanStatus`
+--
+ALTER TABLE `loanStatus`
+  ADD CONSTRAINT `loanStatus_ibfk_1` FOREIGN KEY (`User_ID`) REFERENCES `users` (`ID_Number`);
 
 --
 -- Constraints for table `suggestions`
 --
 ALTER TABLE `suggestions`
-  ADD CONSTRAINT `suggestions_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `users` (`ID_Number`);
+  ADD CONSTRAINT `suggestions_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `users` (`ID_Number`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `transactions`
+--
+ALTER TABLE `transactions`
+  ADD CONSTRAINT `transactions_ibfk_1` FOREIGN KEY (`User_ID`) REFERENCES `users` (`ID_Number`);
+
+--
+-- Constraints for table `wallet`
+--
+ALTER TABLE `wallet`
+  ADD CONSTRAINT `wallet_ibfk_1` FOREIGN KEY (`User_ID`) REFERENCES `users` (`ID_Number`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
