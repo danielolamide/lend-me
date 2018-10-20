@@ -188,13 +188,13 @@
                     <div class="modal-content">
                         <div class="row">
                             <div class="col s8 m8 l8" id="report-container">
-                                <span class="report-modal-header">Are you sure you want to disable this account?</span>
+                                <span class="report-modal-header" style="color:teal;"><h5>Are you sure you want to disable this account?</h5></span>
                             </div>
                             <div class="col s4 m4 l4">
                                 <a href="#!" class="modal-close waves-effect waves-green right"><i class="material-icons center">close</i></a>
                             </div> <br><br>
-                            <a href="user-disable.php">Delete</a>
-                            <a href="user-management.php">Cancel</a>
+                            <a href="user-disable.php" class="waves-effect waves-dark btn-small left" name="delete">Delete</a>
+                            <a href="user-management.php" style="margin-left:20px;" class="waves-effect waves-light btn-small left">Cancel</a>
                         </div>
                     </div>
 </body>
