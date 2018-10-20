@@ -2,7 +2,7 @@
     require_once('connect-db.php');
     session_start();
     if(!isset($_SESSION['idNo'])){
-        header(";ocation: authenticate.html#login");
+        header("location: authenticate.html#login");
     }
     if($_SESSION['uType']!="Admin"){
         header("location: user-dashboard.php");

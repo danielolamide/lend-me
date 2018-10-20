@@ -1,7 +1,7 @@
 <?
     session_start();
     if(!isset($_SESSION['idNo'])){
-        header(";ocation: authenticate.html#login");
+        header("location: authenticate.html#login");
     }
     if($_SESSION['uType']!="Admin"){
         header("location: user-dashboard.php");
@@ -12,7 +12,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>User Mana"gement</title>
+    <title>User Management</title>
     <link rel="icon" type="image/png" href="./images/blue-coin.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
@@ -108,7 +108,7 @@
                                             <th>Name</th>
                                             <th>Phone Number</th>
                                             <th>Payment Pending</th>
-                                            <th>Actions</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -116,8 +116,7 @@
                                             <td>Daniel</td>
                                             <td>1234532</td>
                                             <td>2000</td>
-                                            <td style="float:left"><a href="#" title="Permanently Delete User"><i class="material-icons">delete_forever</i></a></td>
-                                            <td style="float: left;"><a href="#" title="Disable User Account"><i class="material-icons">close</i></a></td>                                        </tr>
+                                            <td style="float: left;"><a href="#confirm" onclick="$('#confirm').modal('open')" title="Disable User Account"><i class="material-icons">close</i></a></td>                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -158,7 +157,7 @@
                                                 <th>Name</th>
                                                 <th>Phone Number</th>
                                                 <th>Amount Loaned Out</th>
-                                                <th>Actions</th>
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -166,8 +165,7 @@
                                                 <td>Nicole</td>
                                                 <td>1234532</td>
                                                 <td>2000</td>
-                                                <td style="float:left;"><a href="#" title="Permanently Delete User"><i class="material-icons">delete_forever</i></a></td>
-                                                <td style="float: left;"><a href="#" title="Disable User Account"><i class="material-icons">close</i></a></td>
+                                                <td style="float: left;"><a href="#confirm" onclick="$('#confirm').modal('open')" title="Disable User Account"><i class="material-icons">close</i></a></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -185,5 +183,19 @@
     </footer>
     <script type="text/javascript" src="js/materialize.js"></script>
     <script src="./js/index.js"></script>
+    <!-- confirm Modal -->
+                <div class="modal" id="confirm">
+                    <div class="modal-content">
+                        <div class="row">
+                            <div class="col s8 m8 l8" id="report-container">
+                                <span class="report-modal-header">Are you sure you want to disable this account?</span>
+                            </div>
+                            <div class="col s4 m4 l4">
+                                <a href="#!" class="modal-close waves-effect waves-green right"><i class="material-icons center">close</i></a>
+                            </div> <br><br>
+                            <a href="user-disable.php">Delete</a>
+                            <a href="user-management.php">Cancel</a>
+                        </div>
+                    </div>
 </body>
 </html>
