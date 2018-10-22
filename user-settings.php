@@ -1,5 +1,6 @@
 <?php
     session_start();
+    require_once('connect-db.php');
     if(!(isset($_SESSION['idNo']))){
         header("location : authenticate#login");
     }
@@ -85,7 +86,7 @@
                         <span class="edit-form-header">Edit Profile</span>
                     </div>
                 </div>
-                <form  class="edit-settings-form" enctype="multipart/form-data" method ="POST">
+                <form  class="edit-settings-form" enctype="multipart/form-data" method ="POST" action="uploads.php">
                     <div class="row">
                         <div class="col s5 m5 l5 left-align">
                             <span class="profile-text">Profile</span>
@@ -103,12 +104,26 @@
                         <div class="col s5 m5 l5">
                             <span class="field-labels">Photo</span>
                         </div>
-                        <div class="input-field file-field col s7 m7 l7">
-                            <img src="./images/large-default-user.png" class="responsive-img left"alt="user-image">
+                        <div class="input-field file-field col s7 m7 l7" id="userImageFrame">
+                            <?php
+                                $selectImage = "SELECT * FROM imageUpload WHERE User_ID ='{$_SESSION['idNo']}'";
+                                $selectImageResult = $con->query($selectImage);
+                                while($rowImage = $selectImageResult->fetch_array()){
+                                    if($rowImage['status']==0){
+                                        echo "<img src='./images/large-default-user.png' class='responsive-img left' alt='User Image'>";
+                                    }
+                                    else{
+                                        echo "<img src='./uploads/profile".$_SESSION['idNo'].".jpg?".'mt_rand'."class='responsive-img left' alt='User Image' style='max-height:200px;'>";
+                                    }
+                                }
+                            ?>
+                            <!-- <img src="./images/large-default-user.png" class="responsive-img left"alt="user-image"> -->
                             <button class="btn waves-effect waves-light change-user-image-btn">
                                 Change<input type="file" name="new-user-img">
                             </button>
-                            
+                            <div class="file-path-wrapper">
+                                <input class="file-path validate" type="text">
+                            </div>
                         </div>
                     </div>
                     <div class="row">
@@ -134,8 +149,12 @@
                             <span class="field-labels">Email Address</span>&nbsp;<i class="grey-text material-icons">edit</i>
                         </div>
                         <div class="input-field col s7 m7 l7" id="email-field-settings">
-                            <input type="email" name="user-email" class="validate field-values" value="<?php echo $_SESSION['email'];?>">
-                            <span class="helper-text" data-error="Incorrect Email Format" data-success=""></span>
+                            <span class='field-values' ><?php echo $_SESSION['email'];?></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s7 offset-s5">
+                            <div class="divider"></div>
                         </div>
                     </div>
                     <div class="row">

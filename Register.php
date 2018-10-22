@@ -50,9 +50,12 @@ if(isset($_POST['sign_up']))
             $hashed = password_hash($uPass, PASSWORD_BCRYPT);
             $sql = "INSERT INTO users (Username,Email,ID_Number,Password,Phone_No,Gender,UserType,AccStatus) VALUES ('$username', '$email', '$id', '$hashed', '$no', '$sex', '$user', '$acc')";
             $intitalize_wallet="INSERT INTO wallet(User_ID) VALUES('$id')";
+            $insertDefaultProfile = "INSERT INTO imageUpload (User_ID, status) VALUES('$id')";
+
 
 
             if($con->query($sql) === true && $con->query($intitalize_wallet)){
+                $con->query($insertDefaultProfile);
                 echo "<script language='javascript'>
                     alert ('Your Account has been created. Activate your account to login. WELCOME!');
                     window.location='index.html';

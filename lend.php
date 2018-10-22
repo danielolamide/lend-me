@@ -7,7 +7,6 @@
     else{
         $processLiveBorrowersSQL = "SELECT * FROM liveBorrower WHERE liveStatus ='1'";
         $processLiveBorrowers = $con -> query($processLiveBorrowersSQL);
-        // $CardDetails
        
     }
 ?>
@@ -140,6 +139,7 @@
                                         while($liveBorrowersTData = $processLiveBorrowers->fetch_array() ){
                                             $bName = $liveBorrowersTData['BorrowerName'];
                                             $user_id = $liveBorrowersTData['User_ID'];
+                                            
                                             $user_rating = $_SESSION['rating'];
                                             echo "<tr>";
                                             echo "<td>".$liveBorrowersTData['BorrowerName']."</td>";
@@ -184,7 +184,19 @@
                                 </div>
                                 <div class="row">
                                     <div class="col s12 m12 l12 center-align">
-                                        <img src="./images/large-default-user.png" alt="user-image" class="responsive-image circle">
+                                        <?php
+                                            $selectImage = "SELECT * FROM imageUpload WHERE User_ID ='$user_id'";
+                                            $selectImageResult = $con->query($selectImage);
+                                            while($rowImage = $selectImageResult->fetch_array()){
+                                                if($rowImage['status']==0){
+                                                    echo "<img src='./images/large-default-user.png' class='responsive-img left' alt='User Image'>";
+                                                }
+                                                else{
+                                                    echo "<img src='./uploads/profile".$user_id.".jpg?".'mt_rand'."class='responsive-img left' alt='User Image' style='max-height:100px;'>";
+                                                }
+                                            }
+                                        ?>
+                                        <!-- <img src="./images/large-default-user.png" alt="user-image" class="responsive-image circle"> -->
                                     </div>
                                 </div>
                                 <div class="row" style="margin-bottom: 0;">

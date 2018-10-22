@@ -1,6 +1,7 @@
 <?php
-    require_once('connect-db.php');
     session_start();
+    require_once('connect-db.php');
+    $id = $_SESSION['idNo'];
     if(isset($_POST['save-user-changes'])){
         $file = $_FILES['new-user-img'];
 
@@ -17,18 +18,23 @@
 
         if(in_array($fileActualExtension, $allowed)){
             if($fileError === 0){
-                if($fileSize < 1000){
-                    $newFileName = uniqid('',true).".".$fileActualExtension;
+                if($fileSize < 1000000){
+                    $newFileName = "profile".$id.".".$fileActualExtension;
                     $fileDestination = 'uploads/'.$newFileName;
                     move_uploaded_file($fileTmpName, $fileDestination);
+                    $sql = "UPDATE imageUpload SET status = 1 WHERE User_ID ='$id'";
+                    $result = $con->query($sql);
                     $successfulUpload = "Successful Image Upload";
+                    echo $successfulUpload;
                 }
                 else{
                     $fileTooBig = "Your file is too big";
+                    echo $fileTooBig;
                 }
             }
             else{
                 $fileUploadError = "There was an error uploading your file";
+                echo $fileUploadError;
             }
         }
         else{
