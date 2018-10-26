@@ -2,20 +2,24 @@
             
     require_once 'connect-db.php';
             
-	$Id = $mysqli->real_escape_string($_REQUEST['Id']);
-	
-	// Check connection
-	if($mysqli === false){
-		die("ERROR: Could not connect. " . $mysqli->connect_error);
-	}
-	
     // attempt update query execution
-    if (isset($_POST['delete']))
+    if (isset($_POST['disable']))
     {
-        $sql = "UPDATE users SET AccStatus='x' WHERE 'ID_Number' = $Id";
+        $sql = "UPDATE users SET AccStatus='x' WHERE 'ID_Number' = $Id;";
     
         if($mysqli->query($sql) === true){
             echo "Account disabled successfully.";
+            header("location: user-management.php");
+
+            echo "
+                    <script>
+                        function myFunction() 
+                        {
+                            document.getElementById("table").deleteRow(0);
+                        }
+                    </script>
+                ";
+
         } 
 
         else{
@@ -23,3 +27,7 @@
         }
     } 
 ?>
+<!-- function deleteRow(r) {
+    var i = r.parentNode.parentNode.rowIndex;
+    document.getElementById("myTable").deleteRow(i);
+} -->

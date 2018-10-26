@@ -93,7 +93,7 @@
                         <div style="padding:20px;"class="col s12 m12 l12">
                             <div class="container">
                                 <form>
-                                    <input class="searchForm" type="text" name="search" placeholder="Search..">
+                                    <input class="searchForm" onkeyup="Search()" id="search" placeholder="Search by ID Number...">
                                     <button type="submit" class="searchButton"><i class="fa fa-search"></i></button>
                                 </form>
                             </div>
@@ -102,21 +102,39 @@
                     <div class="row">
                         <div style="padding:20px;" class="grey lighten-3 col s12 m12 l12">
                             <div class="center-align container" id="borrowers-table">
-                                <table class="responsive-table">
+                                <table class="responsive-table" id="table">
                                     <thead>
                                         <tr>
+                                            <th>ID Number</th>
                                             <th>Name</th>
-                                            <th>Phone Number</th>
                                             <th>Payment Pending</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>Daniel</td>
-                                            <td>1234532</td>
+                                            <td>214</td>
+                                            <td>Moses</td>
                                             <td>2000</td>
                                             <td style="float: left;"><a href="#confirm" onclick="$('#confirm').modal('open')" title="Disable User Account"><i class="material-icons">close</i></a></td>                                        </tr>
+<?php        
+        require_once 'connect-db.php';    
+        $sql = "SELECT User_ID,BorrowerName,LoanAmount from liveborrower";
+        $query = $con->query($sql);
+                
+        if ($query->num_rows>0) 
+        {
+            // output data of each row
+            while($row = $query->fetch_array()) 
+            {
+            echo "<td>". $row["User_ID"]. "</td><td>". $row["BorrowerName"]. "</td><td>". $row["LoanAmount"]. "</td><td style=float: left;><a href='#confirm' onclick=$('#confirm').modal('open') title='Disable User Account'><i class='material-icons'>close</i></a></td>";
+            }
+        }
+        else
+        {
+            echo "0 result";
+        }
+?>
                                     </tbody>
                                 </table>
                             </div>
@@ -142,7 +160,7 @@
                         <div style="padding:20px;"class="col s12 m12 l12">
                             <div class="container">
                                 <form>
-                                    <input class="searchForm" type="text" name="search" placeholder="Search..">
+                                    <input class="searchForm" onkeyup="Search()" id="search" placeholder="Search by ID Number...">
                                     <button type="submit" class="searchButton"><i class="fa fa-search"></i></button>
                                 </form>
                             </div>
@@ -151,22 +169,42 @@
                     <div class="row">
                         <div style="padding:20px;" class="grey lighten-3 col s12 m12 l12">
                                 <div class="center-align container" id="lenders-table">
-                                    <table class=" responsive-table">
+                                    <table class=" responsive-table" id="table">
                                         <thead>
                                             <tr>
+                                                <th>ID number</th>
                                                 <th>Name</th>
-                                                <th>Phone Number</th>
                                                 <th>Amount Loaned Out</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
+                                                <td>123</td>
                                                 <td>Nicole</td>
-                                                <td>1234532</td>
                                                 <td>2000</td>
                                                 <td style="float: left;"><a href="#confirm" onclick="$('#confirm').modal('open')" title="Disable User Account"><i class="material-icons">close</i></a></td>
                                             </tr>
+<?php        
+        require_once 'connect-db.php';    
+        $sql = "SELECT users.ID_Number, users.Username, loans.Amount, loans.LenderID
+                FROM users
+                INNER JOIN loans ON users.ID_Number=loans.LenderID;";
+        $query = $con->query($sql);
+                
+        if ($query->num_rows>0) 
+        {
+            // output data of each row
+            while($row = $query->fetch_array()) 
+            {
+            echo "<td>". $row["ID_Number"]. "</td><td>". $row["Username"]. "</td><td>". $row["Amount"]. "</td><td style=float: left;><a href='#confirm' onclick=$('#confirm').modal('open') title='Disable User Account'><i class='material-icons'>close</i></a></td>";
+            }
+        }
+        else
+        {
+            echo "0 result";
+        }
+?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -193,9 +231,35 @@
                             <div class="col s4 m4 l4">
                                 <a href="#!" class="modal-close waves-effect waves-green right"><i class="material-icons center">close</i></a>
                             </div> <br><br>
-                            <a href="user-disable.php" class="waves-effect waves-dark btn-small left" name="delete">Delete</a>
+                            <a href="user-disable.php" class="waves-effect waves-dark btn-small left" name="delete">Disable</a>
                             <a href="user-management.php" style="margin-left:20px;" class="waves-effect waves-light btn-small left">Cancel</a>
                         </div>
                     </div>
+    <script>
+        function Search(){
+            // Declare variables 
+            var input, filter, table, tr, td, i;
+            input = document.getElementById("search");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("table");
+            tr = table.getElementsByTagName("tr");
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) 
+                {
+                    if (td.innerHTML.toUpperCase().indexOf(filter) > -1) 
+                    {
+                        tr[i].style.display = "";
+                    } 
+                    else 
+                    {
+                        tr[i].style.display = "none";
+                    }
+                } 
+            }
+        }
+    </script>
 </body>
 </html>
