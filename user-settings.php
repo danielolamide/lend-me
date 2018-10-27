@@ -193,9 +193,6 @@
     <script type="text/javascript" src="js/materialize.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <footer style="background-color: #323232;" class="page-footer" style="text-align:center; padding: 10px; margin-top:0;">
-        <!-- <div class="center-align container" id="foot-logo">
-                            <img src="./images/p2p-blue-new-layout.png" alt="company-logo">
-                        </div> -->
         <div class=" center-align container">
             © 2018 StrathFund
         </div>

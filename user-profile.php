@@ -97,7 +97,7 @@
                                 $selectImageResult = $con->query($selectImage);
                                 while($rowImage = $selectImageResult->fetch_array()){
                                     if($rowImage['status']==0){
-                                        echo "<img src='./images/large-default-user.png' class='responsive-img left' alt='User Image'>";
+                                        echo "<img src='./images/large-default-user.png' class='responsive-img' alt='User Image'>";
                                     }
                                     else{
                                         echo "<img src='./uploads/profile".$_SESSION['idNo'].".jpg?".'mt_rand'."class='responsive-img left' alt='User Image' style='max-height:200px;'>";

@@ -34,10 +34,10 @@
                         }
 				}
 				else{
-                    echo  "<script language=javascript'>
+                    echo  "<script language='javascript'>
                         alert ('Incorrect login details');
                         window.location='authenticate.html#login';
-                    </script>";
+					</script>";
 				}
 		}
 

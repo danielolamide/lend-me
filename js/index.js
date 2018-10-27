@@ -123,7 +123,7 @@ $(document).ready(function () {
                     classes: 'rounded green',
                     displayLength: '5000'
                 });
-                location.reload();
+                //location.reload();
             },
             error: function () {
                 var borrowModal = document.querySelector('#loan-form-modal');
@@ -134,9 +134,44 @@ $(document).ready(function () {
                     classes : 'rounded red',
                     displayLength: '5000'
                 });
-                location.reload();
+                //location.reload();
             }
         });
         event.preventDefault();
     });
+
+    //Deactivate Loaan
+    $('#deactivateAccount').click(function(event){
+        $.ajax({
+            type: "POST",
+            url: "deactivateLoan.php",
+            dataType: 'json',
+            success: function(){
+                var deleteLoan = document.querySelector("#delete-confirmation-modal");
+                var instance = M.Modal.init(deleteLoan);
+                instance.close();
+                M.toast({
+                    html: "Successful Deleted Loan",
+                    classes : "rounded green",
+                    displayLength: '5000'
+                });
+            },
+            error : function(){
+                var deleteLoan = document.querySelector("#delete-confirmation-modal");
+                var instance = M.Modal.init(deleteLoan);
+                instance.close();
+                M.toast({
+                    html: "Failed to delete loan",
+                    classes: "rounded red",
+                    displayLength: "5000"
+                });
+            }
+        })
+        event.preventDefault();
+    });
+
+    //Get Profile 
+    $('#modal-lend').modal();
+    $('#modal-profile').modal();    
+        
 });

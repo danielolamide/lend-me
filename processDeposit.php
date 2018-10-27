@@ -14,6 +14,12 @@
     }
     else{
         $wallet_query = "SELECT * FROM wallet WHERE User_ID='{$_SESSION['idNo']}'";
+        $checkLoanAvailabilityQuery ="SELECT * FROM loanStatus WHERE User_ID ='{$_SESSION['idNo']}'";
+        $checkLoanAvailability = $con->query($checkLoanAvailabilityQuery);
+        if($checkLoanAvailability->num_rows>0){
+            $availabilityRow = $checkLoanAvailability->fetch_array();
+            $availabilityStatus = $availabilityRow['loanAvailability'];
+        }
         $select_wallet = $con->query($wallet_query);
         if($select_wallet->num_rows>0){
             $wallet_row=$select_wallet->fetch_array();
@@ -27,13 +33,19 @@
         $depoAmount = $_POST['amount-to-deposit'];
         $total_amount= $_SESSION['wallet-balance'] + $depoAmount;
         $_SESSION['walletHistory']+=$total_amount;
-        $depositMoneySQL = "UPDATE wallet SET WalletBalance='$total_amount', WalletHistory='{$_SESSION['walletHistory']}' WHERE user_ID='{$_SESSION['idNo']}'";
+        $depositMoneySQL = "UPDATE wallet SET WalletBalance='$total_amount', WalletHistory='{$_SESSION['walletHistory']}' WHERE User_ID='{$_SESSION['idNo']}'";
         $depositWallet= $con->query($depositMoneySQL);
         $data['success'] = true;
         $data['message'] = "Successfully Deposited".$_POST['amount-to-deposit'] ;
         $transactionType ="Cash Deposit";
         $insertTransactionsSQL = "INSERT INTO transactions (User_ID,Amount,TransactionType) VALUES('{$_SESSION['idNo']}','$depoAmount','$transactionType')";
         $insertTransactions = $con->query($insertTransactionsSQL);
+        $one = 1;
+        if($availabilityStatus==0){
+            $updateStatusSQL  = "UPDATE loanStatus SET loanAvailability='$one' WHERE User_ID ='{$_SESSION['idNo']}'";
+            $updatStatus  = $con->query($updateStatusSQL);
+        }
+         echo json_encode($data);
+
     }
-    echo json_encode($data);
 ?>

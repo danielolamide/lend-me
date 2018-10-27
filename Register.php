@@ -51,11 +51,13 @@ if(isset($_POST['sign_up']))
             $sql = "INSERT INTO users (Username,Email,ID_Number,Password,Phone_No,Gender,UserType,AccStatus) VALUES ('$username', '$email', '$id', '$hashed', '$no', '$sex', '$user', '$acc')";
             $intitalize_wallet="INSERT INTO wallet(User_ID) VALUES('$id')";
             $insertDefaultProfile = "INSERT INTO imageUpload (User_ID, status) VALUES('$id')";
+            $initializeLoanStatus  = "INSERT INTO loanStatus (User_ID) VALUES('$id')";
 
 
 
             if($con->query($sql) === true && $con->query($intitalize_wallet)){
                 $con->query($insertDefaultProfile);
+                $con->query($initializeLoanStatus);
                 echo "<script language='javascript'>
                     alert ('Your Account has been created. Activate your account to login. WELCOME!');
                     window.location='index.html';

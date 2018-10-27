@@ -133,7 +133,7 @@
                         </div>
                         <div class="row">
                                 <div class="col s6 m6 l6 right-align delete-accept-btn">
-                                    <a href="" class="btn waves-effect waves-light">Yes</a>
+                                    <a href="" class="btn waves-effect waves-light" id="deactivateAccount">Yes</a>
                                 </div>
                                 <div class="col s6 m6 l6 left-align delete-close-btn">
                                     <a href="#!" class="btn modal-close waves-effect waves-green">No</a>
