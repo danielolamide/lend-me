@@ -116,7 +116,8 @@
                                             <td>214</td>
                                             <td>Moses</td>
                                             <td>2000</td>
-                                            <td style="float: left;"><a href="#confirm" onclick="$('#confirm').modal('open')" title="Disable User Account"><i class="material-icons">close</i></a></td>                                        </tr>
+                                            <td style="float: left;"><a href="#confirm" onclick="$('#confirm').modal('open')" title="Disable User Account"><i class="material-icons">close</i></a></td>
+                                        </tr>
 <?php        
         require_once 'connect-db.php';    
         $sql = "SELECT User_ID,BorrowerName,LoanAmount from liveborrower";
@@ -127,7 +128,7 @@
             // output data of each row
             while($row = $query->fetch_array()) 
             {
-            echo "<td>". $row["User_ID"]. "</td><td>". $row["BorrowerName"]. "</td><td>". $row["LoanAmount"]. "</td><td style=float: left;><a href='#confirm' onclick=$('#confirm').modal('open') title='Disable User Account'><i class='material-icons'>close</i></a></td>";
+            echo "<tr><td>". $row["User_ID"]. "</td><td>". $row["BorrowerName"]. "</td><td>". $row["LoanAmount"]. "</td><td style=float: left;><a href='#confirm' onclick=$('#confirm').modal('open') title='Disable User Account'><i class='material-icons'>close</i></a></td></tr>";
             }
         }
         else
@@ -197,7 +198,7 @@
             // output data of each row
             while($row = $query->fetch_array()) 
             {
-            echo "<td>". $row["ID_Number"]. "</td><td>". $row["Username"]. "</td><td>". $row["Amount"]. "</td><td style=float: left;><a href='#confirm' onclick=$('#confirm').modal('open') title='Disable User Account'><i class='material-icons'>close</i></a></td>";
+            echo "<tr><td>". $row["ID_Number"]. "</td><td>". $row["Username"]. "</td><td>". $row["Amount"]. "</td><td style=float: left;><a href='#confirm' onclick=$('#confirm').modal('open') title='Disable User Account'><i class='material-icons'>close</i></a></td></tr>";
             }
         }
         else
@@ -205,9 +206,9 @@
             echo "0 result";
         }
 ?>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>  
                     </div>
                 </div>

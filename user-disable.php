@@ -13,9 +13,12 @@
 
             echo "
                     <script>
-                        function myFunction() 
+                    var index, table = document.getElementById("table");
+                        for (var i=1; i<table.rows.length; i++)
                         {
-                            document.getElementById("table").deleteRow(0);
+                            index = this.parentElement.rowIndex;
+                            table.deleteRow(index);
+                            console.log(index);
                         }
                     </script>
                 ";
