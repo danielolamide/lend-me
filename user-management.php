@@ -1,4 +1,4 @@
-<?
+<?php
     session_start();
     if(!isset($_SESSION['idNo'])){
         header("location: authenticate.html#login");
