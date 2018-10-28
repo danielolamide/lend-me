@@ -6,8 +6,7 @@
     }
     else{
         $processLiveBorrowersSQL = "SELECT * FROM liveBorrower WHERE liveStatus ='1'";
-        $processLiveBorrowers = $con -> query($processLiveBorrowersSQL);
-       
+        $processLiveBorrowers = $con -> query($processLiveBorrowersSQL);   
     }
 ?>
 <!DOCTYPE html>
@@ -150,16 +149,20 @@
                                             echo "<td>".$liveBorrowersTData['LoanInterest']."%"."</td>";
                                             echo "<td>".$_SESSION['rating']."<i class = 'fas fa-star' style='color:gold;'></i></td>";
                                             if($_SESSION['idNo']===$user_id){
-                                                echo "<td><a href='#modal-lend' class='action-icons  btn-floating disabled modal-trigger'
+                                            ?>
+                                                <td><a href='#!' id="<?php echo $user_id;?>" class='action-icons btn-floating disabled modal-trigger lend'
                                                 title='Loan Money'><i class='fas fa-hand-holding-usd left'></i></a>
-                                                <a class='action-icons btn-floating modal-trigger' href='#modal-profile' title='View Complete Profile'><i
-                                                class='material-icons left'>more_horiz</i></a></td>";   
+                                                <a class="action-icons btn-floating modal-trigger profile" id="<?php echo $user_id;?>" href="#!" title='View Complete Profile'><i
+                                                class='material-icons left'>more_horiz</i></a></td>  
+                                            <?php    
                                             }
                                             else{
-                                                echo "<td><a href='#modal-lend' class='action-icons btn-floating modal-trigger'
+                                            ?>
+                                                <td><a href='#!' id="<?php echo $user_id;?>" class='action-icons btn-floating modal-trigger lend'
                                                 title='Loan Money'><i class='fas fa-hand-holding-usd left'></i></a>
-                                                <a class='action-icons btn-floating modal-trigger' href='#modal-profile' title='View Complete Profile'><i
-                                                class='material-icons left'>more_horiz</i></a></td>";
+                                                <a class='action-icons btn-floating modal-trigger profile' href="#!" id="<?php echo $user_id; ?>" title='View Complete Profile'><i
+                                                class='material-icons left'>more_horiz</i></a></td>
+                                            <?php
                                             } 
                                         }
                                     } 
@@ -168,48 +171,26 @@
                                     }
                                 ?>
                             </tbody>
-                            
+                            <script>
+                                $(document).ready(function(){
+                                    $('.profile').click(function(){
+                                        var id = $(this).attr("id");
+                                        $.ajax({
+                                            url : "fetchprofile.php",
+                                            method: "post",
+                                            data: {user_id: id},
+                                            success: function(data){
+                                                $('#modal-profile').html(data);
+                                                $('#modal-profile').modal('open');
+                                                
+                                            }
+                                        });
+                                    });
+                                });
+                            </script>
                         </table>
                         <!-- View Profile Modal -->
-                        <div class="modal" id="modal-profile">
-                                    
-                            <div class="modal-content">
-                                <div class="row">
-                                    <div class="col s8 m8 l8">
-                                        <span class="left borrower-id-modal"><?php echo $user_id;?></span>
-                                    </div>
-                                    <div class="col s4 m4 l4">
-                                        <a href="#!" class="modal-close waves-effect waves-green right"><i class="material-icons center">close</i></a>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col s12 m12 l12 center-align">
-                                        <?php
-                                            $selectImage = "SELECT * FROM imageUpload WHERE User_ID ='$user_id'";
-                                            $selectImageResult = $con->query($selectImage);
-                                            while($rowImage = $selectImageResult->fetch_array()){
-                                                if($rowImage['status']==0){
-                                                    echo "<img src='./images/large-default-user.png' class='responsive-img left' alt='User Image'>";
-                                                }
-                                                else{
-                                                    echo "<img src='./uploads/profile".$user_id.".jpg?".'mt_rand'."class='responsive-img left' alt='User Image' style='max-height:100px;'>";
-                                                }
-                                            }
-                                        ?>
-                                        <!-- <img src="./images/large-default-user.png" alt="user-image" class="responsive-image circle"> -->
-                                    </div>
-                                </div>
-                                <div class="row" style="margin-bottom: 0;">
-                                    <div class="col s12 m12 l12 center-align">
-                                        <span class="borrower-name-modal"><?echo $bName;?></span>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col s12 m12 l12 center-align">
-                                        <span class="borrower-rating-modal"><? echo $user_rating."<i class = 'fas fa-star' style='color:gold;'></i>";?></span>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="modal" id="modal-profile">     
                             <div class="modal-fixed-footer">
                                 <div class="row">
                                     <div class="col s12 m12 l12">
