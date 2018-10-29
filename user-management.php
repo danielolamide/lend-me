@@ -66,18 +66,18 @@
                     <img src="images/office.jpg">
                 </div> -->
                 <a href="admin-settings.php"><img class="circle" src="images/default-user-icon.png"></a>
-                <a href="admin-profile.php"><span class="white-text name">Username</span></a>
-                <a href="admin-settings.php"><span class="subheader white-text email">user@domain.com</span></a>
+                <a href="admin-profile.php"><span class="white-text name"><?php echo $_SESSION['FName'][0];?></span></a>
+                <a href="admin-settings.php"><span class="subheader white-text email"><?php echo $_SESSION['email']?></span></a>
             </div></li>
             <li><a href="./admin-dash.php">Back to Dashboard Home<i class="material-icons">keyboard_backspace</i></a></li>
             <li><a href="./user-management.php"><i class="material-icons">supervised_user_circle</i>User Management</a></li>
-            <li><a href="./transaction-mgmt.php"><i class="fas fa-money-billw"></i>Transaction Management</a></li>
+            <li><a href="./transaction-mgmt.php"><i class="fas fa-money-bill"></i>Transaction Management</a></li>
             <li><a href="./user-messages.php"><i class="material-icons">feedback</i>User Feedback</a></li>
             <li><div class="divider"></div></li>
             <li><a href="./admin-settings.php"><i class="material-icons">settings</i>Manage Settings</a></li>
             <li><a class="waves-effect" href="./logout.php"><i class="material-icons">power_settings_new</i>Logout</a></li>
         </ul>
-    <main>
+    <!-- <main> -->
         <div class="dashboard-title">
             <h6 class="left-align">Manage Borrowers</h6>
         </div>
@@ -93,9 +93,8 @@
                         <div style="padding:20px;"class="col s12 m12 l12">
                             <div class="container">
                                 <form>
-
                                     <input class="searchForm" onkeyup="Search()" id="search" placeholder="Search by ID Number...">
-                                   
+                                    <button type="submit" class="searchButton"><i class="fa fa-search"></i></button>
                                 </form>
                             </div>
                         </div>
@@ -162,9 +161,8 @@
                         <div style="padding:20px;"class="col s12 m12 l12">
                             <div class="container">
                                 <form>
-
                                     <input class="searchForm" onkeyup="Search()" id="search" placeholder="Search by ID Number...">
-                                    
+                                    <button type="submit" class="searchButton"><i class="fa fa-search"></i></button>
                                 </form>
                             </div>
                         </div>
@@ -240,6 +238,30 @@
                     </div>
     <script>
         function Search(){
+            // Declare variables 
+            var input, filter, table, tr, td, i;
+            input = document.getElementById("search");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("table");
+            tr = table.getElementsByTagName("tr");
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) 
+                {
+                    if (td.innerHTML.toUpperCase().indexOf(filter) > -1) 
+                    {
+                        tr[i].style.display = "";
+                    } 
+                    else 
+                    {
+                        tr[i].style.display = "none";
+                    }
+                } 
+            }
+        }
+                function Search(){
             // Declare variables 
             var input, filter, table, tr, td, i;
             input = document.getElementById("search");

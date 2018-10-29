@@ -60,8 +60,8 @@
                 <img src="images/office.jpg">
             </div> -->
             <a href="./admin-settings.php"><img class="circle" src="images/default-user-icon.png"></a>
-            <a href="admin-profile.php"><span class="white-text name">Username</span></a>
-            <a href="admin-settings.php"><span class="subheader white-text email">user@domain.com</span></a>
+            <a href="admin-profile.php"><span class="white-text name"><?php echo $_SESSION['FName'][0];?></span></a>
+            <a href="admin-settings.php"><span class="subheader white-text email"><?php echo $_SESSION['email']?></span></a>
         </div></li>
         <li><a href="./admin-dash.php">Back to Dashboard Home<i class="material-icons">keyboard_backspace</i></a></li>
         <li><a href="./user-management.php"><i class="material-icons">supervised_user_circle</i>User Management</a></li>
@@ -87,7 +87,7 @@
                     <div style="padding:20px;"class="col s12 m12 l12">
                         <div class="container">
                             <form>
-                                <input class="searchForm" type="text" name="search" placeholder="Search..">
+                                <input class="searchForm" type="text"  onkeyup="Search()" id="search" placeholder="Search..">
                                 <button type="submit" class="searchButton"><i class="fa fa-search"></i></button>
                             </form>
                         </div>
@@ -96,7 +96,7 @@
                 <div class="row">
                     <div style="padding:35px;" class="grey lighten-3 col s12 m12 l12">
                         <div id="transact-borrowers" class="center-align container">
-                            <table class="centered responsive-table highlight">
+                            <table class="centered responsive-table highlight" id="table">
                                 <thead>
                                     <tr>
                                         <th>Borrower Name</th>
@@ -141,7 +141,7 @@
                     <div style="padding:20px;"class="col s12 m12 l12">
                         <div class="container">
                             <form>
-                                <input class="searchForm" type="text" name="search" placeholder="Search..">
+                                <input class="searchForm" type="text" onkeyup="Search()" id="search" placeholder="Search..">
                                 <button type="submit" class="searchButton"><i class="fa fa-search"></i></button>
                             </form>
                         </div>
@@ -150,7 +150,7 @@
                 <div class="row">
                     <div style="padding:20px;" class="grey lighten-3 col s12 m12 l12">
                         <div id="transact-lenders" class="center-align container">
-                            <table class="centered responsive-table">
+                            <table class="centered responsive-table" id="table">
                                 <thead>
                                     <tr>
                                         <th>Lender Name</th>
@@ -190,5 +190,31 @@
     </footer>
     <script type="text/javascript" src="js/materialize.js"></script>
     <script type="text/javascript" src="./js/index.js"></script>
+    <script>
+        function Search(){
+            // Declare variables 
+            var input, filter, table, tr, td, i;
+            input = document.getElementById("search");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("table");
+            tr = table.getElementsByTagName("tr");
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) 
+                {
+                    if (td.innerHTML.toUpperCase().indexOf(filter) > -1) 
+                    {
+                        tr[i].style.display = "";
+                    } 
+                    else 
+                    {
+                        tr[i].style.display = "none";
+                    }
+                } 
+            }
+        }
+    </script>
 </body>
 </html>

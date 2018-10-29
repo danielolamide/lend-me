@@ -66,8 +66,8 @@
                 <img src="images/office.jpg">
             </div> -->
             <a href="admin-settings.php"><img class="circle" src="images/default-user-icon.png"></a>
-            <a href="admin-profile.php"><span class="white-text name">Username</span></a>
-            <a href="admin-settings.php"><span class="subheader white-text email">user@domain.com</span></a>
+            <a href="admin-profile.php"><span class="white-text name"><?php echo $_SESSION['FName'][0];?></span></a>
+            <a href="admin-settings.php"><span class="subheader white-text email"><?php echo $_SESSION['email'];?></span></a>
         </div></li>
         <li><a href="./admin-dash.php">Back to Dashboard Home<i class="material-icons">keyboard_backspace</i></a></li>
         <li><a href="./user-management.php"><i class="material-icons">supervised_user_circle</i>User Management</a></li>
