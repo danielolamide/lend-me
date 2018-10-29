@@ -233,7 +233,7 @@
                                 <a href="#!" class="modal-close waves-effect waves-green right"><i class="material-icons center">close</i></a>
                             </div> <br><br>
                             <a href="user-disable.php" class="waves-effect waves-dark btn-small left" name="delete">Disable</a>
-                            <a href="user-management.php" style="margin-left:20px;" class="waves-effect waves-light btn-small left">Cancel</a>
+                            <a href="#" style="margin-left:20px;" class="waves-effect waves-light btn-small left">Cancel</a>
                         </div>
                     </div>
     <script>
@@ -260,6 +260,36 @@
                     }
                 } 
             }
+        }
+    </script>
+    <script>
+        function Disable(){
+            $(document).ready(function(){
+                $('table tbody tr').click(function(){
+                    var tableData = $(this).children('td').map(function(){
+                        return $(this).text();
+                    }).get();
+                var td=tableData[0];
+                alert(td);
+                });
+            });
+
+            var mysql = require('mysql');
+            var con = mysql.createConnection({
+            host: "localhost",
+            user: "root", 
+            password: "",
+            database: "cs_project"
+            });
+            
+            con.connect(function(err) {
+                if (err) throw err;
+                var sql = "UPDATE users SET AccStatus='x' WHERE 'ID_Number' = td;";
+                con.query(sql, function (err, result) {
+                    if (err) throw err;
+                    console.log(result.affectedRows + " record(s) updated");
+                });
+            });
         }
     </script>
 </body>
