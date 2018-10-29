@@ -114,7 +114,7 @@ $(document).ready(function () {
             data: loanApplicationForm,
             dataType: "json",
             success: function (data) {
-                console.log(data);
+                //console.log(data);
                 var borrowModal = document.querySelector('#loan-form-modal');
                 var instance = M.Modal.init(borrowModal);
                 instance.close();
@@ -170,8 +170,6 @@ $(document).ready(function () {
         event.preventDefault();
     });
 
-    //Get Profile 
-    $('#modal-lend').modal();
-    $('#modal-profile').modal();    
+    
         
 });

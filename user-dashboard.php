@@ -266,7 +266,7 @@
                                     <table class="popup-table">
                                         <tbody>
                                             <tr>
-                                                <td>No. of times you've borrower money</td>
+                                                <td>No. of times you've borrowed money</td>
                                                 <td class="account-data"><?php echo $_SESSION['bCount'];?> times</td>
                                             </tr>
                                             <tr>
