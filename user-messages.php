@@ -110,6 +110,25 @@
                                             <td>12:48 23/12/2001</td>
                                             <td><a href="#noted"><i class="material-icons">check</i></a></td>
                                         </tr>
+<?php        
+        require_once 'connect-db.php';    
+        $sql = "SELECT Name,UserID,Complaint,Time from complaints";
+        $query = $con->query($sql);
+                
+        if ($query->num_rows>0) 
+        {
+            // output data of each row
+            while($row = $query->fetch_array()) 
+            {
+            echo "<tr><td>". $row["Name"]. "</td><td>". $row["UserID"]. "</td><td>". $row["Complaint"]. "</td><td>". $row["Time"]. "</td><td><a href='#noted'><i class='material-icons'>check</i></a></td></tr>";
+            }
+        }
+        else
+        {
+            echo "0 result";
+        }
+?>
+
                                     </tbody>
                                 </table>
                             </div>
@@ -132,7 +151,7 @@
                                     <table class="responsive-table highlight">
                                         <thead>
                                             <tr>
-                                                <th>Name</th>
+                                                <th>ID Number</th>
                                                 <th>Suggestion</th>
                                                 <th>Time</th>
                                                 <th>Action</th>
@@ -140,11 +159,30 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>Daniel</td>
+                                                <td>102214</td>
                                                 <td>Option to pay all loans at once</td>
                                                 <td>12:48 23/12/2001</td>
                                                 <td><a href="#noted"><i class="material-icons">check</i></a></td>
                                             </tr>
+<?php        
+        require_once 'connect-db.php';    
+        $sql = "SELECT UserID,Suggestion,Time from suggestions";
+        $query = $con->query($sql);
+                
+        if ($query->num_rows>0) 
+        {
+            // output data of each row
+            while($row = $query->fetch_array()) 
+            {
+            echo "<tr><td>". $row["UserID"]. "</td><td>". $row["Suggestion"]. "</td><td>". $row["Time"]. "</td><td><a href='#noted'><i class='material-icons'>check</i></a></td></tr>";
+            }
+        }
+        else
+        {
+            echo "0 result";
+        }
+?>
+
                                         </tbody>
                                     </table>
                                 </div>

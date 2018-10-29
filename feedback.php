@@ -1,4 +1,4 @@
-<?
+<?php
     session_start();
 ?>
 <!DOCTYPE html>
@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My Wallet</title>
+    <title>Suggestions and Complaints</title>
     <link rel="icon" type="image/png" href="./images/blue-coin.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
         crossorigin="anonymous">
@@ -81,11 +81,11 @@
                         <span>We'd appreciate feedback from you to improve our platform.</span>
                     </div>
                 </div>
-                <form action="">
+                <form action="suggestions.php" method="post">
                     <div class="row" style="margin: 0 auto;">
                         <div class="input-field s12 m12 l12">
                             <i class="fas fa-comment-alt prefix"></i>
-                            <textarea maxlength="40" id="suggestion-text" class="materialize-textarea" rows="3" cols="12"></textarea>
+                            <textarea maxlength="40" id="suggestion-text" name="suggest" class="materialize-textarea" rows="3" cols="12"></textarea>
                             <label for="suggestion-text">Suggestions</label>
                         </div>
                     </div>
@@ -124,18 +124,18 @@
                                 <a href="#!" class="modal-close waves-effect waves-green right"><i class="material-icons center">close</i></a>
                             </div>
                         </div>
-                        <form action="">
+                        <form action="complaints.php" method="post">
                             <div class="row" style="margin: 0 auto;">
                                 <div class="input-field col s12 m12 112"  id="report-name-area">
                                     <i class="fas fa-user-minus prefix"></i>
-                                    <input type="text" id="report-name-icon">
+                                    <input type="text" name="name" id="report-name-icon">
                                     <label for="report-name-icon">Name of the user being reported</label>
                                 </div>
                             </div>
                             <div class="row" style="margin:0 auto;">
                                 <div class="input-field col s12 m12 l12" id="report-name-area">
                                     <i class="fas fa-exclamation prefix"></i>
-                                    <textarea name="" id="report-icon" class="materialize-textarea"></textarea>
+                                    <textarea name="complaint" id="report-icon" class="materialize-textarea"></textarea>
                                     <label for="report-icon">Reason</label>
                                 </div>
                             </div>

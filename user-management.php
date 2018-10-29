@@ -93,8 +93,9 @@
                         <div style="padding:20px;"class="col s12 m12 l12">
                             <div class="container">
                                 <form>
+
                                     <input class="searchForm" onkeyup="Search()" id="search" placeholder="Search by ID Number...">
-                                    <button type="submit" class="searchButton"><i class="fa fa-search"></i></button>
+                                   
                                 </form>
                             </div>
                         </div>
@@ -161,8 +162,9 @@
                         <div style="padding:20px;"class="col s12 m12 l12">
                             <div class="container">
                                 <form>
+
                                     <input class="searchForm" onkeyup="Search()" id="search" placeholder="Search by ID Number...">
-                                    <button type="submit" class="searchButton"><i class="fa fa-search"></i></button>
+                                    
                                 </form>
                             </div>
                         </div>
@@ -262,7 +264,7 @@
             }
         }
     </script>
-    <script>
+    <!-- <script>
         function Disable(){
             $(document).ready(function(){
                 $('table tbody tr').click(function(){
@@ -291,6 +293,6 @@
                 });
             });
         }
-    </script>
+    </script> -->
 </body>
 </html>
