@@ -4,7 +4,7 @@
     if(!isset($_SESSION['idNo'])){
         header("location: authenticate.html#login");
     }
-    if($_SESSION['uType']!="Admin"){
+    if($_SESSION['uType']!="1"){
         header("location: user-dashboard.php");
     }
 ?>
@@ -143,7 +143,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <a href="./user-messages.php#suggestions">
+                        <a href="./user-messages.php">
                             <div style="padding: 30px;" class="grey lighten-3 col s5 waves-effect">
                                 <i class="large fas fa-comment-alt"></i>
                                 <span><h6>User Suggestions</h6></span>

@@ -3,7 +3,7 @@
     if(!isset($_SESSION['idNo'])){
         header("location: authenticate.html#login");
     }
-    if($_SESSION['uType']!="Admin"){
+    if($_SESSION['uType']!="1"){
         header("location: user-dashboard.php");
     }
 ?>
