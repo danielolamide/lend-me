@@ -130,7 +130,7 @@
                                 <span class="field-labels">Email Address</span>
                             </div>
                             <div class="input-field col s7 m7 l7 center-align">
-                                <span class=" field-values"><? echo $_SESSION['email']; ?></span>
+                                <span class=" field-values"><?php echo $_SESSION['email']; ?></span>
                             </div>
                         </div>
                         <div class="row">

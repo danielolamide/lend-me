@@ -3,7 +3,7 @@
     if(!isset($_SESSION['idNo'])){
         header("location: authenticate.html#login");
     }
-    if($_SESSION['uType']!="Admin"){
+    if($_SESSION['uType']!="1"){
         header("location: user-dashboard.php");
     }
 ?>
@@ -112,7 +112,7 @@
                         <span style="color:#C5C5C3; font-size:18px;">Display Name</span>
                     </div>
                     <div class="col s7 m7 l7">
-                        <span class="left" style="color:#494949; font-size:18px;"><?echo $_SESSION['uName']?></span>                        
+                        <span class="left" style="color:#494949; font-size:18px;"><?php echo $_SESSION['uName']?></span>                        
                     </div>
                 </div>
                 <div class="row">
@@ -125,7 +125,7 @@
                             <span style="color:#C5C5C3; font-size:18px;">Email Address</span>&nbsp;<i class="grey-text material-icons">edit</i>
                     </div>
                     <div class="input-field col s7 m7 l7" id="email-field-settings">
-                        <input type="email" name="admin-email" class="validate" value="<?echo $_SESSION['email'];?>">
+                        <input type="email" name="admin-email" class="validate" value="<?php echo $_SESSION['email'];?>">
                         <span class="helper-text" data-error="Incorrect Email Format" data-success=""></span>
                     </div>
                 </div>

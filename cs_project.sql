@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 20, 2018 at 11:58 AM
+-- Generation Time: Oct 29, 2018 at 08:41 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.10
 
@@ -86,6 +86,13 @@ CREATE TABLE `loans` (
   `DateDue` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `loans`
+--
+
+INSERT INTO `loans` (`LoanID`, `BorrowerID`, `LenderID`, `Amount`, `DateIssued`, `DateDue`) VALUES
+('1', 12345, 9999, 200, '2018-10-25 09:59:15', '2018-10-30 21:00:00');
+
 -- --------------------------------------------------------
 
 --
@@ -157,9 +164,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`Username`, `Email`, `ID_Number`, `Password`, `Phone_No`, `Gender`, `UserType`, `AccStatus`, `UserRating`, `loanCount`, `borrowCount`) VALUES
-('Malik Ibrahim', 'malik.mohamed@strathmore.edu', 0, '$2y$10$Y27HclQB14QmtK2gl0eP/uPok.xcjceaRphwpH6lWhRgmpIvIuopG', 0, 'Male', 1, '1', 0, 0, 0),
+('Malik Ibrahim', 'malik.mohamed@strathmore.edu', 9999, '$2y$10$Y27HclQB14QmtK2gl0eP/uPok.xcjceaRphwpH6lWhRgmpIvIuopG', 0, 'Male', 1, '1', 0, 1, 0),
 ('NIcole Yiega', 'nicole.muswanya@strathmore.edu', 12345, '$2y$10$A8nyi2W./5eMt06.8tm8Te2/ZxTvE6zGx/AZOEnuOXI8BUZVHs/ty', 725346793, 'Female', 2, '1', 0, 0, 0),
-('Daniel Ola', 'joseph.wole@strathmore.edu', 102214, '$2y$10$4p57qUcOljZ/8JK4eBzuROaQk1gz48n8ikggL3ADoXd2LQwc7So6S', 2147483647, 'Male', 1, '1', 0, 0, 0);
+('Daniel Ola', 'joseph.wole@strathmore.edu', 102214, '$2y$10$A8nyi2W./5eMt06.8tm8Te2/ZxTvE6zGx/AZOEnuOXI8BUZVHs/ty', 2147483647, 'Male', 1, '1', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -199,7 +206,7 @@ CREATE TABLE `wallet` (
 
 INSERT INTO `wallet` (`User_ID`, `WalletID`, `WalletBalance`, `WalletHistory`) VALUES
 (102214, 1, 1000, 1000),
-(0, 2, 0, 0),
+(9999, 2, 0, 0),
 (12345, 3, 100, 100);
 
 --

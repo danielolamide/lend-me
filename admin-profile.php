@@ -3,7 +3,7 @@
     if(!isset($_SESSION['idNo'])){
         header("location: authenticate.html#login");
     }
-    if($_SESSION['uType']!="Admin"){
+    if($_SESSION['uType']!="1"){
         header("location: user-dashboard.php");
     }
 ?>
@@ -105,7 +105,7 @@
                     <span style="color:#C5C5C3; font-size:18px;">Display Name</span>
                 </div>
                 <div class="col s7 m7 l7">
-                    <span class="left" style="color:#494949; font-size:18px;"><?echo $_SESSION['uName'];?></span>                        
+                    <span class="left" style="color:#494949; font-size:18px;"><?php echo $_SESSION['uName'];?></span>                        
                 </div>
             </div>
             <div class="row">
@@ -118,7 +118,7 @@
                         <span style="color:#C5C5C3; font-size:18px;">Email Address</span>
                 </div>
                 <div class="input-field col s7 m7 l7">
-                        <span class="left" style="color:#494949; font-size:18px;"><?echo $_SESSION['email'];?></span>                                            
+                        <span class="left" style="color:#494949; font-size:18px;"><?php echo $_SESSION['email'];?></span>                                            
                 </div>
             </div>
             <div class="row">
@@ -131,7 +131,7 @@
                     <span style="color:#C5C5C3; font-size:18px;">Gender</span>
                 </div>
                 <div class="col s7 m7 l7">
-                    <span class="left" style="color:#494949; font-size:18px;"><?echo $_SESSION['gender'];?></span>                        
+                    <span class="left" style="color:#494949; font-size:18px;"><?php echo $_SESSION['gender'];?></span>                        
                 </div>
             </div>
             <div class="row">
@@ -144,7 +144,7 @@
                         <span style="color:#C5C5C3; font-size:18px;">Account Type</span>
                     </div>
                     <div class="col s7 m7 l7">
-                        <span class="left" style="color:#494949; font-size:18px;"><? echo $_SESSION['uType'];?></span>                        
+                        <span class="left" style="color:#494949; font-size:18px;"><?php echo $_SESSION['uType'];?></span>                        
                     </div>
                 </div>
                 <div class="row">

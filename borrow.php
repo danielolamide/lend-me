@@ -1,4 +1,4 @@
-<?  
+<?php  
     require_once('connect-db.php');
     session_start();
     if(!isset($_SESSION['idNo'])){

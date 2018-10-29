@@ -1,9 +1,9 @@
-<?
+<?php
     session_start();
     if(!isset($_SESSION['idNo'])){
         header("location: authenticate.html#login");
     }
-    if($_SESSION['uType']!="Admin"){
+    if($_SESSION['uType']!="1"){
         header("location: user-dashboard.php");
     }
 ?>
@@ -116,7 +116,8 @@
                                             <td>214</td>
                                             <td>Moses</td>
                                             <td>2000</td>
-                                            <td style="float: left;"><a href="#confirm" onclick="$('#confirm').modal('open')" title="Disable User Account"><i class="material-icons">close</i></a></td>                                        </tr>
+                                            <td style="float: left;"><a href="#confirm" onclick="$('#confirm').modal('open')" title="Disable User Account"><i class="material-icons">close</i></a></td>
+                                        </tr>
 <?php        
         require_once 'connect-db.php';    
         $sql = "SELECT User_ID,BorrowerName,LoanAmount from liveborrower";
@@ -127,7 +128,7 @@
             // output data of each row
             while($row = $query->fetch_array()) 
             {
-            echo "<td>". $row["User_ID"]. "</td><td>". $row["BorrowerName"]. "</td><td>". $row["LoanAmount"]. "</td><td style=float: left;><a href='#confirm' onclick=$('#confirm').modal('open') title='Disable User Account'><i class='material-icons'>close</i></a></td>";
+            echo "<tr><td>". $row["User_ID"]. "</td><td>". $row["BorrowerName"]. "</td><td>". $row["LoanAmount"]. "</td><td style=float: left;><a href='#confirm' onclick=$('#confirm').modal('open') title='Disable User Account'><i class='material-icons'>close</i></a></td></tr>";
             }
         }
         else
@@ -197,7 +198,7 @@
             // output data of each row
             while($row = $query->fetch_array()) 
             {
-            echo "<td>". $row["ID_Number"]. "</td><td>". $row["Username"]. "</td><td>". $row["Amount"]. "</td><td style=float: left;><a href='#confirm' onclick=$('#confirm').modal('open') title='Disable User Account'><i class='material-icons'>close</i></a></td>";
+            echo "<tr><td>". $row["ID_Number"]. "</td><td>". $row["Username"]. "</td><td>". $row["Amount"]. "</td><td style=float: left;><a href='#confirm' onclick=$('#confirm').modal('open') title='Disable User Account'><i class='material-icons'>close</i></a></td></tr>";
             }
         }
         else
@@ -205,9 +206,9 @@
             echo "0 result";
         }
 ?>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>  
                     </div>
                 </div>
@@ -232,7 +233,7 @@
                                 <a href="#!" class="modal-close waves-effect waves-green right"><i class="material-icons center">close</i></a>
                             </div> <br><br>
                             <a href="user-disable.php" class="waves-effect waves-dark btn-small left" name="delete">Disable</a>
-                            <a href="user-management.php" style="margin-left:20px;" class="waves-effect waves-light btn-small left">Cancel</a>
+                            <a href="#" style="margin-left:20px;" class="waves-effect waves-light btn-small left">Cancel</a>
                         </div>
                     </div>
     <script>
@@ -259,6 +260,36 @@
                     }
                 } 
             }
+        }
+    </script>
+    <script>
+        function Disable(){
+            $(document).ready(function(){
+                $('table tbody tr').click(function(){
+                    var tableData = $(this).children('td').map(function(){
+                        return $(this).text();
+                    }).get();
+                var td=tableData[0];
+                alert(td);
+                });
+            });
+
+            var mysql = require('mysql');
+            var con = mysql.createConnection({
+            host: "localhost",
+            user: "root", 
+            password: "",
+            database: "cs_project"
+            });
+            
+            con.connect(function(err) {
+                if (err) throw err;
+                var sql = "UPDATE users SET AccStatus='x' WHERE 'ID_Number' = td;";
+                con.query(sql, function (err, result) {
+                    if (err) throw err;
+                    console.log(result.affectedRows + " record(s) updated");
+                });
+            });
         }
     </script>
 </body>
