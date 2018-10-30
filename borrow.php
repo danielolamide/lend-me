@@ -85,25 +85,61 @@
                         <ul class="collapsible popout">
                             <li class="active">
                                 <div class="collapsible-header application-report-header">View Loan Application Report</div>
-                                <div class="collapsible-body">
-                                    <div class="funding-table-container">
-                                        <table class="responsive-table">
-                                            <thead>
-                                                <tr>
-                                                    <th>Lender's Name</th>
-                                                    <th>Amount Loaned</th>
-                                                    <th>Date and Time</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Tiffnay</td>
-                                                    <td>Ksh. 10,000</td>
-                                                    <td>21/09/2018 12:49pm</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                <div class="collapsible-body funding-container">
+                                    <?php
+                                        $selectLoanDetailsSQL = "SELECT * FROM liveBorrower WHERE liveStatus ='1' AND User_ID='{$_SESSION['idNo']}'";
+                                        $selectLoanDetails = $con->query($selectLoanDetailsSQL);
+                                        if($selectLoanDetails->num_rows>0){
+                                            $liveRows = $selectLoanDetails->fetch_array();
+                                            $status = $liveRows['Status'];
+                                            $total = $liveRows['LoanAmount'];
+                                            $selectFundedSQL = "SELECT * FROM loanFunding WHERE (User_ID='{$_SESSION['idNo']}') AND (Total_Amount!=Amount_Funded)";
+                                            $selectFunded = $con->query($selectFundedSQL);
+                                           // echo $selectFunded;
+                                            if($selectFunded->num_rows>0){
+                                                $fundRow = $selectFunded->fetch_array();
+                                                $amountFunded = $fundRow['Amount_Funded'];
+                                                echo "<div class='row'>
+                                                <div class='col s12 m12 l12 center-align'>
+                                                    <span style='color:white; font-size: 26px; font-weight: 600; letter-spacing: 2px;'>Current Loan Details</span>
+                                                </div> 
+                                                </div>";
+                                                echo "<div class='row'>
+                                                <div class='col s4 m4 l4 center-align'>
+                                                    <span class='white-text' style='font-size:20px; font-weight: 600;'>Status</span>
+                                                </div>
+                                                <div class='col s4 m4 l4 center-align'>
+                                                    <span class='white-text' style='font-size:20px; font-weight: 600;'>Funded</span>
+                                                </div>
+                                                <div class='col s4 m4 l4 center-align'>
+                                                    <span class='white-text' style='font-size:20px; font-weight: 600;'>Total</span>
+                                                </div>
+                                                </div>";
+                                                echo "
+                                                <div class='row'>
+                                                <div class='col s4 m4 l4 center-align'>
+                                                    <span class='white-text' style='font-size:20px; font-weight: 600;'>$status %</span>
+                                                </div>
+                                                <div class='col s4 m4 l4 center-align'>
+                                                    <span class='white-text' style='font-size:20px; font-weight: 600;'>Ksh. $amountFunded</span>
+                                                </div>
+                                                <div class='col s4 m4 l4 center-align'>
+                                                    <span class='white-text' style='font-size:20px; font-weight: 600;'>Ksh. $total</span>
+                                                </div>
+                                            </div>";
+                                            }
+
+                                        }
+                                        else{
+                                            echo "<div class='row center-align'>
+                                                    <div class= col s12 m12 l12 center-align>
+                                                        <span style='color: white; font-size: 22px; font-weight: 600;'>You have no active loans</span>
+                                                    </div>
+                                                </div>";
+                                        }
+
+
+                                    ?>
                                 </div>
                             </li>
                         </ul>

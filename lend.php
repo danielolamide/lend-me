@@ -203,6 +203,43 @@
                                             }
                                         })
                                     });
+                                    $(document).on('submit','#lendForm',function(event){
+                                        event.preventDefault(); 
+                                        var id = $('.lend').attr("id");
+                                        var lendForm = $('#lendForm').serializeArray();
+                                        lendForm.push({
+                                            name: 'user_id',
+                                            value: id,
+                                        });
+                                        //console.log(lendForm);
+                                        $.ajax({
+                                            url: 'processLending.php',
+                                            method: 'post',
+                                            data: lendForm,
+                                            dataType: 'json',
+                                            success: function(data){
+                                                var lendModal = document.querySelector('#modal-lend');
+                                                var instance = M.Modal.init(lendModal);
+                                                instance.close();
+                                                M.toast({
+                                                    html: 'Successfully Lending',
+                                                    classes: 'rounded green',
+                                                    displayLength:'5000'
+                                                });
+                                            },
+                                            error: function(){
+                                                var lendModal = document.querySelector('#modal-lend');
+                                                var instance = M.Modal.init(lendModal);
+                                                instance.close();
+                                                M.toast({
+                                                    html:'Failed',
+                                                    classes: 'rounded red',
+                                                    displayLength: '5000'
+                                                });
+                                            }
+                                        });
+                                        event.preventDefault();
+                                    });
                                 });
                             </script>
                         </table>
