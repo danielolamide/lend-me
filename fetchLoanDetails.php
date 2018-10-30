@@ -33,18 +33,18 @@
         </div>
         <div class='row'>
             <div class='col s12 m12 l12'>
-                <form action=''>
+                <form method='post'  id='lendForm'>
                     <div class='row'>
                         <div class='input-field col s12 m12 l12'>
                             <i class='fas fa-money-bill prefix'></i>
-                            <input type='number' id='money-icon' class='validate' min='0'>
+                            <input type='number' id='money-icon' class='validate' name='lend-money' min='0'>
                             <label for='money-icon'>Amount to lend</label>
                         </div>
                     </div>
                     <div class='row'>
                         <div class='col s12 m12 l12 center-align'>
-                            <button class='btn waves-effect waves-light' type='submit' name='lend_money=btn'
-                                id='lend-money'>
+                            <button class='btn waves-effect waves-light' type='submit' name='lend-money-btn'
+                                id='$id' class='buttonLend'>
                                 Lend Money
                             </button>
                         </div>
@@ -68,7 +68,7 @@
             </div>
         </div>
     </div>";
-
+        
     echo $output;
 
     }

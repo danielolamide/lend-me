@@ -11,6 +11,13 @@
 				$data= $sql->fetch_array();
 				if((password_verify($uPassword, $data['Password']))&&($email==$data['Email'])){
 					    if($data['UserType']=="2"){
+							$wallet_query = "SELECT * FROM wallet WHERE User_ID='{$_SESSION['idNo']}'";
+							$select_wallet = $con->query($wallet_query);
+							if($select_wallet->num_rows>0){
+								$wallet_row=$select_wallet->fetch_array();
+								$_SESSION['wallet-id']= $wallet_row['WalletID'];
+								$_SESSION['wallet-balance']= $wallet_row['WalletBalance'];
+							}
 							$_SESSION['uName']= $data['Username'];
 							$_SESSION['FName']= explode(" ",$_SESSION['uName']);
     	    				$_SESSION['email']= $data['Email'];

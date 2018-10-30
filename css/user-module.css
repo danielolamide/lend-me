@@ -386,6 +386,21 @@ input[type=number]::-webkit-outer-spin-button {
     /* IE6-9 fallback on horizontal gradient */
 }
 
+.funding-container {
+    margin: 0 auto;
+    margin-bottom: 20px;
+    background: #4f78a4;
+    /* Old browsers */
+    background: -moz-linear-gradient(45deg, #4f78a4 0%, #70baba 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(45deg, #4f78a4 0%, #70baba 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(45deg, #4f78a4 0%, #70baba 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#4f78a4', endColorstr='#70baba', GradientType=1);
+    /* IE6-9 fallback on horizontal gradient */
+}
+
 #acc-balance-header-container span {
     color: white;
     font-size: 20px;
