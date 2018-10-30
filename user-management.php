@@ -112,12 +112,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>214</td>
-                                            <td>Moses</td>
-                                            <td>2000</td>
-                                            <td style="float: left;"><a href="#confirm" onclick="$('#confirm').modal('open')" title="Disable User Account"><i class="material-icons">close</i></a></td>
-                                        </tr>
+                                        
 <?php        
         require_once 'connect-db.php';    
         $sql = "SELECT User_ID,BorrowerName,LoanAmount from liveborrower";
@@ -180,12 +175,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>123</td>
-                                                <td>Nicole</td>
-                                                <td>2000</td>
-                                                <td style="float: left;"><a href="#confirm" onclick="$('#confirm').modal('open')" title="Disable User Account"><i class="material-icons">close</i></a></td>
-                                            </tr>
+                                            
 <?php        
         require_once 'connect-db.php';    
         $sql = "SELECT users.ID_Number, users.Username, loans.Amount, loans.LenderID

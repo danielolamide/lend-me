@@ -99,28 +99,34 @@
                             <table class="centered responsive-table highlight" id="table">
                                 <thead>
                                     <tr>
-                                        <th>Borrower Name</th>
+                                        <th>Borrower ID</th>
                                         <th>Transaction Type</th>
                                         <th>Amount</th>
-                                        <th>Time</th>
+                                        <th>Date Issued</th>
+                                        <th>Date Due</th>
                                         <th>Transaction Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Daniel</td>
-                                        <td>Loan Paybacks</td>
-                                        <td>20000</td>
-                                        <td>12:48 23/12/2001</td>
-                                        <td><i class="green-text material-icons">check</i></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Nicole</td>
-                                        <td>Loan</td>
-                                        <td>80000</td>
-                                        <td>12:48 23/12/2001</td>
-                                        <td><i class="green-text material-icons">check</i></td>
-                                    </tr>
+                                    
+<?php        
+        require_once 'connect-db.php';    
+        $sql = "SELECT BorrowerID,Amount,DateIssued,DateDue FROM loans;";
+        $query = $con->query($sql);
+                
+        if ($query->num_rows>0) 
+        {
+            // output data of each row
+            while($row = $query->fetch_array()) 
+            {
+            echo "<tr><td>". $row["BorrowerID"]. "</td><td>Loan</td><td>". $row["Amount"]. "</td><td>". $row["DateIssued"]. "</td><td>". $row["DateDue"]. "</td><td><i class='green-text material-icons'>check</i></td></tr>";
+            }
+        }
+        else
+        {
+            echo "0 result";
+        }
+?>
                                 </tbody>
                             </table>
                         </div>
@@ -153,28 +159,33 @@
                             <table class="centered responsive-table" id="table1">
                                 <thead>
                                     <tr>
-                                        <th>Lender Name</th>
+                                        <th>Lender ID</th>
                                         <th>Transaction Type</th>
                                         <th>Amount</th>
-                                        <th>Time</th>
+                                        <th>Date Issued</th>
+                                        <th>Date Due</th>
                                         <th>Transaction Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Daniel</td>
-                                        <td>Loan Funding</td>
-                                        <td>20000</td>
-                                        <td>12:48 23/12/2001</td>
-                                        <td><i class="green-text material-icons">check</i></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Nicole</td>
-                                        <td>Loan Payment</td>
-                                        <td>80000</td>
-                                        <td>12:48 23/12/2001</td>
-                                        <td><i class="green-text material-icons">check</i></td>
-                                    </tr>
+<?php        
+        require_once 'connect-db.php';    
+        $sql = "SELECT LenderID,Amount,DateIssued,DateDue FROM loans;";
+        $query = $con->query($sql);
+                
+        if ($query->num_rows>0) 
+        {
+            // output data of each row
+            while($row = $query->fetch_array()) 
+            {
+            echo "<tr><td>". $row["LenderID"]. "</td><td>Loan</td><td>". $row["Amount"]. "</td><td>". $row["DateIssued"]. "</td><td>". $row["DateDue"]. "</td><td><i class='green-text material-icons'>check</i></td></tr>";
+            }
+        }
+        else
+        {
+            echo "0 result";
+        }
+?>
                                 </tbody>
                                 </table>
                         </div>

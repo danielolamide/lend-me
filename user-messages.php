@@ -103,13 +103,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>Daniel</td>
-                                            <td>Wole</td>
-                                            <td>Failure to pay loans</td>
-                                            <td>12:48 23/12/2001</td>
-                                            <td><a href="#noted"><i class="material-icons">check</i></a></td>
-                                        </tr>
+                                        
 <?php        
         require_once 'connect-db.php';    
         $sql = "SELECT Name,UserID,Complaint,Time from complaints";
@@ -158,12 +152,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>102214</td>
-                                                <td>Option to pay all loans at once</td>
-                                                <td>12:48 23/12/2001</td>
-                                                <td><a href="#noted"><i class="material-icons">check</i></a></td>
-                                            </tr>
+                                            
 <?php        
         require_once 'connect-db.php';    
         $sql = "SELECT UserID,Suggestion,Time from suggestions";
