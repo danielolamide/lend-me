@@ -141,7 +141,7 @@
                     <div style="padding:20px;"class="col s12 m12 l12">
                         <div class="container">
                             <form>
-                                <input class="searchForm" type="text" onkeyup="Search()" id="search" placeholder="Search..">
+                                <input class="searchForm" type="text" onkeyup="search()" id="Search" placeholder="Search..">
                                 <button type="submit" class="searchButton"><i class="fa fa-search"></i></button>
                             </form>
                         </div>
@@ -150,7 +150,7 @@
                 <div class="row">
                     <div style="padding:20px;" class="grey lighten-3 col s12 m12 l12">
                         <div id="transact-lenders" class="center-align container">
-                            <table class="centered responsive-table" id="table">
+                            <table class="centered responsive-table" id="table1">
                                 <thead>
                                     <tr>
                                         <th>Lender Name</th>
@@ -197,6 +197,31 @@
             input = document.getElementById("search");
             filter = input.value.toUpperCase();
             table = document.getElementById("table");
+            tr = table.getElementsByTagName("tr");
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) 
+                {
+                    if (td.innerHTML.toUpperCase().indexOf(filter) > -1) 
+                    {
+                        tr[i].style.display = "";
+                    } 
+                    else 
+                    {
+                        tr[i].style.display = "none";
+                    }
+                } 
+            }
+        }
+
+        function search(){
+            // Declare variables 
+            var input, filter, table, tr, td, i;
+            input = document.getElementById("Search");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("table1");
             tr = table.getElementsByTagName("tr");
 
             // Loop through all table rows, and hide those who don't match the search query

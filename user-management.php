@@ -161,7 +161,7 @@
                         <div style="padding:20px;"class="col s12 m12 l12">
                             <div class="container">
                                 <form>
-                                    <input class="searchForm" onkeyup="Search()" id="search" placeholder="Search by ID Number...">
+                                    <input class="searchForm" onkeyup="search()" id="Search" placeholder="Search by ID Number...">
                                     <button type="submit" class="searchButton"><i class="fa fa-search"></i></button>
                                 </form>
                             </div>
@@ -170,7 +170,7 @@
                     <div class="row">
                         <div style="padding:20px;" class="grey lighten-3 col s12 m12 l12">
                                 <div class="center-align container" id="lenders-table">
-                                    <table class=" responsive-table" id="table">
+                                    <table class=" responsive-table" id="table1">
                                         <thead>
                                             <tr>
                                                 <th>ID number</th>
@@ -261,12 +261,13 @@
                 } 
             }
         }
-                function Search(){
+
+        function search(){
             // Declare variables 
             var input, filter, table, tr, td, i;
-            input = document.getElementById("search");
+            input = document.getElementById("Search");
             filter = input.value.toUpperCase();
-            table = document.getElementById("table");
+            table = document.getElementById("table1");
             tr = table.getElementsByTagName("tr");
 
             // Loop through all table rows, and hide those who don't match the search query
@@ -286,35 +287,5 @@
             }
         }
     </script>
-    <!-- <script>
-        function Disable(){
-            $(document).ready(function(){
-                $('table tbody tr').click(function(){
-                    var tableData = $(this).children('td').map(function(){
-                        return $(this).text();
-                    }).get();
-                var td=tableData[0];
-                alert(td);
-                });
-            });
-
-            var mysql = require('mysql');
-            var con = mysql.createConnection({
-            host: "localhost",
-            user: "root", 
-            password: "",
-            database: "cs_project"
-            });
-            
-            con.connect(function(err) {
-                if (err) throw err;
-                var sql = "UPDATE users SET AccStatus='x' WHERE 'ID_Number' = td;";
-                con.query(sql, function (err, result) {
-                    if (err) throw err;
-                    console.log(result.affectedRows + " record(s) updated");
-                });
-            });
-        }
-    </script> -->
 </body>
 </html>

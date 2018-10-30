@@ -33,7 +33,7 @@
             <a href="#" data-target="mobile-demo" id="mobile-menu-icon" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li id="settings-link"><a href="./user-settings.php"><i class="material-icons">settings</i></a></li>
-                <li><a class="dropdown-trigger user-name-lend" href="#" data-target="dropdown-user-module"><?echo $_SESSION['FName'][0]?><i
+                <li><a class="dropdown-trigger user-name-lend" href="#" data-target="dropdown-user-module"><?php echo $_SESSION['FName'][0]?><i
                             class="material-icons right">arrow_drop_down</i></a></li>
             </ul>
         </div>
