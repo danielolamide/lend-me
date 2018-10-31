@@ -5,7 +5,7 @@
         header('Location: authenticate.html#login');
     }
     else{
-        $processLiveBorrowersSQL = "SELECT * FROM liveBorrower WHERE liveStatus ='1'";
+        $processLiveBorrowersSQL = "SELECT * FROM liveBorrower WHERE liveStatus ='1' AND Status != '100'";
         $processLiveBorrowers = $con -> query($processLiveBorrowersSQL);   
         $checkLendSQL = "SELECT * FROM liveBorrower WHERE User_ID='{$_SESSION['idNo']}'";
         $checkLend = $con->query($checkLendSQL);
@@ -205,6 +205,9 @@
                                     });
                                     $(document).on('submit','#lendForm',function(event){
                                         event.preventDefault(); 
+                                        // $('.lend').click(function(){
+                                        //     var id = $(this).attr("id");
+                                        // });
                                         var id = $('.lend').attr("id");
                                         var lendForm = $('#lendForm').serializeArray();
                                         lendForm.push({

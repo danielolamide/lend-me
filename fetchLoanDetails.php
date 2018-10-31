@@ -33,7 +33,7 @@
         </div>
         <div class='row'>
             <div class='col s12 m12 l12'>
-                <form method='post'  id='lendForm'>
+                <form method='post'  id='lendForm' class='$id'>
                     <div class='row'>
                         <div class='input-field col s12 m12 l12'>
                             <i class='fas fa-money-bill prefix'></i>

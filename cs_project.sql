@@ -2,8 +2,8 @@
 -- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 29, 2018 at 08:41 AM
+-- Host: localhost
+-- Generation Time: Oct 31, 2018 at 10:42 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.10
 
@@ -38,22 +38,33 @@ CREATE TABLE `complaints` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `imageupload`
+-- Table structure for table `imageUpload`
 --
 
-CREATE TABLE `imageupload` (
+CREATE TABLE `imageUpload` (
   `upload_id` int(11) NOT NULL,
   `User_ID` int(11) NOT NULL,
-  `status` int(11) NOT NULL
+  `status` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `imageUpload`
+--
+
+INSERT INTO `imageUpload` (`upload_id`, `User_ID`, `status`) VALUES
+(1, 102214, 1),
+(2, 99012, 0),
+(3, 120000, 0),
+(4, 94673, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `liveborrower`
+-- Table structure for table `liveBorrower`
 --
 
-CREATE TABLE `liveborrower` (
+CREATE TABLE `liveBorrower` (
+  `LiveID` int(11) NOT NULL,
   `User_ID` int(11) NOT NULL,
   `BorrowerName` text NOT NULL,
   `Status` int(11) NOT NULL DEFAULT '0',
@@ -65,11 +76,34 @@ CREATE TABLE `liveborrower` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `liveborrower`
+-- Dumping data for table `liveBorrower`
 --
 
-INSERT INTO `liveborrower` (`User_ID`, `BorrowerName`, `Status`, `Description`, `LoanAmount`, `LoanLength`, `LoanInterest`, `liveStatus`) VALUES
-(102214, 'Daniel Ola', 0, 'Food', 100, 10, 2, 1);
+INSERT INTO `liveBorrower` (`LiveID`, `User_ID`, `BorrowerName`, `Status`, `Description`, `LoanAmount`, `LoanLength`, `LoanInterest`, `liveStatus`) VALUES
+(1, 99012, 'Afandi Indaitsi', 50, 'Farming', 600, 2, 10, 1),
+(2, 120000, 'Isaack Motanya', 0, 'Business\r\n', 1000, 10, 20, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `loanFunding`
+--
+
+CREATE TABLE `loanFunding` (
+  `Fund_ID` int(11) NOT NULL,
+  `User_ID` int(11) NOT NULL,
+  `Total_Amount` int(11) NOT NULL,
+  `Amount_Funded` int(11) NOT NULL DEFAULT '0',
+  `Amount_Left` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `loanFunding`
+--
+
+INSERT INTO `loanFunding` (`Fund_ID`, `User_ID`, `Total_Amount`, `Amount_Funded`, `Amount_Left`) VALUES
+(1, 99012, 600, 300, 300),
+(2, 120000, 1000, 0, 1000);
 
 -- --------------------------------------------------------
 
@@ -78,31 +112,44 @@ INSERT INTO `liveborrower` (`User_ID`, `BorrowerName`, `Status`, `Description`, 
 --
 
 CREATE TABLE `loans` (
-  `LoanID` varchar(5) NOT NULL,
+  `LoanID` int(5) NOT NULL,
   `BorrowerID` int(11) NOT NULL,
   `LenderID` int(11) NOT NULL,
-  `Amount` int(11) NOT NULL,
+  `Amount` bigint(20) NOT NULL,
   `DateIssued` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `DateDue` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `DateDue` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `paymentStatus` int(11) NOT NULL DEFAULT '0',
+  `percentageLoaned` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `loans`
 --
 
-INSERT INTO `loans` (`LoanID`, `BorrowerID`, `LenderID`, `Amount`, `DateIssued`, `DateDue`) VALUES
-('1', 12345, 9999, 200, '2018-10-25 09:59:15', '2018-10-30 21:00:00');
+INSERT INTO `loans` (`LoanID`, `BorrowerID`, `LenderID`, `Amount`, `DateIssued`, `DateDue`, `paymentStatus`, `percentageLoaned`) VALUES
+(2, 99012, 102214, 300, '2018-10-30 21:23:24', '2018-12-30 20:07:04', 0, 50);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `loanstatus`
+-- Table structure for table `loanStatus`
 --
 
-CREATE TABLE `loanstatus` (
+CREATE TABLE `loanStatus` (
+  `statusID` int(11) NOT NULL,
   `User_ID` int(11) NOT NULL,
   `loanAvailability` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `loanStatus`
+--
+
+INSERT INTO `loanStatus` (`statusID`, `User_ID`, `loanAvailability`) VALUES
+(1, 102214, 1),
+(2, 99012, 1),
+(3, 120000, 1),
+(4, 94673, 0);
 
 -- --------------------------------------------------------
 
@@ -137,7 +184,13 @@ CREATE TABLE `transactions` (
 
 INSERT INTO `transactions` (`TID`, `User_ID`, `Amount`, `TransactionType`, `TimeStamp`) VALUES
 (1, 102214, 1000, 'Cash Deposit', '2018-10-15 10:08:12'),
-(2, 12345, 100, 'Cash Deposit', '2018-10-20 08:55:47');
+(2, 102214, 100, 'Cash Withdrawal', '2018-10-24 11:28:20'),
+(3, 99012, 1000, 'Cash Deposit', '2018-10-25 12:36:46'),
+(4, 120000, 10000, 'Cash Deposit', '2018-10-25 12:39:19'),
+(5, 102214, 10000, 'Cash Deposit', '2018-10-25 12:51:26'),
+(6, 102214, 10000, 'Cash Deposit', '2018-10-29 08:36:32'),
+(9, 102214, 300, 'Send Loan Funding', '2018-10-30 20:07:04'),
+(10, 99012, 300, 'Receive Loan Funding', '2018-10-30 20:07:04');
 
 -- --------------------------------------------------------
 
@@ -152,21 +205,23 @@ CREATE TABLE `users` (
   `Password` varchar(255) NOT NULL,
   `Phone_No` int(10) NOT NULL,
   `Gender` text NOT NULL,
-  `UserType` int(11) NOT NULL,
+  `UserType` text NOT NULL,
   `AccStatus` varchar(1) NOT NULL,
   `UserRating` int(11) NOT NULL DEFAULT '0',
   `loanCount` int(11) NOT NULL DEFAULT '0',
-  `borrowCount` int(11) NOT NULL DEFAULT '0'
+  `borrowCount` int(11) NOT NULL DEFAULT '0',
+  `defaultCount` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`Username`, `Email`, `ID_Number`, `Password`, `Phone_No`, `Gender`, `UserType`, `AccStatus`, `UserRating`, `loanCount`, `borrowCount`) VALUES
-('Malik Ibrahim', 'malik.mohamed@strathmore.edu', 9999, '$2y$10$Y27HclQB14QmtK2gl0eP/uPok.xcjceaRphwpH6lWhRgmpIvIuopG', 0, 'Male', 1, '1', 0, 1, 0),
-('NIcole Yiega', 'nicole.muswanya@strathmore.edu', 12345, '$2y$10$A8nyi2W./5eMt06.8tm8Te2/ZxTvE6zGx/AZOEnuOXI8BUZVHs/ty', 725346793, 'Female', 2, '1', 0, 0, 0),
-('Daniel Ola', 'joseph.wole@strathmore.edu', 102214, '$2y$10$A8nyi2W./5eMt06.8tm8Te2/ZxTvE6zGx/AZOEnuOXI8BUZVHs/ty', 2147483647, 'Male', 1, '1', 0, 0, 0);
+INSERT INTO `users` (`Username`, `Email`, `ID_Number`, `Password`, `Phone_No`, `Gender`, `UserType`, `AccStatus`, `UserRating`, `loanCount`, `borrowCount`, `defaultCount`) VALUES
+('cyril owuor', 'cyril.odwuor@strathmore.edu', 94673, '$2y$10$uVoXsrqgrxoLvVkkG/LTU.CCXjB4hQSbXdebs9USopQLx1nsBNzuG', 799988867, 'Male', '2', '1', 0, 0, 0, 0),
+('Afandi Indaitsi', 'afandi.indiatsi@strathmore.edu', 99012, '$2y$10$VE6tbMlvLvVuR.RjWKbveuXqRdGB1jgUZNyLn7R.RxcqVYhFn1Pb.', 712345678, 'Female', '2', '1', 0, 0, 1, 0),
+('Daniel Ola', 'joseph.wole@strathmore.edu', 102214, '$2y$10$VE6tbMlvLvVuR.RjWKbveuXqRdGB1jgUZNyLn7R.RxcqVYhFn1Pb.', 798502767, 'Male', '2', '1', 0, 1, 0, 0),
+('Isaack Motanya', 'isaack.motanya@strathmore.edu', 120000, '$2y$10$VE6tbMlvLvVuR.RjWKbveuXqRdGB1jgUZNyLn7R.RxcqVYhFn1Pb.', 712345677, 'Male', '2', '1', 0, 0, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -205,9 +260,10 @@ CREATE TABLE `wallet` (
 --
 
 INSERT INTO `wallet` (`User_ID`, `WalletID`, `WalletBalance`, `WalletHistory`) VALUES
-(102214, 1, 1000, 1000),
-(9999, 2, 0, 0),
-(12345, 3, 100, 100);
+(102214, 1, 9700, 10000),
+(99012, 2, 1300, 1000),
+(120000, 3, 10000, 10000),
+(94673, 4, 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -221,16 +277,24 @@ ALTER TABLE `complaints`
   ADD KEY `UserID` (`UserID`);
 
 --
--- Indexes for table `imageupload`
+-- Indexes for table `imageUpload`
 --
-ALTER TABLE `imageupload`
+ALTER TABLE `imageUpload`
   ADD PRIMARY KEY (`upload_id`),
   ADD KEY `User_ID` (`User_ID`);
 
 --
--- Indexes for table `liveborrower`
+-- Indexes for table `liveBorrower`
 --
-ALTER TABLE `liveborrower`
+ALTER TABLE `liveBorrower`
+  ADD PRIMARY KEY (`LiveID`),
+  ADD KEY `User_ID` (`User_ID`);
+
+--
+-- Indexes for table `loanFunding`
+--
+ALTER TABLE `loanFunding`
+  ADD PRIMARY KEY (`Fund_ID`),
   ADD KEY `User_ID` (`User_ID`);
 
 --
@@ -242,9 +306,10 @@ ALTER TABLE `loans`
   ADD KEY `LenderID` (`LenderID`);
 
 --
--- Indexes for table `loanstatus`
+-- Indexes for table `loanStatus`
 --
-ALTER TABLE `loanstatus`
+ALTER TABLE `loanStatus`
+  ADD PRIMARY KEY (`statusID`),
   ADD KEY `User_ID` (`User_ID`);
 
 --
@@ -265,8 +330,7 @@ ALTER TABLE `transactions`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`ID_Number`),
-  ADD KEY `UserType` (`UserType`);
+  ADD PRIMARY KEY (`ID_Number`);
 
 --
 -- Indexes for table `usertype`
@@ -292,10 +356,34 @@ ALTER TABLE `complaints`
   MODIFY `ComplaintID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `imageupload`
+-- AUTO_INCREMENT for table `imageUpload`
 --
-ALTER TABLE `imageupload`
-  MODIFY `upload_id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `imageUpload`
+  MODIFY `upload_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `liveBorrower`
+--
+ALTER TABLE `liveBorrower`
+  MODIFY `LiveID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `loanFunding`
+--
+ALTER TABLE `loanFunding`
+  MODIFY `Fund_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `loans`
+--
+ALTER TABLE `loans`
+  MODIFY `LoanID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `loanStatus`
+--
+ALTER TABLE `loanStatus`
+  MODIFY `statusID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `suggestions`
@@ -307,13 +395,13 @@ ALTER TABLE `suggestions`
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `TID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `TID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `wallet`
 --
 ALTER TABLE `wallet`
-  MODIFY `WalletID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `WalletID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
@@ -326,16 +414,22 @@ ALTER TABLE `complaints`
   ADD CONSTRAINT `complaints_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `users` (`ID_Number`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `imageupload`
+-- Constraints for table `imageUpload`
 --
-ALTER TABLE `imageupload`
+ALTER TABLE `imageUpload`
   ADD CONSTRAINT `imageupload_ibfk_1` FOREIGN KEY (`User_ID`) REFERENCES `users` (`ID_Number`);
 
 --
--- Constraints for table `liveborrower`
+-- Constraints for table `liveBorrower`
 --
-ALTER TABLE `liveborrower`
+ALTER TABLE `liveBorrower`
   ADD CONSTRAINT `liveborrower_ibfk_1` FOREIGN KEY (`User_ID`) REFERENCES `users` (`ID_Number`);
+
+--
+-- Constraints for table `loanFunding`
+--
+ALTER TABLE `loanFunding`
+  ADD CONSTRAINT `loanfunding_ibfk_1` FOREIGN KEY (`User_ID`) REFERENCES `users` (`ID_Number`);
 
 --
 -- Constraints for table `loans`
@@ -345,9 +439,9 @@ ALTER TABLE `loans`
   ADD CONSTRAINT `loans_ibfk_2` FOREIGN KEY (`LenderID`) REFERENCES `users` (`ID_Number`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `loanstatus`
+-- Constraints for table `loanStatus`
 --
-ALTER TABLE `loanstatus`
+ALTER TABLE `loanStatus`
   ADD CONSTRAINT `loanStatus_ibfk_1` FOREIGN KEY (`User_ID`) REFERENCES `users` (`ID_Number`);
 
 --
@@ -361,12 +455,6 @@ ALTER TABLE `suggestions`
 --
 ALTER TABLE `transactions`
   ADD CONSTRAINT `transactions_ibfk_1` FOREIGN KEY (`User_ID`) REFERENCES `users` (`ID_Number`);
-
---
--- Constraints for table `users`
---
-ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`UserType`) REFERENCES `usertype` (`UserTypeID`);
 
 --
 -- Constraints for table `wallet`

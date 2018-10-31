@@ -11,7 +11,7 @@ if(isset($_POST['sign_up']))
     $uPass1 = $con->real_escape_string($_REQUEST['pass1']);
     $no = $con->real_escape_string($_REQUEST['number']);
     $sex = $con->real_escape_string($_REQUEST['gender']);
-    $user = "User";
+    $user = 2;
     $acc = 0;
  
     if($uPass!=$uPass1){
@@ -50,7 +50,7 @@ if(isset($_POST['sign_up']))
             $hashed = password_hash($uPass, PASSWORD_BCRYPT);
             $sql = "INSERT INTO users (Username,Email,ID_Number,Password,Phone_No,Gender,UserType,AccStatus) VALUES ('$username', '$email', '$id', '$hashed', '$no', '$sex', '$user', '$acc')";
             $intitalize_wallet="INSERT INTO wallet(User_ID) VALUES('$id')";
-            $insertDefaultProfile = "INSERT INTO imageUpload (User_ID, status) VALUES('$id')";
+            $insertDefaultProfile = "INSERT INTO imageUpload (User_ID) VALUES('$id')";
             $initializeLoanStatus  = "INSERT INTO loanStatus (User_ID) VALUES('$id')";
 
 

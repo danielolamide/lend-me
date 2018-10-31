@@ -4,6 +4,7 @@
     //require_once('fetchLoanDetails.php');
     if($_POST['user_id']){
         $id = $_POST['user_id'];
+        echo $id;
         $selectFundsSQL = "SELECT * FROM loanFunding WHERE User_ID = '$id'";
         $selectFunds = $con->query($selectFundsSQL);
         $fundRows  = $selectFunds->fetch_array();
@@ -33,14 +34,17 @@
                 $updateBorrowerWalletBalanceSQL = "UPDATE wallet SET WalletBalance='$newBorrowerBalance' WHERE User_ID='$id'";
                 $updateBorrowerWalletBalance = $con->query($updateBorrowerWalletBalanceSQL);
                 $status = ($fundedAmount/$total_amount) * 100;
-                $updateStatusSQL = "UPDATE liveBorrower SET Status='$status' WHERE User_ID='$id'";
-                $updateStatus = $con->query($updateStatusSQL);
+                $lenderStatus = ($lend_Amount/$total_amount) * 100;
+                if($status==100){
+                    $updateStatusSQL = "UPDATE liveBorrower SET Status='$status', liveStatus='0' WHERE User_ID='$id'";
+                    $updateStatus = $con->query($updateStatusSQL);
+                }
                 $timeObject = time();
                 $currentDate = date('Y-m-d H:i:s', $timeObject);// Current Time
                 $currentDateTime = new DateTime($currentDate);// Date Time Object
                 $DueDateTime = $currentDateTime->modify('+'.$loanLength.'months');// Due Date Calculation
                 $DueCurrentTimeStamp = $DueDateTime->format('Y-m-d H:i:s');//Change Due Date format calculation
-                $insertLoansSQL = "INSERT INTO loans (BorrowerID,LenderID,Amount,DateIssued,DateDue) VALUES('$id','{$_SESSION['idNo']}','$lend_Amount','$currentDate','$DueCurrentTimeStamp')";
+                $insertLoansSQL = "INSERT INTO loans (BorrowerID,LenderID,Amount,DateIssued,DateDue,percentageLoaned) VALUES('$id','{$_SESSION['idNo']}','$lend_Amount','$currentDate','$DueCurrentTimeStamp','$lenderStatus')";
                 $insertLoans = $con->query($insertLoansSQL);
                 $selectLoanCountSQL = "SELECT * FROM users WHERE ID_Number='{$_SESSION['idNo']}'";
                 $selectLoanCount = $con->query($selectLoanCountSQL);

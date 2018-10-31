@@ -234,14 +234,14 @@
                                 <div class="collapsible-body">
                                     <table class="stripped reponsive-table popup-table">
                                         <tbody>
-                                            <tr>
+                                            <!-- <tr>
                                                 <td>Amount on Loan</td>
                                                 <td class="account-data">Ksh. 1022</td>
                                             </tr>
                                             <tr>
                                                 <td>Amount Owed</td>
                                                 <td class="account-data">Ksh. 20020</td>
-                                            </tr>
+                                            </tr> -->
                                             <tr>
                                                 <td>Wallet Balance</td>
                                                 <td class="account-data"><?php echo "Ksh. ".$_SESSION['wallet-balance'];?></td>
