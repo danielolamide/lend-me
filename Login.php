@@ -27,6 +27,7 @@
 							$_SESSION['lCount']= $data['loanCount'];
 							$_SESSION['bCount'] = $data['borrowCount'];
 							$_SESSION['rating'] = $data['UserRating'];
+							$_SESSION['defaults'] =$data['defaultCount'];
 					        header("location: user-dashboard.php");
 					    }
 
