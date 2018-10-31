@@ -122,11 +122,15 @@
                 </div>
                 <div class="row">
                     <div class="col s5 m5 l5">
-                            <span style="color:#C5C5C3; font-size:18px;">Email Address</span>&nbsp;<i class="grey-text material-icons">edit</i>
+                        <span style="color:#C5C5C3; font-size:18px;">Email Address</span>
                     </div>
-                    <div class="input-field col s7 m7 l7" id="email-field-settings">
-                        <input type="email" name="admin-email" class="validate" value="<?php echo $_SESSION['email'];?>">
-                        <span class="helper-text" data-error="Incorrect Email Format" data-success=""></span>
+                    <div class="col s7 m7 l7">
+                        <span class="left" style="color:#494949; font-size:18px;"><?php echo $_SESSION['email'];?></span>                        
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s7 offset-s5">
+                        <div class="divider"></div>
                     </div>
                 </div>
                 <div class="row">
