@@ -1,5 +1,6 @@
 <?php
     session_start();
+    require_once('connect-db.php');
     if(!isset($_SESSION['idNo'])){
         header("location: authenticate.html#login");
     }
@@ -88,13 +89,25 @@
                 <div class="divider"></div>
             </div>
             <div class="row">
-                <div class="col s5 m5 l5">
-                    <span style="color:#C5C5C3; font-size:18px;">Photo</span>
+                 <div class="col s5 m5 l5 center-align">
+                    <span class="field-labels">Photo</span>
                 </div>
-                <div class="col s7 m7 l7" id="usrImg-settings-container">
-                    <img class="responsive-img left" src="./images/large-default-user.png" alt="Default User Icon">
-                </div>
-            </div>
+                <div class="col s7 m7 l7 center-align">
+                <?php
+                    $selectImage = "SELECT * FROM imageUpload WHERE User_ID ='{$_SESSION['idNo']}'";
+                    $selectImageResult = $con->query($selectImage);
+                    while($rowImage = $selectImageResult->fetch_array()){
+                        if($rowImage['status']==0){
+                            echo "<img src='./images/large-default-user.png' class='responsive-img' alt='User Image'>";
+                        }
+                        else{
+                            echo "<img src='./uploads/profile".$_SESSION['idNo'].".jpg?".'mt_rand'."class='responsive-img left' alt='User Image' style='max-height:200px;'>";
+                        }
+                    }
+                ?>
+                                <!-- <img src="./images/large-default-user.png" alt="user-image" class="left responsive-img"> -->
+                            </div>
+                        </div>
             <div class="row">
                 <div class="col s7 offset-s5">
                     <div class="divider"></div>

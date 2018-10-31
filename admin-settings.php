@@ -1,5 +1,6 @@
 <?php
     session_start();
+    require_once('connect-db.php');
     if(!isset($_SESSION['idNo'])){
         header("location: authenticate.html#login");
     }
@@ -86,8 +87,10 @@
                     <div class="col s5 m5 l5">
                         <span style="color:#494949; font-size:20px;" class="left">Profile</span>
                     </div>
-                    <div class="col s7 m7 l7" id="save-btn-holder">
-                        <a href="" class="waves-effect waves-light btn right"><i class="right material-icons">save</i>Save Changes</a>
+                    <div class="s7 m7 l7 right-align">
+                        <button class="btn waves-effect waves-light save-user-settings-btn" type="submit" name="save-user-changes">
+                                Save Changes <i class="material-icons">save</i>
+                            </button>
                     </div>
                 </div>
                 <div class="row">
@@ -97,11 +100,28 @@
                     <div class="col s5 m5 l5">
                         <span style="color:#C5C5C3; font-size:18px;">Photo</span>
                     </div>
-                    <div class="col s7 m7 l7" id="usrImg-settings-container">
-                        <img class="responsive-img left" src="./images/large-default-user.png" alt="Default User Icon">
-                        <a href="" class="waves-effect waves-light btn left">Change</a>
+                    <div class="input-field file-field col s7 m7 l7" id="userImageFrame">
+                            <?php
+                                $selectImage = "SELECT * FROM imageUpload WHERE User_ID ='{$_SESSION['idNo']}'";
+                                $selectImageResult = $con->query($selectImage);
+                                while($rowImage = $selectImageResult->fetch_array()){
+                                    if($rowImage['status']==0){
+                                        echo "<img src='./images/large-default-user.png' class='responsive-img left' alt='User Image'>";
+                                    }
+                                    else{
+                                        echo "<img src='./uploads/profile".$_SESSION['idNo'].".jpg?".'mt_rand'."class='responsive-img left' alt='User Image' style='max-height:200px;'>";
+                                    }
+                                }
+                            ?>
+                            <!-- <img src="./images/large-default-user.png" class="responsive-img left"alt="user-image"> -->
+                            <button class="btn waves-effect waves-light change-user-image-btn">
+                                Change<input type="file" name="new-user-img">
+                            </button>
+                            <div class="file-path-wrapper">
+                                <input class="file-path validate" type="text">
+                            </div>
+                        </div>
                     </div>
-                </div>
                 <div class="row">
                     <div class="col s7 offset-s5">
                         <div class="divider"></div>
