@@ -5,7 +5,7 @@
 	$mail->isSMTP();
 	$mail->SMTPAuth = true;
 	$mail->Username = 'djokogo@gmail.com';
-	$mail->Password = '0722354043Mum';
+	$mail->Password = '*****';
 	$mail->SMTPSecure = 'tls';
 	$mail->Port = 587;
 	$mail->Subject='Account Verification';
