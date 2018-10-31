@@ -3,7 +3,7 @@
     require_once('connect-db.php');
     
     date_default_timezone_set('Africa/Nairobi');
-    $selectLoanDetailSQL = "SELECT * FROM loans WHERE BorrowerID='{$_SESSION['idNo']} AND paymentStatus = '0'";
+    $selectLoanDetailSQL = "SELECT * FROM loans WHERE BorrowerID='{$_SESSION['idNo']}' AND paymentStatus = '0'";
     $selectLoanDetail = $con->query($selectLoanDetailSQL);
     if($selectLoanDetail->num_rows>0){
         //Get Current Date
@@ -49,9 +49,12 @@
                         $transactionUpdateLenderSQL = "INSERT INTO transactions (User_ID,Amount,TransactionType,TimeStamp) VALUES('{$loanRows['LenderID']}','$getPaybackAmount','$receiveLoanPayment','$currentDate')";
                         $transactionUpdateLender = $con->query($transactionUpdateLenderSQL);
                         $updateBorrowerPaymentStatusSQL = "UPDATE loans SET paymentStatus='1' WHERE User_ID='{$_SESSION['idNo']}'";
+                        require_once('successfulRepaymentMailer.php');
+
                         //Mail the User 
                     }
                     else{
+                        require_once('failedLoanRepaymentMailer.php');
                         $defaultNumber = $_SESSION['defaults'] + 1;
                         $_SESSION['defaults'] = $defaultNumber;
                         $updateLoanDefaultSQL = "UPDATE users SET defaultCount='$defaultNumber' WHERE User_ID='{$_SESSION['idNo']}'";
@@ -59,11 +62,26 @@
                     }
 
                 }
+                header("Location: user-dashboard.php");
         }
-        elseif(strtotime('-1 days',strtotime($loanDueDate))){
+        elseif(strtotime('-1 day',strtotime($loanDueDate))){
+            require_once('reminderMailer.php');
             //Send Email
+            header("Location: user-dashboard.php");
+        }
+        else{
+            
+            header("Location: user-dashboard.php");
         }
 
+    }
+    else{
+        
+        echo "<script language='javascript'>
+        alert('You have no loans');
+        window.location= 'user-dashboard.php';
+        </script>";
+        //header("Location: user-dashboard.php");
     }
 
 ?>

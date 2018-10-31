@@ -136,7 +136,7 @@
                             <div class="row deposit-form-container">
                                 <div class=" input-field col s12 m12 l12">
                                     <i class="fas fa-money-bill prefix"></i>
-                                    <input type="number" id="deposit-icon" name="amount-to-deposit" required>
+                                    <input type="number" id="deposit-icon" name="amount-to-deposit" required min='0'>
                                     <label for="deposit-icon">Amount to Deposit</label>
                                 </div>
                             </div>
@@ -167,7 +167,7 @@
                             <div class="row">
                                 <div class="input-field col s12 m12 l12">
                                     <i class="fas fa-money-bill prefix"></i>
-                                    <input type="number" id="withdraw-icon" name="amount-to-withdraw" required>
+                                    <input type="number" id="withdraw-icon" name="amount-to-withdraw" required min='0'>
                                     <label for="withdraw-icon">Amount to Withdraw</label>
                                 </div>
                             </div>
