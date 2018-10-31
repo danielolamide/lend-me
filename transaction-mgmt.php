@@ -147,7 +147,7 @@
                     <div style="padding:20px;"class="col s12 m12 l12">
                         <div class="container">
                             <form>
-                                <input class="searchForm" type="text" onkeyup="search()" id="Search" placeholder="Search by ID...">
+                                <input class="searchForm" type="text" onkeyup="search()" id="Search" placeholder="Search by ID. ..">
                                 <button type="submit" class="searchButton"><i class="fa fa-search"></i></button>
                             </form>
                         </div>

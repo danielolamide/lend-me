@@ -50,7 +50,7 @@
             <ul class="sidenav" id="mobile-demo">
                 <li><a href="./admin-dash.php">Back to Dashboard Home<i class="material-icons">keyboard_backspace</i></a></li>
                 <li><a href="./user-management.php">User Management<i class="material-icons left">supervised_user_circle</i></a></li>
-                <li><a href="./transaction-mgmt.php">Transaction Management<i class="fas fa-money-bill left">/i></a></li>
+                <li><a href="./transaction-mgmt.php">Transaction Management<i class="fas fa-money-bill left"></i></a></li>
                 <li><a href="./user-messages.php">User Feedback<i class="material-icons left">feedback</i></a></li>
                 <li><a href="./admin-settings.php">Manage Settings<i class="material-icons left">settings</i></a></li>
                 <li><a href="./logout.php">Logout<i class="material-icons left">power_settings_new</i></a></li>
@@ -107,7 +107,7 @@
                                         <tr>
                                             <th>ID Number</th>
                                             <th>Name</th>
-                                            <th>Payment Pending</th>
+                                            <th>Amount Borrowed</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>

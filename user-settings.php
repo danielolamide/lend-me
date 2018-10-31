@@ -146,12 +146,16 @@
                     </div>
                     <div class="row">
                         <div class="col s5 m5 l5">
-                            <span class="field-labels">Email Address</span>&nbsp;<i class="grey-text material-icons">edit</i>
+                            <span class="field-labels">Email Address</span>
                         </div>
-                        <div class="input-field col s7 m7 l7" id="email-field-settings">
-                            <span class='field-values' ><?php echo $_SESSION['email'];?></span>
+                        <div class="col s7 m7 l7">
+                            <span class="field-values"><?php echo $_SESSION['email'];?></span>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col s7 offset-s5">
+                            <div class="divider"></div>
+                        </div>
                     <div class="row">
                         <div class="col s7 offset-s5">
                             <div class="divider"></div>
