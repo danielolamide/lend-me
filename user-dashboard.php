@@ -1,5 +1,18 @@
-<?
+<?php
+    require_once('connect-db.php');
     session_start();
+    if(!isset($_SESSION['idNo'])){
+        header("location: authenticate.html#login");
+    }
+    else{
+        $selectBalance = "SELECT * FROM wallet where User_ID = {$_SESSION['idNo']}";
+        $balanceSelectQuery = $con->query($selectBalance);
+        if($balanceSelectQuery->num_rows>0){
+            $balanceData = $balanceSelectQuery->fetch_array();
+            $_SESSION['wallet-balance'] = $balanceData['WalletBalance'];
+        }
+    }
+    
 ?>
 <!DOCTYPE html>
 <html>
@@ -39,7 +52,7 @@
         <li><a href="./user-profile.php">My Profile<i class="material-icons left">account_circle</i></a></li>
         <li><a href="./user-settings.php">Settings<i class="material-icons left">settings</i></a></li>
         <li class="divider"></li>
-        <li><a href="#!">Logout<i class="material-icons left">power_settings_new</i></a></li>
+        <li><a href="./logout.php">Logout<i class="material-icons left">power_settings_new</i></a></li>
     </ul>
     <!-- Smaller Screen Menu -->
     <ul class="sidenav" id="mobile-demo">
@@ -49,7 +62,7 @@
         <li><a href="./user-settings.php">Manage Settings<i class="fas fa-cog left"></i></a></li>
         <li><a href="./feedback.php">Feedback<i class="fas fa-comment-alt left"></i></a></li>
         <li><a href="./wallet.phpcent-transactions">Recent Transactions<i class="fas fa-history left"></i></a></li>
-        <li><a href="#">Logout<i class="fas fa-power-off left"></i></a></li>
+        <li><a href="./logout.php">Logout<i class="fas fa-power-off left"></i></a></li>
     </ul>
     <main style="flex:1 0 auto;">
         <div class="white container user-options">
@@ -166,31 +179,45 @@
                                     <div class="container">
                                         <div class="row" id="tr-header">
                                             <div class="col s3 m3 l3">
-                                                <span>Recieved By</span>
+                                                <span>Transaction ID</span>
+                                            </div>
+                                            <div class="col s3 m3 l3">
+                                                <span>Time Stamp</span>
                                             </div>
                                             <div class="col s3 m3 l3">
                                                 <span>Amount</span>
-                                            </div>
-                                            <div class="col s3 m3 l3">
-                                                <span>Date</span>
                                             </div>
                                             <div class="col s3 m3 l3">
                                                 <span>Transaction Type</span>
                                             </div>
                                         </div>
                                         <div class="row tr-body">
-                                            <div class="col s3 m3 l3">
-                                                <span class="tr-values">Ola</span>
-                                            </div>
-                                            <div class="col s3 m3 l3">
-                                                <span class="tr-values">2000</span>
-                                            </div>
-                                            <div class="col s3 m3 l3">
-                                                <span class="tr-values">11/21/2018</span>
-                                            </div>
-                                            <div class="col s3 m3 l3">
-                                                <span class="tr-values">Loan Repayment</span>
-                                            </div>
+                                            <?php
+                                                $selectTransactionSQL = "SELECT * FROM transactions WHERE User_ID ={$_SESSION['idNo']} ORDER BY TimeStamp DESC LIMIT 1";
+                                                $selectTransaction = $con->query($selectTransactionSQL);
+                                                if($selectTransaction->num_rows>0){
+                                                    $tRow = $selectTransaction->fetch_array();
+                                                    echo "<div class='col s3 m3 l3>";
+                                                    echo "<span class='tr-values'>".$tRow['TID']."</span>";
+                                                    echo "</div>";
+
+                                                    echo "<div class='col s3 m3 l3>";
+                                                    echo "<span class='tr-values'>".$tRow['TimeStamp']."</span>";
+                                                    echo "</div>";
+
+                                                    echo "<div class='col s3 m3 l3>";
+                                                    echo "<span class='tr-values'>".$tRow['Amount']."</span>";
+                                                    echo "</div>";
+
+                                                    echo "<div class='col s3 m3 l3>";
+                                                    echo "<span class='tr-values>".$tRow['TransactionType']."</span>";
+                                                    echo "</div>";
+                                                }
+                                                else{
+                                                    echo "<span style='font-size:22px; font-weight:600;'>You don't have any transactions</span>";
+                                                }
+
+                                            ?>
                                         </div>
                                     </div>
                                 </div>
@@ -207,21 +234,17 @@
                                 <div class="collapsible-body">
                                     <table class="stripped reponsive-table popup-table">
                                         <tbody>
-                                            <tr>
+                                            <!-- <tr>
                                                 <td>Amount on Loan</td>
                                                 <td class="account-data">Ksh. 1022</td>
                                             </tr>
                                             <tr>
                                                 <td>Amount Owed</td>
                                                 <td class="account-data">Ksh. 20020</td>
-                                            </tr>
+                                            </tr> -->
                                             <tr>
-                                                <td>Holding Account</td>
-                                                <td class="account-data">Ksh. 20000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Total</td>
-                                                <td class="account-data">$total_amount</td>
+                                                <td>Wallet Balance</td>
+                                                <td class="account-data"><?php echo "Ksh. ".$_SESSION['wallet-balance'];?></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -243,16 +266,16 @@
                                     <table class="popup-table">
                                         <tbody>
                                             <tr>
-                                                <td>No. of times you've borrower money</td>
-                                                <td class="account-data">$loan_type_count</td>
+                                                <td>No. of times you've borrowed money</td>
+                                                <td class="account-data"><?php echo $_SESSION['bCount'];?> times</td>
                                             </tr>
                                             <tr>
                                                 <td>No. of times you've loaned out money</td>
-                                                <td class="account-data">$loan_type_count</td>
+                                                <td class="account-data"><?php echo $_SESSION['lCount'];?> times</td>
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <a href="transaction.html">View more details on my transactions</a>
+                                    <a href="wallet.php#recent-transactions">View more details on my transactions</a>
                                 </div>
                             </li>
                         </ul>

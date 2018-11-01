@@ -1,6 +1,6 @@
 <?php
     session_start();
-
+    require_once('connect-db.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -39,7 +39,7 @@
     <ul id="dropdown-user-module" class="dropdown-content">
         <li><a href="./user-profile.php">My Profile<i class="material-icons left">account_circle</i></a></li>
         <li class="divider"></li>
-        <li><a href="#!">Logout<i class="material-icons left">power_settings_new</i></a></li>
+        <li><a href="./logout.php">Logout<i class="material-icons left">power_settings_new</i></a></li>
     </ul>
     <!-- Smaller Screen Menu -->
     <ul class="sidenav" id="mobile-demo">
@@ -51,7 +51,7 @@
         <li><a href="./feedback.php">Feedback<i class="fas fa-comment-alt left"></i></a></li>
         <li><a href="./user-profile.php">View Profile<i class="fas fa-user-circle left"></i></a></li>
         <li><a href="./wallet.php#recent-transactions">Recent Transactions<i class="fas fa-history left"></i></a></li>
-        <li><a href="#">Logout<i class="fas fa-power-off left"></i></a></li>
+        <li><a href="./logout.php">Logout<i class="fas fa-power-off left"></i></a></li>
     </ul>
     <main style="flex: 1 0 auto">
         <div class="row" style="margin-bottom:0px;">
@@ -92,7 +92,19 @@
                                 <span class="field-labels">Photo</span>
                             </div>
                             <div class="col s7 m7 l7 center-align">
-                                <img src="./images/large-default-user.png" alt="user-image" class="left responsive-img">
+                            <?php
+                                $selectImage = "SELECT * FROM imageUpload WHERE User_ID ='{$_SESSION['idNo']}'";
+                                $selectImageResult = $con->query($selectImage);
+                                while($rowImage = $selectImageResult->fetch_array()){
+                                    if($rowImage['status']==0){
+                                        echo "<img src='./images/large-default-user.png' class='responsive-img' alt='User Image'>";
+                                    }
+                                    else{
+                                        echo "<img src='./uploads/profile".$_SESSION['idNo'].".jpg?".'mt_rand'."class='responsive-img left' alt='User Image' style='max-height:200px;'>";
+                                    }
+                                }
+                            ?>
+                                <!-- <img src="./images/large-default-user.png" alt="user-image" class="left responsive-img"> -->
                             </div>
                         </div>
                         <div class="row">
@@ -104,8 +116,8 @@
                             <div class="col s5 m5 l5 center-align">
                                 <span class="field-labels">Display Name</span>
                             </div>
-                            <div class="col s7 m7 l7">
-                                <span class="left field-values"></span><?php echo $_SESSION['uName'];?></span>
+                            <div class="col s7 m7 l7 center-align">
+                                <span class="field-values"><?php echo $_SESSION['uName'];?></span>
                             </div>
                         </div>
                         <div class="row">
@@ -117,8 +129,8 @@
                             <div class="col s5 m5 l5 center-align">
                                 <span class="field-labels">Email Address</span>
                             </div>
-                            <div class="input-field col s7 m7 l7">
-                                <span class="left field-values"><? echo $_SESSION['email']; ?></span>
+                            <div class="input-field col s7 m7 l7 center-align">
+                                <span class=" field-values"><?php echo $_SESSION['email']; ?></span>
                             </div>
                         </div>
                         <div class="row">
@@ -130,8 +142,8 @@
                             <div class="col s5 m5 l5 center-align">
                                 <span class="field-labels">Gender</span>
                             </div>
-                            <div class="col s7 m7 l7">
-                                <span class="left field-values"><?php echo $_SESSION['gender'];?></span>
+                            <div class="col s7 m7 l7 center-align">
+                                <span class=" field-values"><?php echo $_SESSION['gender'];?></span>
                             </div>
                         </div>
                         <div class="row">
@@ -143,8 +155,8 @@
                             <div class="col s5 m5 l5 center-align">
                                 <span class="field-labels">Account Type</span>
                             </div>
-                            <div class="col s7 m7 l7">
-                                <span class="left field-values"><?php echo $_SESSION['uType'];?></span>
+                            <div class="col s7 m7 l7 center-align">
+                                <span class=" field-values"><?php echo $_SESSION['uType'];?></span>
                             </div>
                         </div>
                         <div class="row">

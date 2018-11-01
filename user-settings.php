@@ -1,5 +1,9 @@
 <?php
     session_start();
+    require_once('connect-db.php');
+    if(!(isset($_SESSION['idNo']))){
+        header("location : authenticate#login");
+    }
     
 ?>
 <!DOCTYPE html>
@@ -39,7 +43,7 @@
     <ul id="dropdown-user-module" class="dropdown-content">
         <li><a href="./user-profile.php">My Profile<i class="material-icons left">account_circle</i></a></li>
         <li class="divider"></li>
-        <li><a href="#!">Logout<i class="material-icons left">power_settings_new</i></a></li>
+        <li><a href="./logout.php">Logout<i class="material-icons left">power_settings_new</i></a></li>
     </ul>
     <!-- Smaller Screen Menu -->
     <ul class="sidenav" id="mobile-demo">
@@ -51,7 +55,7 @@
         <li><a href="./feedback.php">Feedback<i class="fas fa-comment-alt left"></i></a></li>        
         <li><a href="./user-profile.php">View Profile<i class="fas fa-user-circle left"></i></a></li>
         <li><a href="./wallet.php#recent-transactions">Recent Transactions<i class="fas fa-history left"></i></a></li>
-        <li><a href="#">Logout<i class="fas fa-power-off left"></i></a></li>
+        <li><a href="./logout.php">Logout<i class="fas fa-power-off left"></i></a></li>
     </ul>
     <main style="flex:1 0 auto;">
         <div class="row" style="margin-bottom:0px;">
@@ -82,7 +86,7 @@
                         <span class="edit-form-header">Edit Profile</span>
                     </div>
                 </div>
-                <form action="" class="edit-settings-form">
+                <form  class="edit-settings-form" enctype="multipart/form-data" method ="POST" action="uploads.php">
                     <div class="row">
                         <div class="col s5 m5 l5 left-align">
                             <span class="profile-text">Profile</span>
@@ -100,12 +104,26 @@
                         <div class="col s5 m5 l5">
                             <span class="field-labels">Photo</span>
                         </div>
-                        <div class="input-field file-field col s7 m7 l7">
-                            <img src="./images/large-default-user.png" class="responsive-img left"alt="user-image">
+                        <div class="input-field file-field col s7 m7 l7" id="userImageFrame">
+                            <?php
+                                $selectImage = "SELECT * FROM imageUpload WHERE User_ID ='{$_SESSION['idNo']}'";
+                                $selectImageResult = $con->query($selectImage);
+                                while($rowImage = $selectImageResult->fetch_array()){
+                                    if($rowImage['status']==0){
+                                        echo "<img src='./images/large-default-user.png' class='responsive-img left' alt='User Image'>";
+                                    }
+                                    else{
+                                        echo "<img src='./uploads/profile".$_SESSION['idNo'].".jpg?".'mt_rand'."class='responsive-img left' alt='User Image' style='max-height:200px;'>";
+                                    }
+                                }
+                            ?>
+                            <!-- <img src="./images/large-default-user.png" class="responsive-img left"alt="user-image"> -->
                             <button class="btn waves-effect waves-light change-user-image-btn">
-                                Change<input type="file">
+                                Change<input type="file" name="new-user-img">
                             </button>
-                            
+                            <div class="file-path-wrapper">
+                                <input class="file-path validate" type="text">
+                            </div>
                         </div>
                     </div>
                     <div class="row">
@@ -128,11 +146,19 @@
                     </div>
                     <div class="row">
                         <div class="col s5 m5 l5">
-                            <span class="field-labels">Email Address</span>&nbsp;<i class="grey-text material-icons">edit</i>
+                            <span class="field-labels">Email Address</span>
                         </div>
-                        <div class="input-field col s7 m7 l7" id="email-field-settings">
-                            <input type="email" name="user-email" class="validate field-values" value="<?php echo $_SESSION['email'];?>">
-                            <span class="helper-text" data-error="Incorrect Email Format" data-success=""></span>
+                        <div class="col s7 m7 l7">
+                            <span class="field-values"><?php echo $_SESSION['email'];?></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s7 offset-s5">
+                            <div class="divider"></div>
+                        </div>
+                    <div class="row">
+                        <div class="col s7 offset-s5">
+                            <div class="divider"></div>
                         </div>
                     </div>
                     <div class="row">
@@ -171,9 +197,6 @@
     <script type="text/javascript" src="js/materialize.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <footer style="background-color: #323232;" class="page-footer" style="text-align:center; padding: 10px; margin-top:0;">
-        <!-- <div class="center-align container" id="foot-logo">
-                            <img src="./images/p2p-blue-new-layout.png" alt="company-logo">
-                        </div> -->
         <div class=" center-align container">
             © 2018 StrathFund
         </div>

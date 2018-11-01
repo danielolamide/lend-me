@@ -11,7 +11,7 @@ if(isset($_POST['sign_up']))
     $uPass1 = $con->real_escape_string($_REQUEST['pass1']);
     $no = $con->real_escape_string($_REQUEST['number']);
     $sex = $con->real_escape_string($_REQUEST['gender']);
-    $user = "User";
+    $user = 2;
     $acc = 0;
  
     if($uPass!=$uPass1){
@@ -22,7 +22,7 @@ if(isset($_POST['sign_up']))
     }
 
     else {
-        $userExists= $con->query("SELECT * FROM users WHERE ID='$id'");
+        $userExists= $con->query("SELECT * FROM users WHERE ID_Number='$id'");
 			if ($userExists->num_rows>0) {
 				echo "<script language='javascript'>
                     alert('User with this ID exists.');
@@ -48,11 +48,18 @@ if(isset($_POST['sign_up']))
     
         else{
             $hashed = password_hash($uPass, PASSWORD_BCRYPT);
-            $sql = "INSERT INTO users (Username,Email,ID,Password,Phone_No,Gender,UserType,AccStatus) VALUES ('$username', '$email', '$id', '$hashed', '$no', '$sex', '$user', '$acc')";
+            $sql = "INSERT INTO users (Username,Email,ID_Number,Password,Phone_No,Gender,UserType,AccStatus) VALUES ('$username', '$email', '$id', '$hashed', '$no', '$sex', '$user', '$acc')";
+            $intitalize_wallet="INSERT INTO wallet(User_ID) VALUES('$id')";
+            $insertDefaultProfile = "INSERT INTO imageUpload (User_ID) VALUES('$id')";
+            $initializeLoanStatus  = "INSERT INTO loanStatus (User_ID) VALUES('$id')";
 
-            if($con->query($sql) === true){
+
+
+            if($con->query($sql) === true && $con->query($intitalize_wallet)){
+                $con->query($insertDefaultProfile);
+                $con->query($initializeLoanStatus);
                 echo "<script language='javascript'>
-                    alert ('Records inserted successfully. WELCOME!');
+                    alert ('Your Account has been created. Activate your account to login. WELCOME!');
                     window.location='index.html';
                     </script>";  
                 require_once("mailer.php");

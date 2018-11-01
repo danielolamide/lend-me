@@ -1,5 +1,12 @@
 <?php
     session_start();
+    require_once('connect-db.php');
+    if(!isset($_SESSION['idNo'])){
+        header("location: authenticate.html#login");
+    }
+    if($_SESSION['uType']!="1"){
+        header("location: user-dashboard.php");
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -36,16 +43,16 @@
         <li><a href="./admin-profile.php">My Profile<i class="material-icons left">account_circle</i></a></li>
         <li><a href="./admin-settings.php">Settings<i class="material-icons left">settings</i></a></li>
         <li class="divider"></li>
-        <li><a href="#!">Logout<i class="material-icons left">power_settings_new</i></a></li>
+        <li><a href="./logout.php">Logout<i class="material-icons left">power_settings_new</i></a></li>
     </ul>
         <!--NavBar Resize Menu-->
     <ul class="sidenav" id="mobile-demo">
         <li><a href="./admin-dash.php">Back to Dashboard Home<i class="material-icons">keyboard_backspace</i></a></li>
         <li><a href="./user-management.php">User Management<i class="material-icons left">supervised_user_circle</i></a></li>
-        <li><a href="./transaction-mgmt.php">Transaction Management<i class="material-icons left">attach_money</i></a></li>
+        <li><a href="./transaction-mgmt.php">Transaction Management<i class="fas fa-money-bill left"></i></a></li>
         <li><a href="./user-messages.php">User Feedback<i class="material-icons left">feedback</i></a></li>
         <li><a href="./admin-settings.php">Manage Settings<i class="material-icons left">settings</i></a></li>
-        <li><a href="#">Logout<i class="material-icons left">power_settings_new</i></a></li>
+        <li><a href="./logout.php">Logout<i class="material-icons left">power_settings_new</i></a></li>
         </ul>
 
     <!--Admin Side Menu Fixed-->
@@ -62,11 +69,11 @@
         </div></li>
         <li><a href="./admin-dash.php">Back to Dashboard Home<i class="material-icons">keyboard_backspace</i></a></li>
         <li><a href="./user-management.php"><i class="material-icons">supervised_user_circle</i>User Management</a></li>
-        <li><a href="./transaction-mgmt.php"><i class="material-icons">attach_money</i>Transaction Management</a></li>
+        <li><a href="./transaction-mgmt.php"><i class="fas fa-money-bill"></i>Transaction Management</a></li>
         <li><a href="./user-messages.php"><i class="material-icons">feedback</i>User Feedback</a></li>
         <li><div class="divider"></div></li>
         <li><a href="./admin-settings.php"><i class="material-icons">settings</i>Manage Settings</a></li>
-        <li><a class="waves-effect" href="#!"><i class="material-icons">power_settings_new</i>Logout</a></li>
+        <li><a class="waves-effect" href="./logout.php"><i class="material-icons">power_settings_new</i>Logout</a></li>
     </ul>
     <main>
         <div class="center-align dashboard-title">
@@ -82,13 +89,25 @@
                 <div class="divider"></div>
             </div>
             <div class="row">
-                <div class="col s5 m5 l5">
-                    <span style="color:#C5C5C3; font-size:18px;">Photo</span>
+                 <div class="col s5 m5 l5 center-align">
+                    <span class="field-labels">Photo</span>
                 </div>
-                <div class="col s7 m7 l7" id="usrImg-settings-container">
-                    <img class="responsive-img left" src="./images/large-default-user.png" alt="Default User Icon">
-                </div>
-            </div>
+                <div class="col s7 m7 l7 center-align">
+                <?php
+                    $selectImage = "SELECT * FROM imageUpload WHERE User_ID ='{$_SESSION['idNo']}'";
+                    $selectImageResult = $con->query($selectImage);
+                    while($rowImage = $selectImageResult->fetch_array()){
+                        if($rowImage['status']==0){
+                            echo "<img src='./images/large-default-user.png' class='responsive-img' alt='User Image'>";
+                        }
+                        else{
+                            echo "<img src='./uploads/profile".$_SESSION['idNo'].".jpg?".'mt_rand'."class='responsive-img left' alt='User Image' style='max-height:200px;'>";
+                        }
+                    }
+                ?>
+                                <!-- <img src="./images/large-default-user.png" alt="user-image" class="left responsive-img"> -->
+                            </div>
+                        </div>
             <div class="row">
                 <div class="col s7 offset-s5">
                     <div class="divider"></div>
@@ -99,7 +118,7 @@
                     <span style="color:#C5C5C3; font-size:18px;">Display Name</span>
                 </div>
                 <div class="col s7 m7 l7">
-                    <span class="left" style="color:#494949; font-size:18px;"><?echo $_SESSION['uName'];?></span>                        
+                    <span class="left" style="color:#494949; font-size:18px;"><?php echo $_SESSION['uName'];?></span>                        
                 </div>
             </div>
             <div class="row">
@@ -112,7 +131,7 @@
                         <span style="color:#C5C5C3; font-size:18px;">Email Address</span>
                 </div>
                 <div class="input-field col s7 m7 l7">
-                        <span class="left" style="color:#494949; font-size:18px;"><?echo $_SESSION['email'];?></span>                                            
+                        <span class="left" style="color:#494949; font-size:18px;"><?php echo $_SESSION['email'];?></span>                                            
                 </div>
             </div>
             <div class="row">
@@ -125,7 +144,7 @@
                     <span style="color:#C5C5C3; font-size:18px;">Gender</span>
                 </div>
                 <div class="col s7 m7 l7">
-                    <span class="left" style="color:#494949; font-size:18px;"><?echo $_SESSION['gender'];?></span>                        
+                    <span class="left" style="color:#494949; font-size:18px;"><?php echo $_SESSION['gender'];?></span>                        
                 </div>
             </div>
             <div class="row">
@@ -138,7 +157,7 @@
                         <span style="color:#C5C5C3; font-size:18px;">Account Type</span>
                     </div>
                     <div class="col s7 m7 l7">
-                        <span class="left" style="color:#494949; font-size:18px;"><? echo $_SESSION['uType'];?></span>                        
+                        <span class="left" style="color:#494949; font-size:18px;"><?php echo $_SESSION['uType'];?></span>                        
                     </div>
                 </div>
                 <div class="row">

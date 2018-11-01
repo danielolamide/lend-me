@@ -1,5 +1,11 @@
-<?
+<?php
     session_start();
+    if(!isset($_SESSION['idNo'])){
+        header("location: authenticate.html#login");
+    }
+    if($_SESSION['uType']!="1"){
+        header("location: user-dashboard.php");
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -38,16 +44,16 @@
             <li><a href="admin-profile.php">My Profile<i class="material-icons left">account_circle</i></a></li>
             <li><a href="./admin-settings.php">Settings<i class="material-icons left">settings</i></a></li>
             <li class="divider"></li>
-            <li><a href="#!">Logout<i class="material-icons left">power_settings_new</i></a></li>
+            <li><a href="./logout.php">Logout<i class="material-icons left">power_settings_new</i></a></li>
         </ul>
             <!--NavBar Resize Menu-->
         <ul class="sidenav" id="mobile-demo">
             <li><a href="./admin-dash.php">Back to Dashboard Home<i class="material-icons">keyboard_backspace</i></a></li>
             <li><a href="./user-management.php">User Management<i class="material-icons left">supervised_user_circle</i></a></li>
-            <li><a href="./transaction-mgmt.php">Transaction Management<i class="material-icons left">attach_money</i></a></li>
+            <li><a href="./transaction-mgmt.php">Transaction Management<i class="fas fa-money-bill left"></i></a></li>
             <li><a href="./user-messages.php">User Feedback<i class="material-icons left">feedback</i></a></li>
             <li><a href="./admin-settings.php">Manage Settings<i class="material-icons left">settings</i></a></li>
-            <li><a href="#">Logout<i class="material-icons left">power_settings_new</i></a></li>
+            <li><a href="./logout.php">Logout<i class="material-icons left">power_settings_new</i></a></li>
             </ul>
     <!-- </div> -->
     
@@ -60,16 +66,16 @@
                 <img src="images/office.jpg">
             </div> -->
             <a href="admin-settings.php"><img class="circle" src="images/default-user-icon.png"></a>
-            <a href="admin-profile.php"><span class="white-text name">Username</span></a>
-            <a href="admin-settings.php"><span class="subheader white-text email">user@domain.com</span></a>
+            <a href="admin-profile.php"><span class="white-text name"><?php echo $_SESSION['FName'][0];?></span></a>
+            <a href="admin-settings.php"><span class="subheader white-text email"><?php echo $_SESSION['email'];?></span></a>
         </div></li>
         <li><a href="./admin-dash.php">Back to Dashboard Home<i class="material-icons">keyboard_backspace</i></a></li>
         <li><a href="./user-management.php"><i class="material-icons">supervised_user_circle</i>User Management</a></li>
-        <li><a href="./transaction-mgmt.php"><i class="material-icons">attach_money</i>Transaction Management</a></li>
+        <li><a href="./transaction-mgmt.php"><i class="fas fa-money-bill"></i>Transaction Management</a></li>
         <li><a href="./user-messages.php"><i class="material-icons">feedback</i>User Feedback</a></li>
         <li><div class="divider"></div></li>
         <li><a href="./admin-settings.php"><i class="material-icons">settings</i>Manage Settings</a></li>
-        <li><a class="waves-effect" href="#!"><i class="material-icons">power_settings_new</i>Logout</a></li>
+        <li><a class="waves-effect" href="./logout.php"><i class="material-icons">power_settings_new</i>Logout</a></li>
     </ul>
     <main>
         <div class="dashboard-title">
@@ -97,13 +103,26 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>Daniel</td>
-                                            <td>Wole</td>
-                                            <td>Failure to pay loans</td>
-                                            <td>12:48 23/12/2001</td>
-                                            <td><a href="#noted"><i class="material-icons">check</i></a></td>
-                                        </tr>
+                                        
+<?php        
+        require_once 'connect-db.php';    
+        $sql = "SELECT Name,UserID,Complaint,Time from complaints";
+        $query = $con->query($sql);
+                
+        if ($query->num_rows>0) 
+        {
+            // output data of each row
+            while($row = $query->fetch_array()) 
+            {
+            echo "<tr><td>". $row["Name"]. "</td><td>". $row["UserID"]. "</td><td>". $row["Complaint"]. "</td><td>". $row["Time"]. "</td><td><a href='#noted'><i class='material-icons'>check</i></a></td></tr>";
+            }
+        }
+        else
+        {
+            echo "0 result";
+        }
+?>
+
                                     </tbody>
                                 </table>
                             </div>
@@ -126,19 +145,33 @@
                                     <table class="responsive-table highlight">
                                         <thead>
                                             <tr>
-                                                <th>Name</th>
+                                                <th>ID Number</th>
                                                 <th>Suggestion</th>
                                                 <th>Time</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>Daniel</td>
-                                                <td>Option to pay all loans at once</td>
-                                                <td>12:48 23/12/2001</td>
-                                                <td><a href="#noted"><i class="material-icons">check</i></a></td>
-                                            </tr>
+                                            
+<?php        
+        require_once 'connect-db.php';    
+        $sql = "SELECT UserID,Suggestion,Time from suggestions";
+        $query = $con->query($sql);
+                
+        if ($query->num_rows>0) 
+        {
+            // output data of each row
+            while($row = $query->fetch_array()) 
+            {
+            echo "<tr><td>". $row["UserID"]. "</td><td>". $row["Suggestion"]. "</td><td>". $row["Time"]. "</td><td><a href='#noted'><i class='material-icons'>check</i></a></td></tr>";
+            }
+        }
+        else
+        {
+            echo "0 result";
+        }
+?>
+
                                         </tbody>
                                     </table>
                                 </div>

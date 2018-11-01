@@ -1,6 +1,10 @@
 <?php
+    require_once('connect-db.php');
     session_start();
-    if($_SESSION['uType']!="Admin"){
+    if(!isset($_SESSION['idNo'])){
+        header("location: authenticate.html#login");
+    }
+    if($_SESSION['uType']!="1"){
         header("location: user-dashboard.php");
     }
 ?>
@@ -40,15 +44,15 @@
             <li><a href="./admin-profile.php">My Profile<i class="material-icons left">account_circle</i></a></li>
             <li><a href="./admin-settings.php">Settings<i class="material-icons left">settings</i></a></li>
             <li class="divider"></li>
-            <li><a href="#!">Logout<i class="material-icons left">power_settings_new</i></a></li>
+            <li><a href="./logout.php">Logout<i class="material-icons left">power_settings_new</i></a></li>
         </ul>
          <!--NavBar Resize Menu-->
         <ul class="sidenav" id="mobile-demo">
             <li><a href="./user-management.php">User Management<i class="material-icons left">supervised_user_circle</i></a></li>
-            <li><a href="./transaction-mgmt.php">Transaction Management<i class="material-icons left">attach_money</i></a></li>
+            <li><a href="./transaction-mgmt.php">Transaction Management<i class="fas fa-money-bill left"></i></a></li>
             <li><a href="./user-messages.php">User Feedback<i class="material-icons left">feedback</i></a></li>
             <li><a href="./admin-settings.php">Manage Settings<i class="material-icons left">settings</i></a></li>
-            <li><a href="#">Logout<i class="material-icons left">power_settings_new</i></a></li>
+            <li><a href="./logout.php">Logout<i class="material-icons left">power_settings_new</i></a></li>
          </ul>
     <!-- </div> -->
     
@@ -61,15 +65,15 @@
                 <img src="images/office.jpg">
             </div> -->
             <a href="./admin-settings.php"><img class="circle" src="images/default-user-icon.png"></a>
-            <a href="./admin-profile.php"><span class="white-text name">Username</span></a>
-            <a href="./admin-settings.php"><span class="subheader white-text email">user@domain.com</span></a>
+            <a href="./admin-profile.php"><span class="white-text name"><?php echo $_SESSION['FName'][0];?></span></a>
+            <a href="./admin-settings.php"><span class="subheader white-text email"><?php echo $_SESSION['email'];?></span></a>
         </div></li>
         <li><a href="./user-management.php"><i class="material-icons">supervised_user_circle</i>User Management</a></li>
-        <li><a href="./transaction-mgmt.php"><i class="material-icons">attach_money</i>Transaction Management</a></li>
+        <li><a href="./transaction-mgmt.php"><i class="fas fa-money-bill"></i>Transaction Management</a></li>
         <li><a href="./user-messages.php"><i class="material-icons">feedback</i>User Feedback</a></li>
         <li><div class="divider"></div></li>
         <li><a href="./admin-settings.php"><i class="material-icons">settings</i>Manage Settings</a></li>
-        <li><a class="waves-effect" href="#!"><i class="material-icons">power_settings_new</i>Logout</a></li>
+        <li><a class="waves-effect" href="./logout.php"><i class="material-icons">power_settings_new</i>Logout</a></li>
     </ul>
     <!--Page Content-->
     <main>
@@ -139,7 +143,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <a href="./user-messages.php#suggestions">
+                        <a href="./user-messages.php">
                             <div style="padding: 30px;" class="grey lighten-3 col s5 waves-effect">
                                 <i class="large fas fa-comment-alt"></i>
                                 <span><h6>User Suggestions</h6></span>
@@ -180,7 +184,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <a href="#">
+                            <a href="./logout.php">
                                 <div style="padding: 30px;" class="grey lighten-3 col  s12 waves-effect">
                                     <i class="large fas fa-power-off"></i>
                                     <span><h6>Logout</h6></span>

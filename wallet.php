@@ -1,5 +1,9 @@
 <?php
     session_start();
+    require_once("connect-db.php");
+    if(!isset($_SESSION['idNo'])){
+        header("Location: authenticate.html#login");
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -16,10 +20,10 @@
     <link type="text/css" rel="stylesheet" href="css/materialize.css" media="screen,projection" />
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/user-module.css">
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script> 
 </head>
 
-<body style="display:flex; min-height: 100vh; flex-direction: column;">
+<body style="display:flex; min-height: 100vh; flex-direction: column; scroll: auto;">
     <nav>
         <div class="nav-wrapper" style="background-color:white;">
             <div style="margin-top: 5px; margin-left:12px;" class="img-hold">
@@ -29,7 +33,7 @@
             <a href="#" data-target="mobile-demo" id="mobile-menu-icon" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li id="settings-link"><a href="./user-settings.php"><i class="material-icons">settings</i></a></li>
-                <li><a class="dropdown-trigger user-name-lend" href="#" data-target="dropdown-user-module"><?echo $_SESSION['FName'][0]?><i
+                <li><a class="dropdown-trigger user-name-lend" href="#" data-target="dropdown-user-module"><?php echo $_SESSION['FName'][0]?><i
                             class="material-icons right">arrow_drop_down</i></a></li>
             </ul>
         </div>
@@ -38,7 +42,7 @@
     <ul id="dropdown-user-module" class="dropdown-content">
         <li><a href="./user-profile.php">My Profile<i class="material-icons left">account_circle</i></a></li>
         <li class="divider"></li>
-        <li><a href="#!">Logout<i class="material-icons left">power_settings_new</i></a></li>
+        <li><a href="./logout.php">Logout<i class="material-icons left">power_settings_new</i></a></li>
     </ul>
     <!-- Smaller Screen Menu -->
     <ul class="sidenav" id="mobile-demo">
@@ -50,7 +54,7 @@
         <li><a href="./user-settings.php">Manage Settings<i class="fas fa-cog left"></i></a></li>
         <li><a href="./user-profile.php">View Profile<i class="fas fa-user-circle left"></i></a></li>
         <li><a href="./wallet.php#recent-transactions">Recent Transactions<i class="fas fa-history left"></i></a></li>
-        <li><a href="#">Logout<i class="fas fa-power-off left"></i></a></li>
+        <li><a href="./logout.php">Logout<i class="fas fa-power-off left"></i></a></li>
     </ul>
     <main style="flex:1 0 auto;">
         <div class="row" style="margin-bottom:0px;">
@@ -85,7 +89,17 @@
                         </div>
                         <div class="row">
                             <div class="col s12 m12 l12 center-align" id="acc-balance-value-container">
-                                <span>Ksh. 30000</span>
+                                <div id="w-balance"><?php
+                                    $getBalanceSQL = "SELECT WalletBalance FROM wallet WHERE User_ID='{$_SESSION['idNo']}'";
+                                    $select_balance = $con->query($getBalanceSQL);
+                                    if($select_balance->num_rows>0){
+                                        $balance_data = $select_balance->fetch_array();
+                                        $currentBalance = $balance_data['WalletBalance'];
+                                        echo "<span>Ksh. ";
+                                        echo $currentBalance;
+                                        echo"</span>"; 
+                                    }
+                                ?></div>
                             </div>
                         </div>
                     </div>
@@ -118,11 +132,11 @@
                                 <a href="#!" class="modal-close waves-effect waves-green right"><i class="material-icons center">close</i></a>
                             </div>
                         </div>
-                        <form action="">
+                        <form method="post" action="processDeposit.php" id="depositForm"> 
                             <div class="row deposit-form-container">
                                 <div class=" input-field col s12 m12 l12">
-                                    <i class="material-icons prefix">attach_money</i>
-                                    <input type="number" id="deposit-icon">
+                                    <i class="fas fa-money-bill prefix"></i>
+                                    <input type="number" id="deposit-icon" name="amount-to-deposit" required min='0'>
                                     <label for="deposit-icon">Amount to Deposit</label>
                                 </div>
                             </div>
@@ -130,7 +144,7 @@
                                 <div class="col s12 m12 l12 center-align">
                                     <button class="btn waves-effect waves-light type
                                     submit"
-                                        name="deposit-money-btn">
+                                        name="deposit-money-btn" id="deposit-btn">
                                         Deposit<i class="material-icons">send</i>
                                     </button>
                                 </div>
@@ -149,17 +163,17 @@
                                 <a href="#!" class="modal-close waves-effect waves-green right"><i class="material-icons center">close</i></a>
                             </div>
                         </div>
-                        <form action="">
+                        <form method="post" action="processWithdraw.php"id="withdrawForm">
                             <div class="row">
                                 <div class="input-field col s12 m12 l12">
-                                    <i class="material-icons prefix">attach_money</i>
-                                    <input type="number" id="withdraw-icon">
+                                    <i class="fas fa-money-bill prefix"></i>
+                                    <input type="number" id="withdraw-icon" name="amount-to-withdraw" required min='0'>
                                     <label for="withdraw-icon">Amount to Withdraw</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col s12 m12 l12 center-align">
-                                    <button class="btn waves-effect waves-light" type="submit" name="withdraw-money-btn">
+                                    <button class="btn waves-effect waves-light" id="withdraw-btn" type="submit" name="withdraw-money-btn">
                                         Withdraw <i class="material-icons">send</i>
                                     </button>
                                 </div>
@@ -170,40 +184,34 @@
                 <div class="row">
                     <div class="col s12 m12 l12">
                         <div class="transaction-table-container" id="recent-transactions">
-                            <table class="responsive-table">
-                                <thead>
-                                    <th style="width:200px;">Transaction ID</th>
-                                    <th>Time Stamp</th>
-                                    <th>Amount</th>
-                                    <th>Payment Type</th>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>T1000</td>
-                                        <td>02/11/2019 12:42pm</td>
-                                        <td>Ksh. 1000</td>
-                                        <td>Loan Repayment</td>
-                                    </tr>
-                                    <tr>
-                                        <td>T1000</td>
-                                        <td>02/11/2019 12:42pm</td>
-                                        <td>Ksh. 1000</td>
-                                        <td>Loan Funding</td>
-                                    </tr>
-                                    <tr>
-                                        <td>T1000</td>
-                                        <td>02/11/2019 12:42pm</td>
-                                        <td>Ksh. 1000</td>
-                                        <td>Loan Funding</td>
-                                    </tr>
-                                    <tr>
-                                        <td>T1000</td>
-                                        <td>02/11/2019 12:42pm</td>
-                                        <td>Ksh. 1000</td>
-                                        <td>Loan Funding</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <?php
+                                $select_transactions = "SELECT * FROM transactions WHERE User_ID = '{$_SESSION['idNo']}'";
+                                $process_selection = $con->query($select_transactions);
+                                
+                                    if($process_selection->num_rows>0){  
+                                        echo "<table class='responsive-table'>
+                                        <thead>
+                                            <th style='width:200px;'>Transaction ID</th>
+                                            <th>Time Stamp</th>
+                                            <th>Amount</th>
+                                            <th>Transaction Type</th>
+                                        </thead>
+                                        <tbody>";  
+                                        while($transactionTData = $process_selection->fetch_array()){
+                                            echo "<tr>";
+                                            echo"<td>".$transactionTData['TID']."</td>";
+                                            echo"<td>".$transactionTData['TimeStamp']."</td>";
+                                            echo"<td>".$transactionTData['Amount']."</td>";
+                                            echo"<td>".$transactionTData['TransactionType']."</td>";
+                                            echo "</tr>";
+                                        }
+                                        echo "</tbody>";
+                                        echo "</table>";
+                                    }
+                                    else{
+                                        echo "<span class='black-text' style='font-size:20px;'>You do not have any transactions yet</span>";
+                                    }
+                            ?>
                         </div>
                     </div>
                 </div>

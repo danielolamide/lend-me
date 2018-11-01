@@ -2,8 +2,8 @@
 	$alert="";
 	$error="";
 	$error1="";
+	require_once ('connect-db.php');
 	if(isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['hash']) && !empty($_GET['hash'])){
-		require_once ('connect-db.php');
 		$email = $con->real_escape_string($_GET['email']);
 		$passHash = $con->real_escape_string($_GET['hash']);
 		$query = $con->query("SELECT * FROM users WHERE Email='$email' AND Password='$passHash' AND AccStatus='0'");
@@ -18,7 +18,7 @@
 
 	}
 	else{
-		$error1="<p>Invalid. Please use the activaiton link sent to your email to activate your account.";
+		$error="<p>Invalid. Please use the activaiton link sent to your email to activate your account.";
 	}
 ?>
 <!DOCTYPE html>
@@ -64,13 +64,13 @@
 				echo $error;
 				echo "<br>";
 				echo "<br>";
-				echo "<a href='./authenticate.html'>Return to Home Page</a>";
+				echo "<a href='./authenticate.html#login'>Return to Authenticate Page</a>";
 			}
 			if($alert){
 				echo $alert;
 				echo "<br>";
 				echo "<br>";
-				echo "<a href='./admin-dash.php'>Continue to Dashboard</a>";
+				echo "<a href='./authenticate.html#login'>Login to your account</a>";
 			}
 		 ?>
 		 <div>
